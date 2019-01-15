@@ -2,14 +2,13 @@ Project Vision
 
 Our game will be a shooting game that features a single player who will be trying to eliminate all enemies that appear on the screen by shooting them.
 
-A player moves around on the screen in response to the keyboard in the corresponding 8 directions. A player will have normal and slow speed.
+A player moves around on the screen in response to the keyboard in the corresponding 8 directions. A player will have normal and slow speed. The player will have three lives.
 
-There are four different types of enemies to defeat: grunts, more advanced grunts, a mid-level boss, and a final boss. The mid-level boss and final boss present more elaborate attacks. The final boss presents two different stages of attack. The enemies have the ability to fire bullets at the player.
+There are four different types of enemies to defeat: grunts, more advanced grunts, a mid-level boss, and a final boss. The mid-level boss and final boss present more elaborate attacks. The final boss presents two different stages of attack. The enemies have the ability to fire bullets at the player. The grunts are killed by one hit, the mid-level boss by two hits, and the final boss with three hits.
+
+The firing patterns will vary. The grunt bullets shoot straight and go off of the screen. The advanced grunt bullets will bounce and stay inside the player screen. The mid-level boss bullets will have more movement. The final boss will have bullets that track the player.
 
 The game will last around 2 - 3 minutes and will be made up of 4 phases. The phases are 1) regular game play against grunts, 2) a mid-level boss attack, 3) more advanced grunts, and 4) a final boss attack.
 
 Required for Milestone 1:
 * Add details for a chronological sequence of what the game will look like
-* Describe firing patterns for the bosses
-* Determine how many lives the player has
-* Determine how many lives each enemy has
