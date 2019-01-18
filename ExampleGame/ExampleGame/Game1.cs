@@ -33,6 +33,36 @@ namespace ExampleGame
         }
     }
 
+    class Enemy
+    {
+        private Texture2D enemyTexture;
+        private Vector2 enemyPosition;
+        private float enemySpeed;
+
+        public void Initialize(float initSpeed, Vector2 initPosition)
+        {
+            enemySpeed = initSpeed;
+            enemyPosition = initPosition;
+        }
+        public void Load(Texture2D initTexture)
+        {
+            enemyTexture = initTexture;
+        }
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(
+                enemyTexture,
+                enemyPosition,
+                null,
+                Color.White,
+                0f,
+                new Vector2(enemyTexture.Width / 2, enemyTexture.Height / 2),
+                Vector2.One,
+                SpriteEffects.None,
+                0f);
+        }
+    }
+
     class Player
     {
         private Texture2D playerTexture;
@@ -139,10 +169,7 @@ namespace ExampleGame
     public class Game1 : Game
     {
         Player player;
-
-        Texture2D enemyTexture;
-        Vector2 enemyPosition;        
-
+        Enemy grunt;
         //Key mapping
         Keys upKey = Keys.Up;
         Keys downKey = Keys.Down;
@@ -171,10 +198,11 @@ namespace ExampleGame
             // TODO: Add your initialization logic here
             player = new Player(Content);
             player.Initialize(100f, new Vector2(graphics.PreferredBackBufferWidth / 2,
-                                       graphics.PreferredBackBufferHeight / 2));          
-            
-            enemyPosition = new Vector2(graphics.PreferredBackBufferWidth / 3,
-                                         graphics.PreferredBackBufferHeight / 3);
+                                       graphics.PreferredBackBufferHeight / 2));
+
+            grunt = new Enemy();
+            grunt.Initialize(0f, new Vector2(graphics.PreferredBackBufferWidth / 3,
+                                         graphics.PreferredBackBufferHeight / 3));
 
             base.Initialize();
         }
@@ -190,7 +218,7 @@ namespace ExampleGame
 
             // TODO: use this.Content to load your game content here
             player.Load(Content.Load<Texture2D>("player"));
-            enemyTexture = Content.Load<Texture2D>("invader1");
+            grunt.Load(Content.Load<Texture2D>("invader1"));
         }
 
         /// <summary>
@@ -232,18 +260,10 @@ namespace ExampleGame
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(
-                enemyTexture,
-                enemyPosition,
-                null,
-                Color.White,
-                0f,
-                new Vector2(enemyTexture.Width / 2, enemyTexture.Height / 2),
-                Vector2.One,
-                SpriteEffects.None,
-                0f);
-            player.Draw(spriteBatch);
             
+            player.Draw(spriteBatch);
+            grunt.Draw(spriteBatch);
+
             spriteBatch.End();
             base.Draw(gameTime);
         }
