@@ -34,23 +34,26 @@ namespace ExampleGame
     }
     public class Game1 : Game
     {
-        Texture2D ballTexture;
-        Vector2 ballPosition;
-        float ballSpeed;
+        Texture2D playerTexture;
+        Vector2 playerPosition;
+        float playerSpeed;
 
-        Texture2D squareTexture;
-        Vector2 squarePosition;
-        
+        Texture2D enemyTexture;
+        Vector2 enemyPosition;
+
+        List<Bullets> bullets = new List<Bullets>();
+
         //Key mapping
         Keys upKey = Keys.Up;
         Keys downKey = Keys.Down;
         Keys leftKey = Keys.Left;
         Keys rightKey = Keys.Right;
         Keys spacebar = Keys.Space;
-        KeyboardState pastKey;
+        KeyboardState pastKey; //2nd most recent key command
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        List<Bullets> bullets = new List<Bullets>();
+        
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -66,11 +69,11 @@ namespace ExampleGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            ballSpeed = 100f;
-            ballPosition = new Vector2(graphics.PreferredBackBufferWidth / 2,
+            playerSpeed = 100f;
+            playerPosition = new Vector2(graphics.PreferredBackBufferWidth / 2,
                                        graphics.PreferredBackBufferHeight / 2);
             
-            squarePosition = new Vector2(graphics.PreferredBackBufferWidth / 3,
+            enemyPosition = new Vector2(graphics.PreferredBackBufferWidth / 3,
                                          graphics.PreferredBackBufferHeight / 3);
 
             base.Initialize();
@@ -86,8 +89,8 @@ namespace ExampleGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            ballTexture = Content.Load<Texture2D>("ball");
-            squareTexture = Content.Load<Texture2D>("square");
+            playerTexture = Content.Load<Texture2D>("player");
+            enemyTexture = Content.Load<Texture2D>("invader1");
         }
 
         /// <summary>
@@ -113,30 +116,30 @@ namespace ExampleGame
             var kstate = Keyboard.GetState();
 
             if (kstate.IsKeyDown(upKey))
-                ballPosition.Y -= ballSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                playerPosition.Y -= playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (kstate.IsKeyDown(downKey))
-                ballPosition.Y += ballSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                playerPosition.Y += playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (kstate.IsKeyDown(leftKey))
-                ballPosition.X -= ballSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                playerPosition.X -= playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (kstate.IsKeyDown(rightKey))
-                ballPosition.X += ballSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                playerPosition.X += playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if(kstate.IsKeyDown(spacebar) && pastKey.IsKeyUp(Keys.Space))
             {
                 shoot();
             }
             pastKey = Keyboard.GetState();
             //----------------v This MathHelper.Min(...) blob is essentially collision detection?
-            ballPosition.X = MathHelper.Min(MathHelper.Max(ballTexture.Width / 2, ballPosition.X), graphics.PreferredBackBufferWidth - ballTexture.Width / 2);
-            ballPosition.Y = MathHelper.Min(MathHelper.Max(ballTexture.Height / 2, ballPosition.Y), graphics.PreferredBackBufferHeight - ballTexture.Height / 2);
+            playerPosition.X = MathHelper.Min(MathHelper.Max(playerTexture.Width / 2, playerPosition.X), graphics.PreferredBackBufferWidth - playerTexture.Width / 2);
+            playerPosition.Y = MathHelper.Min(MathHelper.Max(playerTexture.Height / 2, playerPosition.Y), graphics.PreferredBackBufferHeight - playerTexture.Height / 2);
 
             base.Update(gameTime);
             UpdateBullets();
         }
         public void shoot()
         {
-            Bullets newBullet = new Bullets(Content.Load<Texture2D>("bill2"));
+            Bullets newBullet = new Bullets(Content.Load<Texture2D>("bullet"));
             newBullet.velocity = new Vector2(0, -10);
-            newBullet.position = ballPosition;
+            newBullet.position = playerPosition;
             newBullet.isVisible = true;
 
             if (bullets.Count < 20)
@@ -147,7 +150,7 @@ namespace ExampleGame
             foreach (Bullets bullet in bullets)
             {
                 bullet.position += bullet.velocity;
-                if (Vector2.Distance(bullet.position, ballPosition) > 600)
+                if (Vector2.Distance(bullet.position, playerPosition) > 600)
                     bullet.isVisible = false;
             }
             for (int i = 0; i < bullets.Count; i++)
@@ -174,22 +177,22 @@ namespace ExampleGame
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             spriteBatch.Draw(
-                ballTexture, 
-                ballPosition,
+                playerTexture, 
+                playerPosition,
                 null, 
                 Color.White,
                 0f,
-                new Vector2(ballTexture.Width / 2, ballTexture.Height / 2),
+                new Vector2(playerTexture.Width / 2, playerTexture.Height / 2),
                 Vector2.One,
                 SpriteEffects.None,
                 0f);
             spriteBatch.Draw(
-                squareTexture,
-                squarePosition,
+                enemyTexture,
+                enemyPosition,
                 null,
                 Color.White,
                 0f,
-                new Vector2(squareTexture.Width / 2, squareTexture.Height / 2),
+                new Vector2(enemyTexture.Width / 2, enemyTexture.Height / 2),
                 Vector2.One,
                 SpriteEffects.None,
                 0f);
