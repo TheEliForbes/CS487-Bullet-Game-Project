@@ -38,7 +38,19 @@ namespace ExampleGame
         private Texture2D enemyTexture;
         private Vector2 enemyPosition;
         private float enemySpeed;
+        
+        private List<Bullets> bullets = new List<Bullets>(); //may depend on design
 
+        private ContentManager Content;
+
+        public Enemy(ContentManager gameContent)
+        {
+            Content = gameContent;
+        }
+        public Bullets bulletFactory(String bulletName)
+        {
+            return new Bullets(Content.Load<Texture2D>(bulletName));
+        }
         public void Initialize(float initSpeed, Vector2 initPosition)
         {
             enemySpeed = initSpeed;
@@ -47,6 +59,13 @@ namespace ExampleGame
         public void Load(Texture2D initTexture)
         {
             enemyTexture = initTexture;
+        }
+        public void Update(GameTime gameTime)
+        {
+            if (gameTime.ElapsedGameTime.Seconds % 2 == 0)
+            {
+                shoot(Content);
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -60,6 +79,35 @@ namespace ExampleGame
                 Vector2.One,
                 SpriteEffects.None,
                 0f);
+            foreach (Bullets bullet in bullets)
+                bullet.Draw(spriteBatch);
+        }
+        public void shoot(ContentManager Content)
+        {
+            Bullets newBullet = bulletFactory("bullet");
+            newBullet.velocity = new Vector2(0, 10);
+            newBullet.position = enemyPosition;
+            newBullet.isVisible = true;
+
+            if (bullets.Count < 20)
+                bullets.Add(newBullet);
+        }
+        public void UpdateBullets()
+        {
+            foreach (Bullets bullet in bullets)
+            {
+                bullet.position += bullet.velocity;
+                if (Vector2.Distance(bullet.position, enemyPosition) > 600)
+                    bullet.isVisible = false;
+            }
+            for (int i = 0; i < bullets.Count; i++)
+            {
+                if (!bullets[i].isVisible)
+                {
+                    bullets.RemoveAt(i);
+                    i--;
+                }
+            }
         }
     }
 
@@ -69,7 +117,7 @@ namespace ExampleGame
         private Vector2 playerPosition;
         private float playerSpeed;
 
-        List<Bullets> bullets = new List<Bullets>(); //may depend on design
+        private List<Bullets> bullets = new List<Bullets>(); //may depend on design
 
         //Key mapping
         Keys upKey = Keys.Up;
@@ -200,7 +248,7 @@ namespace ExampleGame
             player.Initialize(100f, new Vector2(graphics.PreferredBackBufferWidth / 2,
                                        graphics.PreferredBackBufferHeight / 2));
 
-            grunt = new Enemy();
+            grunt = new Enemy(Content);
             grunt.Initialize(0f, new Vector2(graphics.PreferredBackBufferWidth / 3,
                                          graphics.PreferredBackBufferHeight / 3));
 
@@ -246,8 +294,11 @@ namespace ExampleGame
             player.Update(gameTime);
             player.boundsCheck(graphics);
 
+            grunt.Update(gameTime);
+            
             base.Update(gameTime);
             player.UpdateBullets();
+            grunt.UpdateBullets();
         }
         
         /// <summary>
