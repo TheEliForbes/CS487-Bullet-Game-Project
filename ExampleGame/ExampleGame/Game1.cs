@@ -163,6 +163,7 @@ namespace ExampleGame
             {
                 shoot(Content);
             }
+            pastKey = Keyboard.GetState();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
