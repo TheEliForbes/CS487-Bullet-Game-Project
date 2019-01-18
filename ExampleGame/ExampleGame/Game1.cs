@@ -64,7 +64,7 @@ namespace ExampleGame
         {
             if (gameTime.ElapsedGameTime.Seconds % 2 == 0)
             {
-                shoot(Content);
+                shoot();
             }
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -82,7 +82,7 @@ namespace ExampleGame
             foreach (Bullets bullet in bullets)
                 bullet.Draw(spriteBatch);
         }
-        public void shoot(ContentManager Content)
+        public void shoot()
         {
             Bullets newBullet = bulletFactory("bullet");
             newBullet.velocity = new Vector2(0, 10);
@@ -161,7 +161,7 @@ namespace ExampleGame
                 playerPosition.X += playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (kstate.IsKeyDown(spacebar) && pastKey.IsKeyUp(Keys.Space))
             {
-                shoot(Content);
+                shoot();
             }
             pastKey = Keyboard.GetState();
         }
@@ -181,7 +181,7 @@ namespace ExampleGame
             foreach (Bullets bullet in bullets)
                 bullet.Draw(spriteBatch);
         }
-        public void shoot(ContentManager Content)
+        public void shoot()
         {
             Bullets newBullet = bulletFactory("bullet");
             newBullet.velocity = new Vector2(0, -10);
