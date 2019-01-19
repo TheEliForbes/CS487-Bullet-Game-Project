@@ -26,6 +26,20 @@ namespace ExampleGame
             texture = newTexture;
             isVisible = false;
         }
+        public Bullets(Texture2D newTexture, Vector2 newPosition, Vector2 newVelocity)
+        {
+            texture = newTexture;
+            isVisible = false;
+            position = newPosition;
+            velocity = newVelocity;
+        }
+        public Bullets(Texture2D newTexture, Vector2 newPosition, Vector2 newVelocity, bool visibility)
+        {
+            texture = newTexture;
+            isVisible = visibility;
+            position = newPosition;
+            velocity = newVelocity;
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -47,9 +61,9 @@ namespace ExampleGame
         {
             Content = gameContent;
         }
-        public Bullets bulletFactory(String bulletName)
+        public Bullets bulletFactory(String bulletName, Vector2 velocity, bool visibility)
         {
-            return new Bullets(Content.Load<Texture2D>(bulletName));
+            return new Bullets(Content.Load<Texture2D>(bulletName), enemyPosition, velocity, visibility);
         }
         public void Initialize(float initSpeed, Vector2 initPosition)
         {
@@ -84,19 +98,19 @@ namespace ExampleGame
         }
         public void shoot()
         {
-            Bullets newBullet = bulletFactory("bullet");
-            newBullet.velocity = new Vector2(0, 10);
-            newBullet.position = enemyPosition;
-            newBullet.isVisible = true;
-
+            Bullets bullet = bulletFactory("bullet", new Vector2(0, 10), true);
+            
             if (bullets.Count < 20)
-                bullets.Add(newBullet);
+            {
+                bullets.Add(bullet);                
+            }
         }
         public void UpdateBullets()
         {
             foreach (Bullets bullet in bullets)
             {
                 bullet.position += bullet.velocity;
+                
                 if (Vector2.Distance(bullet.position, enemyPosition) > 600)
                     bullet.isVisible = false;
             }
@@ -118,6 +132,7 @@ namespace ExampleGame
         private float playerSpeed;
         private float originalSpeed;
         private int slowModeModifier;
+        private bool isGod;
 
         private List<Bullets> bullets = new List<Bullets>(); //may depend on design
 
@@ -128,6 +143,7 @@ namespace ExampleGame
         Keys rightKey = Keys.Right;
         Keys spacebar = Keys.Space;
         Keys slowMode = Keys.S;
+        Keys godMode = Keys.G;
         KeyboardState pastKey; //2nd most recent key command
 
         ContentManager Content;
@@ -135,10 +151,15 @@ namespace ExampleGame
         public Player(ContentManager gameContent)
         {
             Content = gameContent;
+            isGod = false;
         }
         public Bullets bulletFactory(String bulletName)
         {
             return new Bullets(Content.Load<Texture2D>(bulletName));
+        }
+        public Bullets bulletFactory(String bulletName, Vector2 velocity, bool visibility)
+        {
+            return new Bullets(Content.Load<Texture2D>(bulletName), playerPosition, velocity, visibility);
         }
 
         public void Initialize(float initSpeed, Vector2 initPosition)
@@ -158,6 +179,9 @@ namespace ExampleGame
             if (kstate.IsKeyDown(slowMode))
                 playerSpeed = (playerSpeed == originalSpeed) ? playerSpeed / slowModeModifier : playerSpeed * slowModeModifier;
 
+            if (kstate.IsKeyDown(godMode) && pastKey.IsKeyUp(godMode))
+                isGod = !isGod;
+                
             if (kstate.IsKeyDown(upKey))
                 playerPosition.Y -= playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (kstate.IsKeyDown(downKey))
@@ -166,7 +190,7 @@ namespace ExampleGame
                 playerPosition.X -= playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (kstate.IsKeyDown(rightKey))
                 playerPosition.X += playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (kstate.IsKeyDown(spacebar) && pastKey.IsKeyUp(Keys.Space))
+            if (kstate.IsKeyDown(spacebar) && pastKey.IsKeyUp(spacebar))
             {
                 shoot();
             }
@@ -190,13 +214,36 @@ namespace ExampleGame
         }
         public void shoot()
         {
-            Bullets newBullet = bulletFactory("bullet");
-            newBullet.velocity = new Vector2(0, -10);
-            newBullet.position = playerPosition;
-            newBullet.isVisible = true;
+            if (!isGod)
+            {
+                Bullets newBullet = bulletFactory("bullet");
+                newBullet.velocity = new Vector2(0, -10);
+                newBullet.position = playerPosition;
+                newBullet.isVisible = true;
 
-            if (bullets.Count < 20)
-                bullets.Add(newBullet);
+                if (bullets.Count < 20)
+                    bullets.Add(newBullet);
+            }
+            else
+            {
+                Bullets centerBullet = bulletFactory("bullet", new Vector2(0, -10), true);
+                Bullets rightBullet = bulletFactory("bullet", new Vector2(5, -10), true);
+                Bullets rightBullet2 = bulletFactory("bullet", new Vector2(10, -10), true);
+                Bullets leftBullet = bulletFactory("bullet", new Vector2(-5, -10), true);
+                Bullets leftBullet2 = bulletFactory("bullet", new Vector2(-10, -10), true);
+
+                if (bullets.Count < 20)
+                {
+                    bullets.Add(centerBullet);
+                    bullets.Add(rightBullet);
+                    bullets.Add(rightBullet2);
+                    bullets.Add(leftBullet);
+                    bullets.Add(leftBullet2);
+                }
+            }
+
+
+
         }
         public void UpdateBullets()
         {
