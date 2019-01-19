@@ -116,6 +116,8 @@ namespace ExampleGame
         private Texture2D playerTexture;
         private Vector2 playerPosition;
         private float playerSpeed;
+        private float originalSpeed;
+        private int slowModeModifier;
 
         private List<Bullets> bullets = new List<Bullets>(); //may depend on design
 
@@ -125,6 +127,7 @@ namespace ExampleGame
         Keys leftKey = Keys.Left;
         Keys rightKey = Keys.Right;
         Keys spacebar = Keys.Space;
+        Keys slowMode = Keys.S;
         KeyboardState pastKey; //2nd most recent key command
 
         ContentManager Content;
@@ -140,8 +143,9 @@ namespace ExampleGame
 
         public void Initialize(float initSpeed, Vector2 initPosition)
         {
-            playerSpeed = initSpeed;
+            originalSpeed = playerSpeed = initSpeed;
             playerPosition = initPosition;
+            slowModeModifier = 4;
         }
         public void Load(Texture2D initTexture)
         {
@@ -150,6 +154,9 @@ namespace ExampleGame
         public void Update(GameTime gameTime)
         {
             var kstate = Keyboard.GetState();
+
+            if (kstate.IsKeyDown(slowMode))
+                playerSpeed = (playerSpeed == originalSpeed) ? playerSpeed / slowModeModifier : playerSpeed * slowModeModifier;
 
             if (kstate.IsKeyDown(upKey))
                 playerPosition.Y -= playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
