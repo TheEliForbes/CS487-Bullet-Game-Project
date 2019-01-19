@@ -14,11 +14,9 @@ namespace ExampleGame
     class Bullets
     {
         public Texture2D texture;
-
         public Vector2 position;
         public Vector2 velocity;
         public Vector2 origin = Vector2.Zero;
-
         public bool isVisible;
 
         public Bullets(Texture2D newTexture)
@@ -55,25 +53,25 @@ namespace ExampleGame
 
     class Enemy
     {
-        private Texture2D enemyTexture;
-        private Vector2 enemyPosition;
+        private Texture2D texture;
+        private Vector2 position;
         private Vector2 velocity;
-        private float enemySpeed;
-        private float movementTime = 0f;
+        private float speed;
+        private float movementTime;
         private bool rightward;
-        
-        private List<Bullets> bullets = new List<Bullets>(); //may depend on design
-
+        private List<Bullets> bullets; //may depend on design
         private ContentManager Content;
 
         public Enemy(ContentManager gameContent, Vector2 newVelocity)
         {
             Content = gameContent;
             velocity = newVelocity;
+            movementTime = 0f; //parameter?
+            bullets = new List<Bullets>();
         }
         public Bullets bulletFactory(String bulletName, Vector2 velocity, bool visibility)
         {
-            return new Bullets(Content.Load<Texture2D>(bulletName), enemyPosition, velocity, visibility);
+            return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility);
         }
         public void bulletsUpdateAndCleanup()
         {
@@ -90,18 +88,18 @@ namespace ExampleGame
         }
         public void Initialize(float initSpeed, Vector2 initPosition)
         {
-            enemySpeed = initSpeed;
-            enemyPosition = initPosition;
+            speed = initSpeed;
+            position = initPosition;
         }
         public void Load(Texture2D initTexture)
         {
-            enemyTexture = initTexture;
+            texture = initTexture;
         }
         public void Update(GameTime gameTime)
         {
             movementTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             rightward = (movementTime < 2f) ? true : false;
-            enemyPosition = (rightward == true) ? enemyPosition + velocity : enemyPosition - velocity;
+            position = (rightward == true) ? position + velocity : position - velocity;
             movementTime = (((int)movementTime) == 4) ? 0 : movementTime;
             if ((int)movementTime % 2 == 0)
             { //This^^ is kinda funky, could probably be improved
@@ -113,12 +111,12 @@ namespace ExampleGame
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(
-                enemyTexture,
-                enemyPosition,
+                texture,
+                position,
                 null,
                 Color.White,
                 0f,
-                new Vector2(enemyTexture.Width / 2, enemyTexture.Height / 2),
+                new Vector2(texture.Width / 2, texture.Height / 2),
                 Vector2.One,
                 SpriteEffects.None,
                 0f);
@@ -139,14 +137,14 @@ namespace ExampleGame
 
     class Player
     {
-        private Texture2D playerTexture;
-        private Vector2 playerPosition;
-        private float playerSpeed;
+        private Texture2D texture;
+        private Vector2 position;
+        private float speed;
         private float originalSpeed;
         private int slowModeModifier;
         private bool isGod;
-
-        private List<Bullets> bullets = new List<Bullets>(); //may depend on design
+        private List<Bullets> bullets; //may depend on design
+        ContentManager Content;
 
         //Key mapping
         Keys upKey = Keys.Up;
@@ -158,12 +156,11 @@ namespace ExampleGame
         Keys godMode = Keys.G;
         KeyboardState pastKey; //2nd most recent key command
 
-        ContentManager Content;
-
         public Player(ContentManager gameContent)
         {
             Content = gameContent;
             isGod = false;
+            bullets = new List<Bullets>();
         }
         public Bullets bulletFactory(String bulletName)
         {
@@ -171,7 +168,7 @@ namespace ExampleGame
         }
         public Bullets bulletFactory(String bulletName, Vector2 velocity, bool visibility)
         {
-            return new Bullets(Content.Load<Texture2D>(bulletName), playerPosition, velocity, visibility);
+            return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility);
         }
         public void bulletsUpdateAndCleanup()
         {
@@ -188,32 +185,32 @@ namespace ExampleGame
         }
         public void Initialize(float initSpeed, Vector2 initPosition)
         {
-            originalSpeed = playerSpeed = initSpeed;
-            playerPosition = initPosition;
+            originalSpeed = speed = initSpeed;
+            position = initPosition;
             slowModeModifier = 4;
         }
         public void Load(Texture2D initTexture)
         {
-            playerTexture = initTexture;
+            texture = initTexture;
         }
         public void Update(GameTime gameTime)
         {
             var kstate = Keyboard.GetState();
 
             if (kstate.IsKeyDown(slowMode))
-                playerSpeed = (playerSpeed == originalSpeed) ? playerSpeed / slowModeModifier : playerSpeed * slowModeModifier;
+                speed = (speed == originalSpeed) ? speed / slowModeModifier : speed * slowModeModifier;
 
             if (kstate.IsKeyDown(godMode) && pastKey.IsKeyUp(godMode))
                 isGod = !isGod;
                 
             if (kstate.IsKeyDown(upKey))
-                playerPosition.Y -= playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                position.Y -= speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (kstate.IsKeyDown(downKey))
-                playerPosition.Y += playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                position.Y += speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (kstate.IsKeyDown(leftKey))
-                playerPosition.X -= playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                position.X -= speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (kstate.IsKeyDown(rightKey))
-                playerPosition.X += playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                position.X += speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (kstate.IsKeyDown(shootKey) && pastKey.IsKeyUp(shootKey))
             {
                 shoot();
@@ -225,12 +222,12 @@ namespace ExampleGame
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(
-                playerTexture,
-                playerPosition,
+                texture,
+                position,
                 null,
                 Color.White,
                 0f,
-                new Vector2(playerTexture.Width / 2, playerTexture.Height / 2),
+                new Vector2(texture.Width / 2, texture.Height / 2),
                 Vector2.One,
                 SpriteEffects.None,
                 0f);
@@ -244,7 +241,7 @@ namespace ExampleGame
             {
                 Bullets newBullet = bulletFactory("bullet");
                 newBullet.velocity = new Vector2(0, -10);
-                newBullet.position = playerPosition;
+                newBullet.position = position;
                 newBullet.isVisible = true;
 
                 if (bullets.Count < 20)
@@ -274,8 +271,8 @@ namespace ExampleGame
         public void boundsCheck(GraphicsDeviceManager graphics)
         {
             //----------------v This MathHelper.Min(...) blob is essentially collision detection?
-            playerPosition.X = MathHelper.Min(MathHelper.Max(playerTexture.Width / 2, playerPosition.X), graphics.PreferredBackBufferWidth - playerTexture.Width / 2);
-            playerPosition.Y = MathHelper.Min(MathHelper.Max(playerTexture.Height / 2, playerPosition.Y), graphics.PreferredBackBufferHeight - playerTexture.Height / 2);
+            position.X = MathHelper.Min(MathHelper.Max(texture.Width / 2, position.X), graphics.PreferredBackBufferWidth - texture.Width / 2);
+            position.Y = MathHelper.Min(MathHelper.Max(texture.Height / 2, position.Y), graphics.PreferredBackBufferHeight - texture.Height / 2);
         }      
     }
     public class Game1 : Game
