@@ -17,7 +17,7 @@ namespace ExampleGame
 
         public Vector2 position;
         public Vector2 velocity;
-        public Vector2 origin;
+        public Vector2 origin = Vector2.Zero;
 
         public bool isVisible;
 
@@ -40,7 +40,13 @@ namespace ExampleGame
             position = newPosition;
             velocity = newVelocity;
         }
+        public void Update()
+        {
+            position += velocity;
 
+            if (Vector2.Distance(position, origin) > 600)
+                isVisible = false;
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, null, Color.White, 0f, origin, 1f, SpriteEffects.None, 1);
@@ -69,6 +75,19 @@ namespace ExampleGame
         {
             return new Bullets(Content.Load<Texture2D>(bulletName), enemyPosition, velocity, visibility);
         }
+        public void bulletsUpdateAndCleanup()
+        {
+            for (int i = 0; i < bullets.Count; i++)
+            {
+                bullets[i].Update();
+
+                if (!bullets[i].isVisible)
+                {
+                    bullets.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
         public void Initialize(float initSpeed, Vector2 initPosition)
         {
             enemySpeed = initSpeed;
@@ -88,6 +107,8 @@ namespace ExampleGame
             { //This^^ is kinda funky, could probably be improved
                 shoot();
             }
+
+            bulletsUpdateAndCleanup();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -113,24 +134,7 @@ namespace ExampleGame
                 bullets.Add(bullet);                
             }
         }
-        public void UpdateBullets()
-        {
-            foreach (Bullets bullet in bullets)
-            {
-                bullet.position += bullet.velocity;
-                
-                if (Vector2.Distance(bullet.position, enemyPosition) > 600)
-                    bullet.isVisible = false;
-            }
-            for (int i = 0; i < bullets.Count; i++)
-            {
-                if (!bullets[i].isVisible)
-                {
-                    bullets.RemoveAt(i);
-                    i--;
-                }
-            }
-        }
+        
     }
 
     class Player
@@ -169,7 +173,19 @@ namespace ExampleGame
         {
             return new Bullets(Content.Load<Texture2D>(bulletName), playerPosition, velocity, visibility);
         }
+        public void bulletsUpdateAndCleanup()
+        {
+            for (int i = 0; i < bullets.Count; i++)
+            {
+                bullets[i].Update();
 
+                if (!bullets[i].isVisible)
+                {
+                    bullets.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
         public void Initialize(float initSpeed, Vector2 initPosition)
         {
             originalSpeed = playerSpeed = initSpeed;
@@ -203,6 +219,8 @@ namespace ExampleGame
                 shoot();
             }
             pastKey = Keyboard.GetState();
+
+            bulletsUpdateAndCleanup();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -252,23 +270,6 @@ namespace ExampleGame
 
 
 
-        }
-        public void UpdateBullets()
-        {
-            foreach (Bullets bullet in bullets)
-            {
-                bullet.position += bullet.velocity;
-                if (Vector2.Distance(bullet.position, playerPosition) > 600)
-                    bullet.isVisible = false;
-            }
-            for (int i = 0; i < bullets.Count; i++)
-            {
-                if (!bullets[i].isVisible)
-                {
-                    bullets.RemoveAt(i);
-                    i--;
-                }
-            }
         }
         public void boundsCheck(GraphicsDeviceManager graphics)
         {
@@ -362,8 +363,7 @@ namespace ExampleGame
             player.boundsCheck(graphics);
                         
             base.Update(gameTime);
-            player.UpdateBullets();
-            grunt.UpdateBullets();
+            
         }
         
         /// <summary>
