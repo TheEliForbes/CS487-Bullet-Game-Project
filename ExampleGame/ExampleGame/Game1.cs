@@ -51,15 +51,19 @@ namespace ExampleGame
     {
         private Texture2D enemyTexture;
         private Vector2 enemyPosition;
+        private Vector2 velocity;
         private float enemySpeed;
+        private float movementTime = 0f;
+        private bool rightward;
         
         private List<Bullets> bullets = new List<Bullets>(); //may depend on design
 
         private ContentManager Content;
 
-        public Enemy(ContentManager gameContent)
+        public Enemy(ContentManager gameContent, Vector2 newVelocity)
         {
             Content = gameContent;
+            velocity = newVelocity;
         }
         public Bullets bulletFactory(String bulletName, Vector2 velocity, bool visibility)
         {
@@ -76,6 +80,19 @@ namespace ExampleGame
         }
         public void Update(GameTime gameTime)
         {
+            //   if (gameTime.ElapsedGameTime.Seconds % 5 == 0)
+            //       enemyPosition.X -= (float)(gameTime.ElapsedGameTime.TotalSeconds * movementModifier);
+            //   else
+            movementTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (movementTime < 2f)
+                rightward = true;
+            else
+                rightward = false;
+            if (rightward == true)
+                enemyPosition += velocity;
+            else
+                enemyPosition -= velocity;
+            movementTime = (((int)movementTime) == 4) ? 0 : movementTime;
             if (gameTime.ElapsedGameTime.Seconds % 2 == 0)
             {
                 shoot();
@@ -305,7 +322,7 @@ namespace ExampleGame
             player.Initialize(100f, new Vector2(graphics.PreferredBackBufferWidth / 2,
                                        graphics.PreferredBackBufferHeight / 2));
 
-            grunt = new Enemy(Content);
+            grunt = new Enemy(Content, new Vector2(1, 0));
             grunt.Initialize(0f, new Vector2(graphics.PreferredBackBufferWidth / 3,
                                          graphics.PreferredBackBufferHeight / 3));
 
@@ -349,11 +366,10 @@ namespace ExampleGame
             // TODO: Add your update logic here
             var kstate = Keyboard.GetState();
 
+            grunt.Update(gameTime);
             player.Update(gameTime);
             player.boundsCheck(graphics);
-
-            grunt.Update(gameTime);
-            
+                        
             base.Update(gameTime);
             player.UpdateBullets();
             grunt.UpdateBullets();
