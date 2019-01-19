@@ -153,7 +153,7 @@ namespace ExampleGame
         Keys downKey = Keys.Down;
         Keys leftKey = Keys.Left;
         Keys rightKey = Keys.Right;
-        Keys spacebar = Keys.Space;
+        Keys shootKey = Keys.Space;
         Keys slowMode = Keys.S;
         Keys godMode = Keys.G;
         KeyboardState pastKey; //2nd most recent key command
@@ -214,7 +214,7 @@ namespace ExampleGame
                 playerPosition.X -= playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (kstate.IsKeyDown(rightKey))
                 playerPosition.X += playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (kstate.IsKeyDown(spacebar) && pastKey.IsKeyUp(spacebar))
+            if (kstate.IsKeyDown(shootKey) && pastKey.IsKeyUp(shootKey))
             {
                 shoot();
             }
@@ -289,7 +289,7 @@ namespace ExampleGame
         Keys downKey = Keys.Down;
         Keys leftKey = Keys.Left;
         Keys rightKey = Keys.Right;
-        Keys spacebar = Keys.Space;
+        Keys shootKey = Keys.Space;
         KeyboardState pastKey; //2nd most recent key command
 
         GraphicsDeviceManager graphics;
