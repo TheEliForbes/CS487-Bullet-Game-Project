@@ -84,8 +84,8 @@ namespace ExampleGame
             rightward = (movementTime < 2f) ? true : false;
             enemyPosition = (rightward == true) ? enemyPosition + velocity : enemyPosition - velocity;
             movementTime = (((int)movementTime) == 4) ? 0 : movementTime;
-            if (gameTime.ElapsedGameTime.Seconds % 2 == 0)
-            {
+            if ((int)movementTime % 2 == 0)
+            { //This^^ is kinda funky, could probably be improved
                 shoot();
             }
         }
