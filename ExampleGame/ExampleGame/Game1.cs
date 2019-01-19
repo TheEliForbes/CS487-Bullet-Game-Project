@@ -137,10 +137,8 @@ namespace ExampleGame
         
     }
 
-    class Player
+    class Player : Entity
     {
-        private Texture2D texture;
-        private Vector2 position;
         private float speed;
         private float originalSpeed;
         private int slowModeModifier;
@@ -195,7 +193,7 @@ namespace ExampleGame
         {
             texture = initTexture;
         }
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             var kstate = Keyboard.GetState();
 
@@ -221,7 +219,7 @@ namespace ExampleGame
 
             bulletsUpdateAndCleanup(gameTime);
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(
                 texture,
