@@ -17,8 +17,7 @@ namespace ExampleGame
     }
 
     class Bullets : Entity
-    {
-        
+    {        
         public Vector2 velocity;
         public Vector2 origin = Vector2.Zero;
         public bool isVisible;
@@ -52,6 +51,29 @@ namespace ExampleGame
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, null, Color.White, 0f, origin, 1f, SpriteEffects.None, 1);
+        }
+    }
+
+    class BulletSpread
+    {
+        private Vector2 position;
+        public List<Bullets> bullets; //may depend on design
+        private ContentManager Content;
+        private int directionModifier; //change up|down
+        public BulletSpread(Vector2 newPosition, ContentManager gameContent, int directionModifier)
+        {
+            position = newPosition;
+            Content = gameContent;
+            bullets = new List<Bullets>();
+            bullets.Add(bulletFactory("bullet", new Vector2(0, (-10 * directionModifier)), true));
+            bullets.Add(bulletFactory("bullet", new Vector2(5, (-10 * directionModifier)), true));
+            bullets.Add(bulletFactory("bullet", new Vector2(10, (-10 * directionModifier)), true));
+            bullets.Add(bulletFactory("bullet", new Vector2(-5, (-10 * directionModifier)), true));
+            bullets.Add(bulletFactory("bullet", new Vector2(-10, (-10 * directionModifier)), true));
+        }
+        public Bullets bulletFactory(String bulletName, Vector2 velocity, bool visibility)
+        {
+            return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility);
         }
     }
 
@@ -239,34 +261,23 @@ namespace ExampleGame
         {
             if (!isGod)
             {
-                Bullets newBullet = bulletFactory("bullet");
-                newBullet.velocity = new Vector2(0, -10);
-                newBullet.position = position;
-                newBullet.isVisible = true;
-
+                Bullets newBullet = bulletFactory("bullet", new Vector2(0, -10), true);
+                newBullet.position = position; //allow setting through constructor?
+                
                 if (bullets.Count < 20)
                     bullets.Add(newBullet);
             }
             else
             {
-                Bullets centerBullet = bulletFactory("bullet", new Vector2(0, -10), true);
-                Bullets rightBullet = bulletFactory("bullet", new Vector2(5, -10), true);
-                Bullets rightBullet2 = bulletFactory("bullet", new Vector2(10, -10), true);
-                Bullets leftBullet = bulletFactory("bullet", new Vector2(-5, -10), true);
-                Bullets leftBullet2 = bulletFactory("bullet", new Vector2(-10, -10), true);
-
-                if (bullets.Count < 20)
+                BulletSpread spread = new BulletSpread(position, Content, 1);
+                foreach (Bullets bullet in spread.bullets)
                 {
-                    bullets.Add(centerBullet);
-                    bullets.Add(rightBullet);
-                    bullets.Add(rightBullet2);
-                    bullets.Add(leftBullet);
-                    bullets.Add(leftBullet2);
+                    if (bullets.Count < 20)
+                    {
+                        bullets.Add(bullet);
+                    }
                 }
             }
-
-
-
         }
         public void boundsCheck(GraphicsDeviceManager graphics)
         {
