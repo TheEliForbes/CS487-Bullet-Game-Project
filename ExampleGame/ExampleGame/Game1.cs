@@ -7,14 +7,18 @@ using System.Collections.Generic;
 
 namespace ExampleGame
 {
-    /// <summary>
-    /// This is the main type for your game.
-    /// </summary>
-   
-    class Bullets
+    abstract class Entity
     {
         public Texture2D texture;
         public Vector2 position;
+
+        public abstract void Update(GameTime gameTime);
+        public abstract void Draw(SpriteBatch spriteBatch);
+    }
+
+    class Bullets : Entity
+    {
+        
         public Vector2 velocity;
         public Vector2 origin = Vector2.Zero;
         public bool isVisible;
@@ -38,23 +42,21 @@ namespace ExampleGame
             position = newPosition;
             velocity = newVelocity;
         }
-        public void Update()
+        public override void Update(GameTime gameTime)
         {
             position += velocity;
 
             if (Vector2.Distance(position, origin) > 600)
                 isVisible = false;
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, null, Color.White, 0f, origin, 1f, SpriteEffects.None, 1);
         }
     }
 
-    class Enemy
+    class Enemy : Entity
     {
-        private Texture2D texture;
-        private Vector2 position;
         private Vector2 velocity;
         private float speed;
         private float movementTime;
@@ -73,11 +75,11 @@ namespace ExampleGame
         {
             return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility);
         }
-        public void bulletsUpdateAndCleanup()
+        public void bulletsUpdateAndCleanup(GameTime gameTime)
         {
             for (int i = 0; i < bullets.Count; i++)
             {
-                bullets[i].Update();
+                bullets[i].Update(gameTime);
 
                 if (!bullets[i].isVisible)
                 {
@@ -95,7 +97,7 @@ namespace ExampleGame
         {
             texture = initTexture;
         }
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             movementTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             rightward = (movementTime < 2f) ? true : false;
@@ -106,9 +108,9 @@ namespace ExampleGame
                 shoot();
             }
 
-            bulletsUpdateAndCleanup();
+            bulletsUpdateAndCleanup(gameTime);
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(
                 texture,
@@ -170,11 +172,11 @@ namespace ExampleGame
         {
             return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility);
         }
-        public void bulletsUpdateAndCleanup()
+        public void bulletsUpdateAndCleanup(GameTime gameTime)
         {
             for (int i = 0; i < bullets.Count; i++)
             {
-                bullets[i].Update();
+                bullets[i].Update(gameTime);
 
                 if (!bullets[i].isVisible)
                 {
@@ -217,7 +219,7 @@ namespace ExampleGame
             }
             pastKey = Keyboard.GetState();
 
-            bulletsUpdateAndCleanup();
+            bulletsUpdateAndCleanup(gameTime);
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -275,10 +277,13 @@ namespace ExampleGame
             position.Y = MathHelper.Min(MathHelper.Max(texture.Height / 2, position.Y), graphics.PreferredBackBufferHeight - texture.Height / 2);
         }      
     }
+
+    /// <summary>
+    /// This is the main type for your game.
+    /// </summary>
     public class Game1 : Game
     {
         Texture2D backgroundTexture;
-
         Player player;
         Enemy grunt;
         //Key mapping
@@ -288,7 +293,6 @@ namespace ExampleGame
         Keys rightKey = Keys.Right;
         Keys shootKey = Keys.Space;
         KeyboardState pastKey; //2nd most recent key command
-
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         
