@@ -80,18 +80,9 @@ namespace ExampleGame
         }
         public void Update(GameTime gameTime)
         {
-            //   if (gameTime.ElapsedGameTime.Seconds % 5 == 0)
-            //       enemyPosition.X -= (float)(gameTime.ElapsedGameTime.TotalSeconds * movementModifier);
-            //   else
             movementTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (movementTime < 2f)
-                rightward = true;
-            else
-                rightward = false;
-            if (rightward == true)
-                enemyPosition += velocity;
-            else
-                enemyPosition -= velocity;
+            rightward = (movementTime < 2f) ? true : false;
+            enemyPosition = (rightward == true) ? enemyPosition + velocity : enemyPosition - velocity;
             movementTime = (((int)movementTime) == 4) ? 0 : movementTime;
             if (gameTime.ElapsedGameTime.Seconds % 2 == 0)
             {
