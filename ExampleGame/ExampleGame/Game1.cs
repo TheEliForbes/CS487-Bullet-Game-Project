@@ -7,6 +7,24 @@ using System.Collections.Generic;
 
 namespace ExampleGame
 {
+    class BulletFactory
+    {
+        private ContentManager Content;
+
+        public BulletFactory(ContentManager gameContent)
+        {
+            Content = gameContent;
+        }
+        public Bullets bulletFactory(String bulletName, Vector2 position, Vector2 velocity, bool visibility, int bulletType)
+        {
+            switch (bulletType)
+            {
+                case 1: return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility);
+                case 5: return new BulletSpread(position, Content, 1);
+                default: return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility);
+            }
+        }
+    }
     abstract class Entity
     {
         public Texture2D texture;
@@ -22,18 +40,6 @@ namespace ExampleGame
         public Vector2 origin = Vector2.Zero;
         public bool isVisible;
 
-        public Bullets(Texture2D newTexture)
-        {
-            texture = newTexture;
-            isVisible = false;
-        }
-        public Bullets(Texture2D newTexture, Vector2 newPosition, Vector2 newVelocity)
-        {
-            texture = newTexture;
-            isVisible = false;
-            position = newPosition;
-            velocity = newVelocity;
-        }
         public Bullets(Texture2D newTexture, Vector2 newPosition, Vector2 newVelocity, bool visibility)
         {
             texture = newTexture;
@@ -54,26 +60,24 @@ namespace ExampleGame
         }
     }
 
-    class BulletSpread
+    class BulletSpread : Bullets
     {
-        private Vector2 position;
         public List<Bullets> bullets; //may depend on design
         private ContentManager Content;
-        private int directionModifier; //change up|down
-        public BulletSpread(Vector2 newPosition, ContentManager gameContent, int directionModifier)
+        private BulletFactory factory;
+        public BulletSpread(Texture2D newTexture, Vector2 newPosition, Vector2 newVelocity, bool visibility) 
+            : base(newTexture, newPosition, newVelocity, visibility) { }
+        public BulletSpread(Vector2 newPosition, ContentManager gameContent, int directionModifier) : base(null, newPosition, Vector2.Zero, true)
         {
             position = newPosition;
             Content = gameContent;
             bullets = new List<Bullets>();
-            bullets.Add(bulletFactory("bullet", new Vector2(0, (-10 * directionModifier)), true));
-            bullets.Add(bulletFactory("bullet", new Vector2(5, (-10 * directionModifier)), true));
-            bullets.Add(bulletFactory("bullet", new Vector2(10, (-10 * directionModifier)), true));
-            bullets.Add(bulletFactory("bullet", new Vector2(-5, (-10 * directionModifier)), true));
-            bullets.Add(bulletFactory("bullet", new Vector2(-10, (-10 * directionModifier)), true));
-        }
-        public Bullets bulletFactory(String bulletName, Vector2 velocity, bool visibility)
-        {
-            return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility);
+            factory = new BulletFactory(gameContent);
+            bullets.Add(factory.bulletFactory("bullet", position, new Vector2(0, (-10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", position, new Vector2(5, (-10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", position, new Vector2(10, (-10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", position, new Vector2(-5, (-10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", position, new Vector2(-10, (-10 * directionModifier)), true, 1));
         }
     }
 
@@ -85,18 +89,16 @@ namespace ExampleGame
         private bool rightward;
         private List<Bullets> bullets; //may depend on design
         private ContentManager Content;
-
+        private BulletFactory factory;
         public Enemy(ContentManager gameContent, Vector2 newVelocity)
         {
             Content = gameContent;
             velocity = newVelocity;
             movementTime = 0f; //parameter?
             bullets = new List<Bullets>();
+            factory = new BulletFactory(gameContent);
         }
-        public Bullets bulletFactory(String bulletName, Vector2 velocity, bool visibility)
-        {
-            return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility);
-        }
+        
         public void bulletsUpdateAndCleanup(GameTime gameTime)
         {
             for (int i = 0; i < bullets.Count; i++)
@@ -149,7 +151,7 @@ namespace ExampleGame
         }
         public void shoot()
         {
-            Bullets bullet = bulletFactory("bullet", new Vector2(0, 10), true);
+            Bullets bullet = factory.bulletFactory("bullet", position, new Vector2(0, 10), true, 1);
             
             if (bullets.Count < 20)
             {
@@ -166,6 +168,7 @@ namespace ExampleGame
         private int slowModeModifier;
         private bool isGod;
         private List<Bullets> bullets; //may depend on design
+        private BulletFactory factory;
         ContentManager Content;
 
         //Key mapping
@@ -183,15 +186,9 @@ namespace ExampleGame
             Content = gameContent;
             isGod = false;
             bullets = new List<Bullets>();
+            factory = new BulletFactory(gameContent);
         }
-        public Bullets bulletFactory(String bulletName)
-        {
-            return new Bullets(Content.Load<Texture2D>(bulletName));
-        }
-        public Bullets bulletFactory(String bulletName, Vector2 velocity, bool visibility)
-        {
-            return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility);
-        }
+
         public void bulletsUpdateAndCleanup(GameTime gameTime)
         {
             for (int i = 0; i < bullets.Count; i++)
@@ -261,7 +258,7 @@ namespace ExampleGame
         {
             if (!isGod)
             {
-                Bullets newBullet = bulletFactory("bullet", new Vector2(0, -10), true);
+                Bullets newBullet = factory.bulletFactory("bullet", position, new Vector2(0, -10), true, 1);
                 newBullet.position = position; //allow setting through constructor?
                 
                 if (bullets.Count < 20)
@@ -269,7 +266,7 @@ namespace ExampleGame
             }
             else
             {
-                BulletSpread spread = new BulletSpread(position, Content, 1);
+                BulletSpread spread = (BulletSpread)factory.bulletFactory("spread", position, Vector2.Zero, true, 5);
                 foreach (Bullets bullet in spread.bullets)
                 {
                     if (bullets.Count < 20)
