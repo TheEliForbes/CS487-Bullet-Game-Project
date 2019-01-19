@@ -87,3 +87,4 @@ C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Exa
 C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\ExampleGame.pdb
 C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll
 C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.csprojResolveAssemblyReference.cache
+C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\spaceBackground.xnb

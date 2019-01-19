@@ -217,6 +217,8 @@ namespace ExampleGame
     }
     public class Game1 : Game
     {
+        Texture2D backgroundTexture;
+
         Player player;
         Enemy grunt;
         //Key mapping
@@ -268,6 +270,7 @@ namespace ExampleGame
             // TODO: use this.Content to load your game content here
             player.Load(Content.Load<Texture2D>("player"));
             grunt.Load(Content.Load<Texture2D>("invader1"));
+            backgroundTexture = Content.Load<Texture2D>("spaceBackground");
         }
 
         /// <summary>
@@ -312,7 +315,11 @@ namespace ExampleGame
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            
+            spriteBatch.Draw(
+                backgroundTexture,
+                new Rectangle(0, 0, 800, 480),
+                Color.White);
+
             player.Draw(spriteBatch);
             grunt.Draw(spriteBatch);
 
