@@ -4,10 +4,22 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Eli/Desktop/ExampleGame/ExampleGame/Content/ball.png</File>
-    <File>C:/Users/Eli/Desktop/ExampleGame/ExampleGame/Content/square.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/ball.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/bullet.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/invader1.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/invader2.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/invader3.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/player.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/spaceBackground.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/square.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
