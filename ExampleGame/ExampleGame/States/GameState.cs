@@ -13,14 +13,13 @@ namespace ExampleGame.States
     public class GameState : State
 
     {
-        List<Enemies> enemies = new List<Enemies>();
+        List<Enemy> enemies = new List<Enemy>();
         Random random = new Random();
         float spawn = 0;
 
         Texture2D backgroundTexture;
         Player player;
-        Enemy grunt;
-        Enemy grunt2;
+        // Enemy grunt;
         GraphicsDeviceManager _graphics;
         ContentManager _content;
         public GameState(Game1 game, GraphicsDeviceManager graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
@@ -28,15 +27,13 @@ namespace ExampleGame.States
             _graphics = graphicsDevice;
             _content = content;
             player = new Player(content);
-            player.Initialize(100f, new Vector2(graphicsDevice.PreferredBackBufferWidth / 2,
-                                       graphicsDevice.PreferredBackBufferHeight / 2));
+            player.Initialize(100f, new Vector2(graphicsDevice.PreferredBackBufferWidth / 2, graphicsDevice.PreferredBackBufferHeight / 2));
 
-            grunt = new Enemy(content, new Vector2(1, 0));
-            grunt.Initialize(0f, new Vector2(graphicsDevice.PreferredBackBufferWidth / 3,
-                                         graphicsDevice.PreferredBackBufferHeight / 3));
+            //grunt = new Enemy(content, new Vector2(1, 0));
+            //grunt.Initialize(0f, new Vector2(graphicsDevice.PreferredBackBufferWidth / 3, graphicsDevice.PreferredBackBufferHeight / 3));
+            //grunt.Load(content.Load<Texture2D>("invader1"));
 
             player.Load(content.Load<Texture2D>("player"));
-            grunt.Load(content.Load<Texture2D>("invader1"));
             backgroundTexture = content.Load<Texture2D>("spaceBackground");
         }
 
@@ -49,7 +46,7 @@ namespace ExampleGame.States
                 spawn = 0;
                 if(enemies.Count() < 4)
                 {
-                    enemies.Add(new Enemies(_content.Load<Texture2D>("invader2"), new Vector2(1100, randY)));
+                    enemies.Add(new Enemy(_content.Load<Texture2D>("invader2"), new Vector2(1100, randY), _content));
                 }
 
                 for (int i = 0; i < enemies.Count; i++)
@@ -72,8 +69,8 @@ namespace ExampleGame.States
                 Color.White);
 
             player.Draw(spriteBatch);
-            grunt.Draw(spriteBatch);
-            foreach (Enemies enemy in enemies)
+            //grunt.Draw(spriteBatch);
+            foreach (Enemy enemy in enemies)
             {
                 enemy.Draw(spriteBatch);
             }
@@ -93,13 +90,13 @@ namespace ExampleGame.States
 
             spawn += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            foreach(Enemies enemy in enemies)
+            foreach(Enemy enemy in enemies)
             {
-                enemy.Update(_graphics);
+                enemy.Update(_graphics, gameTime);
             }
             LoadEnemies();
 
-            grunt.Update(gameTime);
+            //grunt.Update(gameTime);
             player.Update(gameTime);
             player.boundsCheck(_graphics);
         }
