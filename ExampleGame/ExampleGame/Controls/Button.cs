@@ -14,8 +14,6 @@ namespace ExampleGame
         #region Fields
         private MouseState _currentMouse;
 
-        private SpriteFont _font;
-
         private bool _isHovering;
 
         private MouseState _previousMouse;
@@ -48,7 +46,7 @@ namespace ExampleGame
 
         #region Methods
 
-        public Button(Texture2D texture, SpriteFont font)
+        public Button(Texture2D texture)
         {
             _texture = texture;
         }

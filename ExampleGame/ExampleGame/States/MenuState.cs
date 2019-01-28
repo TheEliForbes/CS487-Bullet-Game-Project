@@ -16,19 +16,16 @@ namespace ExampleGame.States
         {
             var buttonTexturePlay = _content.Load<Texture2D>("Controls/ButtonPlay");
             var buttonTextureQuit = _content.Load<Texture2D>("Controls/ButtonQuit");
-            var buttonFont = _content.Load<SpriteFont>("Fonts/Font");
-            var newGameButton = new Button(buttonTexturePlay, buttonFont)
+            var newGameButton = new Button(buttonTexturePlay)
             {
                 Position = new Vector2(260, 100),
-                Text = "New Game",
             };
 
             newGameButton.Click += NewGameButton_Click;
 
-            var quitGameButton = new Button(buttonTextureQuit, buttonFont)
+            var quitGameButton = new Button(buttonTextureQuit)
             {
                 Position = new Vector2(245, 200),
-                Text = "Quit",
             };
 
             quitGameButton.Click += QuitGameButton_Click;

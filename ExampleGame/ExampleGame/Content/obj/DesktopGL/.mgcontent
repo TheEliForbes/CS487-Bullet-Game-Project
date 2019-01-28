@@ -6,11 +6,8 @@
   <SourceFiles>
     <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/ball.png</File>
     <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/bullet.png</File>
-    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/PlayButton (1).png</File>
-    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/PlayButton.png</File>
-    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/QuitButton (1).png</File>
-    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/QuitButton.png</File>
-    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Fonts/Font.spritefont</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/ButtonPlay.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/ButtonQuit.png</File>
     <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/invader1.png</File>
     <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/invader2.png</File>
     <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/invader3.png</File>
@@ -21,9 +18,6 @@
   <DestFiles>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
-    <File>Controls/PlayButton.png</File>
-    <File xsi:nil="true" />
-    <File>Controls/QuitButton.png</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
