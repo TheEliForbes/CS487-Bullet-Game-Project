@@ -52,7 +52,7 @@ namespace ExampleGame
         {
             position += velocity;
 
-            if (Vector2.Distance(position, origin) > 600)
+            if (Vector2.Distance(position, origin) > 1000)
                 isVisible = false;
         }
         public override void Draw(SpriteBatch spriteBatch)
@@ -270,7 +270,7 @@ namespace ExampleGame
                 BulletSpread spread = (BulletSpread)factory.bulletFactory("spread", position, Vector2.Zero, true, 5);
                 foreach (Bullets bullet in spread.bullets)
                 {
-                    if (bullets.Count < 20)
+                    if (bullets.Count < 80)
                     {
                         bullets.Add(bullet);
                     }
