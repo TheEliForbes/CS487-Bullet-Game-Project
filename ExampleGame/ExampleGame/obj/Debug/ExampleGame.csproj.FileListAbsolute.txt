@@ -116,3 +116,4 @@ C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\obj\De
 C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.csproj.CopyComplete
 C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.exe
 C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.pdb
+C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.csprojAssemblyReference.cache
