@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExampleGame.States;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -289,18 +290,17 @@ namespace ExampleGame
     /// </summary>
     public class Game1 : Game
     {
-        Texture2D backgroundTexture;
-        Player player;
-        Enemy grunt;
-        //Key mapping
-        Keys upKey = Keys.Up;
-        Keys downKey = Keys.Down;
-        Keys leftKey = Keys.Left;
-        Keys rightKey = Keys.Right;
-        Keys shootKey = Keys.Space;
-        KeyboardState pastKey; //2nd most recent key command
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        private State _currentState;
+
+        private State _nextState;
+
+        public void ChangeState(State state)
+        {
+            _nextState = state;
+        }
         
         public Game1()
         {
@@ -316,14 +316,7 @@ namespace ExampleGame
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-            player = new Player(Content);
-            player.Initialize(100f, new Vector2(graphics.PreferredBackBufferWidth / 2,
-                                       graphics.PreferredBackBufferHeight / 2));
-
-            grunt = new Enemy(Content, new Vector2(1, 0));
-            grunt.Initialize(0f, new Vector2(graphics.PreferredBackBufferWidth / 3,
-                                         graphics.PreferredBackBufferHeight / 3));
+            IsMouseVisible = true;
 
             base.Initialize();
         }
@@ -337,10 +330,8 @@ namespace ExampleGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
-            player.Load(Content.Load<Texture2D>("player"));
-            grunt.Load(Content.Load<Texture2D>("invader1"));
-            backgroundTexture = Content.Load<Texture2D>("spaceBackground");
+            _currentState = new MenuState(this, graphics, Content);
+            
         }
 
         /// <summary>
@@ -359,15 +350,18 @@ namespace ExampleGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            // if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            //     Exit();
 
-            // TODO: Add your update logic here
-            var kstate = Keyboard.GetState();
+            if (_nextState != null)
+            {
+                _currentState = _nextState;
+                _nextState = null;
+            }
 
-            grunt.Update(gameTime);
-            player.Update(gameTime);
-            player.boundsCheck(graphics);
+            _currentState.Update(gameTime);
+
+            _currentState.PostUpdate(gameTime);
                         
             base.Update(gameTime);
             
@@ -381,17 +375,8 @@ namespace ExampleGame
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
-            spriteBatch.Begin();
-            spriteBatch.Draw(
-                backgroundTexture,
-                new Rectangle(0, 0, 800, 480),
-                Color.White);
-
-            player.Draw(spriteBatch);
-            grunt.Draw(spriteBatch);
-
-            spriteBatch.End();
+            _currentState.Draw(gameTime, spriteBatch);
+            
             base.Draw(gameTime);
         }
     }
