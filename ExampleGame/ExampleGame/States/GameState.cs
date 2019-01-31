@@ -14,12 +14,12 @@ namespace ExampleGame.States
 
     {
         List<Enemy> enemies = new List<Enemy>();
+        List<Enemy> bosses = new List<Enemy>();
         Random random = new Random();
         float spawn = 0;
 
         Texture2D backgroundTexture;
         Player player;
-        // Enemy grunt;
         GraphicsDeviceManager _graphics;
         ContentManager _content;
         public GameState(Game1 game, GraphicsDeviceManager graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
@@ -28,11 +28,6 @@ namespace ExampleGame.States
             _content = content;
             player = new Player(content);
             player.Initialize(100f, new Vector2(graphicsDevice.PreferredBackBufferWidth / 2, graphicsDevice.PreferredBackBufferHeight / 2));
-
-            //grunt = new Enemy(content, new Vector2(1, 0));
-            //grunt.Initialize(0f, new Vector2(graphicsDevice.PreferredBackBufferWidth / 3, graphicsDevice.PreferredBackBufferHeight / 3));
-            //grunt.Load(content.Load<Texture2D>("invader1"));
-
             player.Load(content.Load<Texture2D>("player"));
             backgroundTexture = content.Load<Texture2D>("spaceBackground");
         }
@@ -44,16 +39,33 @@ namespace ExampleGame.States
         public void LoadEnemies()
         {
             int randY = random.Next(100, 400); // height of viewport
+            
 
             if (spawn >= 1)
             {
                 spawn = 0;
-                if(enemies.Count() < 1)
+
+                // the bosses are kept separate for now because they currently don't go off the screen
+                if (bosses.Count() < 2)
                 {
-                    enemies.Add(new FinalBoss(new Vector2(250, 50), _content));
-                    //enemies.Add(new MidBoss(new Vector2(250, 50), _content));
-                    //enemies.Add(new GruntA(new Vector2(1100, randY), _content));
-                    //enemies.Add(new GruntB(new Vector2(1100, randY), _content));
+                    bosses.Add(new FinalBoss(new Vector2(100, 50), _content));
+                    bosses.Add(new MidBoss(new Vector2(300, 50), _content));
+                }
+                          
+                // the normal enemies go off the screen, so as they are deleted, new ones are spawned
+                if (enemies.Count() < 5)
+                {
+                    enemies.Add(new GruntA(new Vector2(1100, randY), _content));
+                    enemies.Add(new GruntB(new Vector2(1100, randY), _content));
+                }
+
+                for (int i = 0; i < bosses.Count; i++)
+                {
+                    if (!bosses[i].isVisible) // when the boss is off the screen remove it 
+                    {
+                        bosses.RemoveAt(i);
+                        i--;
+                    }
                 }
 
                 for (int i = 0; i < enemies.Count; i++)
@@ -76,10 +88,15 @@ namespace ExampleGame.States
                 Color.White);
 
             player.Draw(spriteBatch);
-            //grunt.Draw(spriteBatch);
+
             foreach (Enemy enemy in enemies)
             {
                 enemy.Draw(spriteBatch);
+            }
+
+            foreach (Enemy boss in bosses)
+            {
+                boss.Draw(spriteBatch);
             }
 
             spriteBatch.End();
@@ -101,10 +118,13 @@ namespace ExampleGame.States
             {
                 enemy.Update(_graphics, gameTime);
             }
+            foreach (Enemy boss in bosses)
+            {
+                boss.Update(_graphics, gameTime);
+            }
             LoadEnemies();
             LoadBoss();
-
-            //grunt.Update(gameTime);
+            
             player.Update(gameTime);
             player.boundsCheck(_graphics);
         }

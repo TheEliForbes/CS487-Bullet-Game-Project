@@ -57,3 +57,6 @@ C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\Examp
 C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.pdb
 C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\finalBoss.xnb
 C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\midBoss.xnb
+C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\finalBoss.xnb
+C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\midBoss.xnb
+C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.csprojAssemblyReference.cache
