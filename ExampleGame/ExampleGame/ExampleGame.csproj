@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Component.cs" />
     <Compile Include="Controls\Button.cs" />
+    <Compile Include="Enemy.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

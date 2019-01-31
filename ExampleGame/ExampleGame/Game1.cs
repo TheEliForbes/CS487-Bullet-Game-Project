@@ -22,6 +22,8 @@ namespace ExampleGame
             {
                 case 1: return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility);
                 case 5: return new BulletSpread(position, Content, 1);
+                case 6: return new FinalBossBullets(position, Content, 1);
+                case 7: return new MidBossSpread(position, Content, 1);
                 default: return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility);
             }
         }
@@ -81,85 +83,52 @@ namespace ExampleGame
             bullets.Add(factory.bulletFactory("bullet", position, new Vector2(-10, (-10 * directionModifier)), true, 1));
         }
     }
-
-    class Enemy : Entity
+    class FinalBossBullets : Bullets
     {
-        private Vector2 velocity;
-        private float speed;
-        private float movementTime;
-        private bool rightward;
-        private List<Bullets> bullets; //may depend on design
+        public List<Bullets> bullets; //may depend on design
         private ContentManager Content;
         private BulletFactory factory;
-        public Enemy(ContentManager gameContent, Vector2 newVelocity)
+        public FinalBossBullets(Texture2D newTexture, Vector2 newPosition, Vector2 newVelocity, bool visibility)
+            : base(newTexture, newPosition, newVelocity, visibility) { }
+        public FinalBossBullets(Vector2 newPosition, ContentManager gameContent, int directionModifier) : base(null, newPosition, Vector2.Zero, true)
         {
+            Vector2 midShotPos = new Vector2(position.X + 94, position.Y + 63);
+            Vector2 leftShotPot = new Vector2(position.X + 40, position.Y+75);
+            Vector2 rightShotPos = new Vector2(position.X + 148, position.Y + 75);
+
             Content = gameContent;
-            velocity = newVelocity;
-            movementTime = 0f; //parameter?
             bullets = new List<Bullets>();
             factory = new BulletFactory(gameContent);
-        }
-        
-        public void bulletsUpdateAndCleanup(GameTime gameTime)
-        {
-            for (int i = 0; i < bullets.Count; i++)
-            {
-                bullets[i].Update(gameTime);
+            bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(0, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(5, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(10, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(-5, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(-10, (10 * directionModifier)), true, 1));
 
-                if (!bullets[i].isVisible)
-                {
-                    bullets.RemoveAt(i);
-                    i--;
-                }
-            }
+            bullets.Add(factory.bulletFactory("bullet", leftShotPot, new Vector2(0, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", rightShotPos, new Vector2(0, (10 * directionModifier)), true, 1));
         }
-        public void Initialize(float initSpeed, Vector2 initPosition)
-        {
-            speed = initSpeed;
-            position = initPosition;
-        }
-        public void Load(Texture2D initTexture)
-        {
-            texture = initTexture;
-        }
-        public override void Update(GameTime gameTime)
-        {
-            movementTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            rightward = (movementTime < 2f) ? true : false;
-            position = (rightward == true) ? position + velocity : position - velocity;
-            movementTime = (((int)movementTime) == 4) ? 0 : movementTime;
-            if ((int)movementTime % 2 == 0)
-            { //This^^ is kinda funky, could probably be improved
-                shoot();
-            }
+    }
 
-            bulletsUpdateAndCleanup(gameTime);
-        }
-        public override void Draw(SpriteBatch spriteBatch)
+    class MidBossSpread : Bullets
+    {
+        public List<Bullets> bullets; //may depend on design
+        private ContentManager Content;
+        private BulletFactory factory;
+        public MidBossSpread(Texture2D newTexture, Vector2 newPosition, Vector2 newVelocity, bool visibility)
+            : base(newTexture, newPosition, newVelocity, visibility) { }
+        public MidBossSpread(Vector2 newPosition, ContentManager gameContent, int directionModifier) : base(null, newPosition, Vector2.Zero, true)
         {
-            spriteBatch.Draw(
-                texture,
-                position,
-                null,
-                Color.White,
-                0f,
-                new Vector2(texture.Width / 2, texture.Height / 2),
-                Vector2.One,
-                SpriteEffects.None,
-                0f);
-            foreach (Bullets bullet in bullets)
-                bullet.Draw(spriteBatch);
+            Vector2 newPos = new Vector2(position.X+46, position.Y+20);
+            Content = gameContent;
+            bullets = new List<Bullets>();
+            factory = new BulletFactory(gameContent);
+            bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(0, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(5, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(10, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(-5, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(-10, (10 * directionModifier)), true, 1));
         }
-        public void shoot()
-        {
-            Bullets bullet = factory.bulletFactory("bullet", position, new Vector2(0, 10), true, 1);
-            
-            if (bullets.Count < 20)
-            {
-                bullets.Add(bullet);                
-            }
-        }
-        
     }
 
     class Player : Entity
