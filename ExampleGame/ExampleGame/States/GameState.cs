@@ -37,6 +37,10 @@ namespace ExampleGame.States
             backgroundTexture = content.Load<Texture2D>("spaceBackground");
         }
 
+        public void LoadBoss()
+        {
+        }
+
         public void LoadEnemies()
         {
             int randY = random.Next(100, 400); // height of viewport
@@ -44,9 +48,12 @@ namespace ExampleGame.States
             if (spawn >= 1)
             {
                 spawn = 0;
-                if(enemies.Count() < 4)
+                if(enemies.Count() < 1)
                 {
-                    enemies.Add(new Enemy(_content.Load<Texture2D>("invader2"), new Vector2(1100, randY), _content));
+                    enemies.Add(new FinalBoss(new Vector2(250, 50), _content));
+                    //enemies.Add(new MidBoss(new Vector2(250, 50), _content));
+                    //enemies.Add(new GruntA(new Vector2(1100, randY), _content));
+                    //enemies.Add(new GruntB(new Vector2(1100, randY), _content));
                 }
 
                 for (int i = 0; i < enemies.Count; i++)
@@ -95,6 +102,7 @@ namespace ExampleGame.States
                 enemy.Update(_graphics, gameTime);
             }
             LoadEnemies();
+            LoadBoss();
 
             //grunt.Update(gameTime);
             player.Update(gameTime);

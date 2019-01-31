@@ -26,3 +26,34 @@ C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\obj\De
 C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.csproj.CopyComplete
 C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.exe
 C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.pdb
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\x86\SDL2.dll
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\x64\SDL2.dll
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\x86\soft_oal.dll
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\x64\soft_oal.dll
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\x86\libSDL2-2.0.so.0
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\x64\libSDL2-2.0.so.0
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\x86\libopenal.so.1
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\x64\libopenal.so.1
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\libSDL2-2.0.0.dylib
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\libopenal.1.dylib
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll.config
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\Controls\ButtonPlay.xnb
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\Controls\ButtonQuit.xnb
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\ball.xnb
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\bullet.xnb
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\invader1.xnb
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\invader2.xnb
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\invader3.xnb
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\player.xnb
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\spaceBackground.xnb
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\square.xnb
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\ExampleGame.exe
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\ExampleGame.pdb
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.csprojAssemblyReference.cache
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.csproj.CoreCompileInputs.cache
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.csproj.CopyComplete
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.exe
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.pdb
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\finalBoss.xnb
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\midBoss.xnb

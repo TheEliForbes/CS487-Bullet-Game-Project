@@ -22,6 +22,8 @@ namespace ExampleGame
             {
                 case 1: return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility);
                 case 5: return new BulletSpread(position, Content, 1);
+                case 6: return new FinalBossBullets(position, Content, 1);
+                case 7: return new MidBossSpread(position, Content, 1);
                 default: return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility);
             }
         }
@@ -79,6 +81,53 @@ namespace ExampleGame
             bullets.Add(factory.bulletFactory("bullet", position, new Vector2(10, (-10 * directionModifier)), true, 1));
             bullets.Add(factory.bulletFactory("bullet", position, new Vector2(-5, (-10 * directionModifier)), true, 1));
             bullets.Add(factory.bulletFactory("bullet", position, new Vector2(-10, (-10 * directionModifier)), true, 1));
+        }
+    }
+    class FinalBossBullets : Bullets
+    {
+        public List<Bullets> bullets; //may depend on design
+        private ContentManager Content;
+        private BulletFactory factory;
+        public FinalBossBullets(Texture2D newTexture, Vector2 newPosition, Vector2 newVelocity, bool visibility)
+            : base(newTexture, newPosition, newVelocity, visibility) { }
+        public FinalBossBullets(Vector2 newPosition, ContentManager gameContent, int directionModifier) : base(null, newPosition, Vector2.Zero, true)
+        {
+            Vector2 midShotPos = new Vector2(position.X + 94, position.Y + 63);
+            Vector2 leftShotPot = new Vector2(position.X + 40, position.Y+75);
+            Vector2 rightShotPos = new Vector2(position.X + 148, position.Y + 75);
+
+            Content = gameContent;
+            bullets = new List<Bullets>();
+            factory = new BulletFactory(gameContent);
+            bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(0, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(5, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(10, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(-5, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(-10, (10 * directionModifier)), true, 1));
+
+            bullets.Add(factory.bulletFactory("bullet", leftShotPot, new Vector2(0, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", rightShotPos, new Vector2(0, (10 * directionModifier)), true, 1));
+        }
+    }
+
+    class MidBossSpread : Bullets
+    {
+        public List<Bullets> bullets; //may depend on design
+        private ContentManager Content;
+        private BulletFactory factory;
+        public MidBossSpread(Texture2D newTexture, Vector2 newPosition, Vector2 newVelocity, bool visibility)
+            : base(newTexture, newPosition, newVelocity, visibility) { }
+        public MidBossSpread(Vector2 newPosition, ContentManager gameContent, int directionModifier) : base(null, newPosition, Vector2.Zero, true)
+        {
+            Vector2 newPos = new Vector2(position.X+46, position.Y+20);
+            Content = gameContent;
+            bullets = new List<Bullets>();
+            factory = new BulletFactory(gameContent);
+            bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(0, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(5, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(10, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(-5, (10 * directionModifier)), true, 1));
+            bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(-10, (10 * directionModifier)), true, 1));
         }
     }
 
