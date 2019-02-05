@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
+using System.Timers;
 namespace ExampleGame.States
 {
     public class GameState : State
@@ -17,7 +17,7 @@ namespace ExampleGame.States
         List<Enemy> bosses = new List<Enemy>();
         Random random = new Random();
         float spawn = 0;
-
+        private static System.Timers.Timer GameTimer;
         Texture2D backgroundTexture;
         Player player;
         GraphicsDeviceManager _graphics;
@@ -30,10 +30,44 @@ namespace ExampleGame.States
             player.Initialize(100f, new Vector2(graphicsDevice.PreferredBackBufferWidth / 2, graphicsDevice.PreferredBackBufferHeight / 2));
             player.Load(content.Load<Texture2D>("player"));
             backgroundTexture = content.Load<Texture2D>("spaceBackground");
+            SetMidBossTimer();
         }
+        private void SetMidBossTimer()
+        {
+            // Create a timer with a two second interval.
+            GameTimer = new System.Timers.Timer(10000); 
+            GameTimer.Elapsed += loadMidBoss;
+            GameTimer.Enabled = true;
+            GameTimer.AutoReset = false;
 
+            // Create a timer with a 10 second interval.
+            GameTimer = new System.Timers.Timer(20000);
+            GameTimer.Elapsed += loadFinalBoss;
+            GameTimer.Enabled = true;
+            GameTimer.AutoReset = false;
+        }
+        private void loadMidBoss(Object source, ElapsedEventArgs e)
+        {
+            bosses.Add(new MidBoss(new Vector2(300, 50), _content));
+        }
+        private void loadFinalBoss(Object source, ElapsedEventArgs e)
+        {
+            bosses.Clear();
+            bosses.Add(new FinalBoss(new Vector2(100, 50), _content));
+        }
         public void LoadBoss()
         {
+            // the bosses are kept separate for now because they currently don't go off the screen
+
+            for (int i = 0; i < bosses.Count; i++)
+            {
+                if (!bosses[i].isVisible) // when the boss is off the screen remove it 
+                {
+                    bosses.RemoveAt(i);
+                    i--;
+                }
+            }
+
         }
 
         public void LoadEnemies()
@@ -44,28 +78,12 @@ namespace ExampleGame.States
             if (spawn >= 1)
             {
                 spawn = 0;
-
-                // the bosses are kept separate for now because they currently don't go off the screen
-                if (bosses.Count() < 2)
-                {
-                    bosses.Add(new FinalBoss(new Vector2(100, 50), _content));
-                    bosses.Add(new MidBoss(new Vector2(300, 50), _content));
-                }
-                          
+        
                 // the normal enemies go off the screen, so as they are deleted, new ones are spawned
                 if (enemies.Count() < 5)
                 {
                     enemies.Add(new GruntA(new Vector2(1100, randY), _content));
                     enemies.Add(new GruntB(new Vector2(1100, randY), _content));
-                }
-
-                for (int i = 0; i < bosses.Count; i++)
-                {
-                    if (!bosses[i].isVisible) // when the boss is off the screen remove it 
-                    {
-                        bosses.RemoveAt(i);
-                        i--;
-                    }
                 }
 
                 for (int i = 0; i < enemies.Count; i++)
