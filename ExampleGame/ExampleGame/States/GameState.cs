@@ -30,18 +30,24 @@ namespace ExampleGame.States
             player.Initialize(100f, new Vector2(graphicsDevice.PreferredBackBufferWidth / 2, graphicsDevice.PreferredBackBufferHeight / 2));
             player.Load(content.Load<Texture2D>("player"));
             backgroundTexture = content.Load<Texture2D>("spaceBackground");
-            SetMidBossTimer();
+            SetBossTimer();
         }
-        private void SetMidBossTimer()
+        private void SetBossTimer()
         {
-            // Create a timer with a two second interval.
-            GameTimer = new System.Timers.Timer(10000); 
+            // Mid boss appearance timer
+            GameTimer = new System.Timers.Timer(48000); 
             GameTimer.Elapsed += loadMidBoss;
             GameTimer.Enabled = true;
             GameTimer.AutoReset = false;
 
-            // Create a timer with a 10 second interval.
-            GameTimer = new System.Timers.Timer(20000);
+            // Mid boss disappearance timer
+            GameTimer = new System.Timers.Timer(27000);
+            GameTimer.Elapsed += clearBosses;
+            GameTimer.Enabled = true;
+            GameTimer.AutoReset = false;
+
+            // Final boss appearance timer
+            GameTimer = new System.Timers.Timer(17000);
             GameTimer.Elapsed += loadFinalBoss;
             GameTimer.Enabled = true;
             GameTimer.AutoReset = false;
@@ -50,9 +56,12 @@ namespace ExampleGame.States
         {
             bosses.Add(new MidBoss(new Vector2(300, 50), _content));
         }
-        private void loadFinalBoss(Object source, ElapsedEventArgs e)
+        private void clearBosses(Object source, ElapsedEventArgs e)
         {
             bosses.Clear();
+        }
+        private void loadFinalBoss(Object source, ElapsedEventArgs e)
+        {
             bosses.Add(new FinalBoss(new Vector2(100, 50), _content));
         }
         public void LoadBoss()
