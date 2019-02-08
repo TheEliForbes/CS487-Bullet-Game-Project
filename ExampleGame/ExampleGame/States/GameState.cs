@@ -41,13 +41,13 @@ namespace ExampleGame.States
             GameTimer.AutoReset = false;
 
             // Mid boss disappearance timer
-            GameTimer = new System.Timers.Timer(27000);
+            GameTimer = new System.Timers.Timer(75000);
             GameTimer.Elapsed += clearBosses;
             GameTimer.Enabled = true;
             GameTimer.AutoReset = false;
 
             // Final boss appearance timer
-            GameTimer = new System.Timers.Timer(17000);
+            GameTimer = new System.Timers.Timer(90000);
             GameTimer.Elapsed += loadFinalBoss;
             GameTimer.Enabled = true;
             GameTimer.AutoReset = false;
