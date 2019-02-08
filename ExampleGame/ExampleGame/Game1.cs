@@ -185,8 +185,7 @@ namespace ExampleGame
         public override void Update(GameTime gameTime)
         {
             var kstate = Keyboard.GetState();
-
-            if (kstate.IsKeyDown(slowMode))
+            if (kstate.IsKeyDown(slowMode) && pastKey.IsKeyUp(slowMode))
                 speed = (speed == originalSpeed) ? speed / slowModeModifier : speed * slowModeModifier;
 
             if (kstate.IsKeyDown(godMode) && pastKey.IsKeyUp(godMode))
