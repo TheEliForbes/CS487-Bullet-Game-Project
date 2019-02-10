@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/ball.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/bullet.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/ButtonPlay.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/ButtonQuit.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/finalBoss.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/invader1.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/invader2.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/invader3.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/midBoss.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/player.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/spaceBackground.png</File>
+    <File>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/square.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
