@@ -42,9 +42,16 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Component.cs" />
+    <Compile Include="Entities\Component.cs" />
     <Compile Include="Controls\Button.cs" />
-    <Compile Include="Enemy.cs" />
+    <Compile Include="Entities\Enemy.cs" />
+    <Compile Include="Entities\BulletTypes\Bullets.cs" />
+    <Compile Include="Entities\BulletTypes\BulletSpread.cs" />
+    <Compile Include="Entities\BulletTypes\FinalBossBullets.cs" />
+    <Compile Include="Entities\BulletTypes\MidBossSpread.cs" />
+    <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\Player.cs" />
+    <Compile Include="Factories\BulletFactory.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
