@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Timers;
+using ExampleGame.Enemies;
+using ExampleGame.PlayerFolder;
+
 namespace ExampleGame.States
 {
     public class GameState : State
-
     {
         List<Enemy> enemies = new List<Enemy>();
         List<Enemy> bosses = new List<Enemy>();
