@@ -45,6 +45,7 @@
     <Compile Include="Bullet\BulletFactory.cs" />
     <Compile Include="Bullet\Bullets.cs" />
     <Compile Include="Bullet\BulletSpread.cs" />
+    <Compile Include="Enemies\EnemyCreator.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Bullet\FinalBossBullets.cs" />
     <Compile Include="Bullet\MidBossSpread.cs" />
