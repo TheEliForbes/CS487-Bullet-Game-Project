@@ -12,3 +12,12 @@ The game will last around 2 - 3 minutes and will be made up of 4 phases. The pha
 
 Required for Milestone 1:
 * Add details for a chronological sequence of what the game will look like
+Wave 1: 0:00-0:15 -- Basic Grunts
+Wave 2: 0:15-0:45 -- Basic & Advanced Grunts
+Wave 3: 0:45-1:15 -- Mid-Boss & Basic Grunts, few Advanced grunts
+Wave 4: 1:15-3:30 -- Boss Fight
+   4.1: 1:15-1:45 -- Boss stage-1, Basic Grunts
+   4.2: 1:45-2:15 -- Boss stage-1, more Basic Grunts firing less bullets
+   4.3: 2:15-2:45 -- (Boss Invulnerable) Advanced Grunts
+   4.4: 2:45-3:00 -- Boss stage-2, Basic Grunts with different bullet pattern
+   4.5: 3:00-3:30 -- Boss stage-2, Advanced Grunts with different bullet pattern

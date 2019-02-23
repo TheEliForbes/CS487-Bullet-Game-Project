@@ -17,7 +17,6 @@ namespace ExampleGame
         SpriteBatch spriteBatch;
 
         private State _currentState;
-
         private State _nextState;
 
         public void ChangeState(State state)

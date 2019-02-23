@@ -54,14 +54,20 @@ namespace ExampleGame.States
 
         private void SetMidBossTimer()
         {
-            // Create a timer with a two second interval.
-            GameTimer = new System.Timers.Timer(10000); 
+            // Mid boss appearance timer
+            GameTimer = new System.Timers.Timer(48000); 
             GameTimer.Elapsed += loadMidBoss;
             GameTimer.Enabled = true;
             GameTimer.AutoReset = false;
 
-            // Create a timer with a 10 second interval.
-            GameTimer = new System.Timers.Timer(20000);
+            // Mid boss disappearance timer
+            GameTimer = new System.Timers.Timer(75000);
+            GameTimer.Elapsed += clearBosses;
+            GameTimer.Enabled = true;
+            GameTimer.AutoReset = false;
+
+            // Final boss appearance timer
+            GameTimer = new System.Timers.Timer(90000);
             GameTimer.Elapsed += loadFinalBoss;
             GameTimer.Enabled = true;
             GameTimer.AutoReset = false;
