@@ -25,7 +25,7 @@ namespace ExampleGame
 
         public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch);
 
-        public abstract void PostUpdate(GameTime gameTime);
+        //public abstract void PostUpdate(GameTime gameTime);
 
         public State(Game1 game, GraphicsDeviceManager graphicsDevice, ContentManager content)
         {

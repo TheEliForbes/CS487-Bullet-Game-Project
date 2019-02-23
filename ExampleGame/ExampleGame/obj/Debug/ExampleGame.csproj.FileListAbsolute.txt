@@ -90,3 +90,5 @@ C:\Users\Ronald\Documents\487\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Deb
 C:\Users\Ronald\Documents\487\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.csproj.CoreCompileInputs.cache
 C:\Users\Ronald\Documents\487\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.exe
 C:\Users\Ronald\Documents\487\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.pdb
+C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\Controls\LostButton.xnb
+C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\Controls\WinButton.xnb

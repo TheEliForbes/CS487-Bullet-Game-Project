@@ -120,6 +120,22 @@ namespace ExampleGame.States
             }
         }
 
+        public void IsPlayerDead()
+        {
+            if (player.GetHealth() == 0)
+            {
+                _game.ChangeState(new LoseState(_game, _graphicsDevice, _content));
+            }
+        }
+
+        public void DidPlayerWin()
+        {
+            if (player.IsWinner() == 1)
+            {
+                _game.ChangeState(new WinState(_game, _graphicsDevice, _content));
+            }
+        }
+
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
@@ -149,11 +165,8 @@ namespace ExampleGame.States
             LoadEnemies();
             player.Update(gameTime);
             player.boundsCheck(_graphics);
-        }
-
-        public override void PostUpdate(GameTime gameTime)
-        {
-            // update
+            IsPlayerDead();
+            DidPlayerWin();
         }
     }
 }
