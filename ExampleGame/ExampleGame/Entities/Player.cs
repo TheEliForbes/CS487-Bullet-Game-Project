@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using ExampleGame.Entities;
 using ExampleGame.Entities.BulletTypes;
 using ExampleGame.Factories;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
 
-namespace ExampleGame.Entities
+namespace ExampleGame.PlayerFolder
 {
     class Player : Entity
     {
@@ -21,6 +19,8 @@ namespace ExampleGame.Entities
         private List<Bullets> bullets; //may depend on design
         private BulletFactory factory;
         ContentManager Content;
+        private int health = 10;
+        private int winner = 0;
 
         //Key mapping
         Keys upKey = Keys.Up;
@@ -30,6 +30,10 @@ namespace ExampleGame.Entities
         Keys shootKey = Keys.Space;
         Keys slowMode = Keys.S;
         Keys godMode = Keys.G;
+
+        Keys win = Keys.W;
+        Keys die = Keys.D;
+        
         KeyboardState pastKey; //2nd most recent key command
 
         public Player(ContentManager gameContent)
@@ -66,11 +70,20 @@ namespace ExampleGame.Entities
         public override void Update(GameTime gameTime)
         {
             var kstate = Keyboard.GetState();
-            if (kstate.IsKeyDown(slowMode) && pastKey.IsKeyUp(slowMode))
+
+            if (kstate.IsKeyDown(slowMode))
                 speed = (speed == originalSpeed) ? speed / slowModeModifier : speed * slowModeModifier;
 
             if (kstate.IsKeyDown(godMode) && pastKey.IsKeyUp(godMode))
                 isGod = !isGod;
+
+            // for testing the game states
+            if (kstate.IsKeyDown(die) && pastKey.IsKeyUp(die))
+                health = 0; // die -> see lose screen
+
+            // for testing the win states
+            if (kstate.IsKeyDown(win) && pastKey.IsKeyUp(win))
+                winner = 1; // win -> see win screen
 
             if (kstate.IsKeyDown(upKey))
                 position.Y -= speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -126,11 +139,22 @@ namespace ExampleGame.Entities
                 }
             }
         }
+
         public void boundsCheck(GraphicsDeviceManager graphics)
         {
             //----------------v This MathHelper.Min(...) blob is essentially collision detection?
             position.X = MathHelper.Min(MathHelper.Max(texture.Width / 2, position.X), graphics.PreferredBackBufferWidth - texture.Width / 2);
             position.Y = MathHelper.Min(MathHelper.Max(texture.Height / 2, position.Y), graphics.PreferredBackBufferHeight - texture.Height / 2);
+        }
+
+        public int GetHealth()
+        {
+            return health;
+        }
+
+        public int IsWinner()
+        {
+            return winner;
         }
     }
 }
