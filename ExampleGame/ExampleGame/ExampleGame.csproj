@@ -58,6 +58,9 @@
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Factories\BulletFactory.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Movements\MoveLeft.cs" />
+    <Compile Include="Movements\Movement.cs" />
+    <Compile Include="Movements\MoveRight.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="States\GameState.cs" />

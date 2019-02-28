@@ -1,5 +1,6 @@
 ﻿using ExampleGame.Entities.BulletTypes;
 using ExampleGame.Factories;
+using ExampleGame.Movements;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -53,7 +54,17 @@ namespace ExampleGame.Enemies
             }
 
             // logic for enemy to move
-            position += velocity;
+            Movement move = new MoveLeft();
+            Movement move2 = new MoveRight();
+            if ((int)movementTime % 4 == 0)
+            { //This^^ is kinda funky, could probably be improved
+                position = move.getNewPosition(position, velocity);
+            }
+            else
+            {
+                position = move2.getNewPosition(position, velocity);
+            }
+           
 
             if (position.Y <= 0 || position.Y >= graphics.PreferredBackBufferHeight - texture.Height)
             {
