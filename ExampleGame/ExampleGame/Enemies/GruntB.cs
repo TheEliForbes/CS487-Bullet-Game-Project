@@ -1,5 +1,6 @@
 ﻿using ExampleGame.Entities.BulletTypes;
 using ExampleGame.Factories;
+using ExampleGame.Movements;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,7 +13,8 @@ namespace ExampleGame.Enemies
     {
         private List<Bullets> bullets;
         private BulletFactory factory;
-
+        private Movement currentMove;
+        private Double movementStartTime;
         private float speed;
         private float movementTime;
         private bool rightward;
@@ -30,6 +32,19 @@ namespace ExampleGame.Enemies
 
             movementTime = 0f; //parameter?
             velocity = new Vector2(randX, randY);
+
+            bullets = new List<Bullets>();
+            factory = new BulletFactory(gameContent);
+        }
+
+        public GruntB(Vector2 newPosition, Vector2 newVelocity, ContentManager gameContent, EnemyMovements newMoves)
+        {
+            texture = gameContent.Load<Texture2D>("invader2");
+            position = newPosition;
+
+            movementTime = 0f;
+            this.velocity = newVelocity;
+            this.moves = newMoves;
 
             bullets = new List<Bullets>();
             factory = new BulletFactory(gameContent);
@@ -53,7 +68,24 @@ namespace ExampleGame.Enemies
             }
 
             // logic for enemy to move
-            position += velocity;
+            if (moves == null)
+            {
+                position += velocity;
+            }
+            else if (currentMove == null)
+            {
+                currentMove = moves.GetMovement();
+                movementStartTime = gameTime.TotalGameTime.TotalSeconds;
+            }
+            else if (currentMove.seconds <= (gameTime.TotalGameTime.TotalSeconds - movementStartTime))
+            {
+                moves.popMovement();
+                currentMove = null;
+            }
+            else
+            {
+                position = currentMove.getNewPosition(position, velocity);
+            }
 
             if (position.Y <= 0 || position.Y >= graphics.PreferredBackBufferHeight - texture.Height)
             {
