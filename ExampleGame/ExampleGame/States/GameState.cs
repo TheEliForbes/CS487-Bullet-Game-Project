@@ -9,6 +9,7 @@ using System.Timers;
 using ExampleGame.Enemies;
 using ExampleGame.PlayerFolder;
 using ExampleGame.Movements;
+using ExampleGame.waves;
 
 namespace ExampleGame.States
 {
@@ -42,20 +43,9 @@ namespace ExampleGame.States
             // This implementation will probably change when we read
             // in time values from the JSON script file
             SetMidBossTimer();
-
-            // ERASE LATER WHEN DOING WAVES
-            for (int j = 0; j < 4; j++)
-            {
-                EnemyMovements moves1 = new EnemyMovements();
-                for (int i = 0; i < 10; i++)
-                {
-                    moves1.addMovement(new MoveLeft(6.0));
-                    moves1.addMovement(new MoveRight(6.0));
-                }
-                Vector2 pos = new Vector2(j * 100, j * 100);
-                Vector2 vel = new Vector2(1, 0);
-                _enemies.Add(new GruntA(pos, vel, _content, moves1));
-            }
+            WaveBuilder waveBldr = new WaveBuilder();
+            EnemyWave wave1 = waveBldr.BuildWave(1, _content);
+            _enemies = wave1.getAllEnemies();
         }
 
         // Adds each enemy to the enemy list, implementing Factory Pattern

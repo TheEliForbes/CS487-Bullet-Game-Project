@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ExampleGame
 {
-    abstract class Enemy
+     abstract class Enemy
     {
         public Texture2D texture;
         public Vector2 position;
@@ -32,5 +32,4 @@ namespace ExampleGame
         public abstract void bulletsUpdateAndCleanup(GameTime gameTime);
 
     }
-
 }
