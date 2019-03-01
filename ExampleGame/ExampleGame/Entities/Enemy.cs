@@ -1,5 +1,6 @@
 ﻿using ExampleGame.Entities.BulletTypes;
 using ExampleGame.Factories;
+using ExampleGame.Movements;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -19,7 +20,7 @@ namespace ExampleGame
         public bool isVisible = true;
         public List<Bullets> bullets;
         public BulletFactory factory;
-
+        protected EnemyMovements moves;
         public float speed;
         public float movementTime;
         public bool rightward;
@@ -195,99 +196,99 @@ namespace ExampleGame
 
     }
 
-    class GruntA : Enemy
-    {
-        private List<Bullets> bullets;
-        private BulletFactory factory;
+    //class GruntA : Enemy
+    //{
+    //    private List<Bullets> bullets;
+    //    private BulletFactory factory;
 
-        private float speed;
-        private float movementTime;
-        private bool rightward;
+    //    private float speed;
+    //    private float movementTime;
+    //    private bool rightward;
 
-        Random random = new Random();
-        int randX, randY;
+    //    Random random = new Random();
+    //    int randX, randY;
 
-        public GruntA(Vector2 newPosition, ContentManager gameContent)
-        {
-            texture = gameContent.Load<Texture2D>("invader1");
-            position = newPosition;
+    //    public GruntA(Vector2 newPosition, ContentManager gameContent)
+    //    {
+    //        texture = gameContent.Load<Texture2D>("invader1");
+    //        position = newPosition;
 
-            randY = random.Next(-4, 4);
-            randX = random.Next(-4, 1);
+    //        randY = random.Next(-4, 4);
+    //        randX = random.Next(-4, 1);
 
-            movementTime = 0f; //parameter?
-            velocity = new Vector2(randX, randY);
+    //        movementTime = 0f; //parameter?
+    //        velocity = new Vector2(randX, randY);
 
-            bullets = new List<Bullets>();
-            factory = new BulletFactory(gameContent);
-        }
+    //        bullets = new List<Bullets>();
+    //        factory = new BulletFactory(gameContent);
+    //    }
 
-        public override void Initialize(float initSpeed, Vector2 initPosition)
-        {
-            speed = initSpeed;
-            position = initPosition;
-        }
+    //    public override void Initialize(float initSpeed, Vector2 initPosition)
+    //    {
+    //        speed = initSpeed;
+    //        position = initPosition;
+    //    }
 
-        public override void Update(GraphicsDeviceManager graphics, GameTime gameTime)
-        {
-            // logic for shooting
-            movementTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            rightward = (movementTime < 2f) ? true : false;
-            movementTime = (((int)movementTime) == 4) ? 0 : movementTime;
-            if ((int)movementTime % 4 == 0)
-            { //This^^ is kinda funky, could probably be improved
-                shoot();
-            }
+    //    public override void Update(GraphicsDeviceManager graphics, GameTime gameTime)
+    //    {
+    //        // logic for shooting
+    //        movementTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+    //        rightward = (movementTime < 2f) ? true : false;
+    //        movementTime = (((int)movementTime) == 4) ? 0 : movementTime;
+    //        if ((int)movementTime % 4 == 0)
+    //        { //This^^ is kinda funky, could probably be improved
+    //            shoot();
+    //        }
 
-            // logic for enemy to move
-            position += velocity;
+    //        // logic for enemy to move
+    //        position += velocity;
 
-            if (position.Y <= 0 || position.Y >= graphics.PreferredBackBufferHeight - texture.Height)
-            {
-                velocity.Y = -velocity.Y;
-            }
-            if (position.X < 0 - texture.Width)
-            {
-                isVisible = false;
-            }
+    //        if (position.Y <= 0 || position.Y >= graphics.PreferredBackBufferHeight - texture.Height)
+    //        {
+    //            velocity.Y = -velocity.Y;
+    //        }
+    //        if (position.X < 0 - texture.Width)
+    //        {
+    //            isVisible = false;
+    //        }
 
-            bulletsUpdateAndCleanup(gameTime);
-        }
+    //        bulletsUpdateAndCleanup(gameTime);
+    //    }
 
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(texture, position, Color.White);
-            foreach (Bullets bullet in bullets)
-            {
-                bullet.Draw(spriteBatch);
-            }
-        }
+    //    public override void Draw(SpriteBatch spriteBatch)
+    //    {
+    //        spriteBatch.Draw(texture, position, Color.White);
+    //        foreach (Bullets bullet in bullets)
+    //        {
+    //            bullet.Draw(spriteBatch);
+    //        }
+    //    }
 
-        public override void shoot()
-        {
-            Bullets bullet = factory.bulletFactory("bullet", position, new Vector2(0, 10), true, 1);
+    //    public override void shoot()
+    //    {
+    //        Bullets bullet = factory.bulletFactory("bullet", position, new Vector2(0, 10), true, 1);
 
-            if (bullets.Count < 20)
-            {
-                bullets.Add(bullet);
-            }
-        }
+    //        if (bullets.Count < 20)
+    //        {
+    //            bullets.Add(bullet);
+    //        }
+    //    }
 
-        public override void bulletsUpdateAndCleanup(GameTime gameTime)
-        {
-            for (int i = 0; i < bullets.Count; i++)
-            {
-                bullets[i].Update(gameTime);
+    //    public override void bulletsUpdateAndCleanup(GameTime gameTime)
+    //    {
+    //        for (int i = 0; i < bullets.Count; i++)
+    //        {
+    //            bullets[i].Update(gameTime);
 
-                if (!bullets[i].isVisible)
-                {
-                    bullets.RemoveAt(i);
-                    i--;
-                }
-            }
-        }
+    //            if (!bullets[i].isVisible)
+    //            {
+    //                bullets.RemoveAt(i);
+    //                i--;
+    //            }
+    //        }
+    //    }
 
-    }
+    //}
 
     class GruntB : Enemy
     {

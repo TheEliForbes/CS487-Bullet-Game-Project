@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExampleGame.Movements;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
@@ -25,8 +26,8 @@ namespace ExampleGame.Enemies
         {
            return new GruntA(new Vector2(1100, randY), content);
         }
-    }
 
+    }
     class ConcreteGruntBCreator : EnemyCreator
     {
         public override Enemy CreateEnemy(ContentManager content, int randY)

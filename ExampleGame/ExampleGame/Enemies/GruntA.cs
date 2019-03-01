@@ -13,7 +13,8 @@ namespace ExampleGame.Enemies
     {
         private List<Bullets> bullets;
         private BulletFactory factory;
-
+        private Movement currentMove;
+        private Double movementStartTime; 
         private float speed;
         private float movementTime;
         private bool rightward;
@@ -26,8 +27,8 @@ namespace ExampleGame.Enemies
             texture = gameContent.Load<Texture2D>("invader1");
             position = newPosition;
 
-            randY = random.Next(-4, 4);
-            randX = random.Next(-4, 1);
+            randY = random.Next(0, 4);
+            randX = random.Next(0, 4);
 
             movementTime = 0f; //parameter?
             velocity = new Vector2(randX, randY);
@@ -35,6 +36,20 @@ namespace ExampleGame.Enemies
             bullets = new List<Bullets>();
             factory = new BulletFactory(gameContent);
         }
+        public GruntA(Vector2 newPosition, Vector2 newVelocity, ContentManager gameContent,EnemyMovements newMoves)
+        {
+            texture = gameContent.Load<Texture2D>("invader1");
+            position = newPosition;
+
+            movementTime = 0f;
+            this.velocity = newVelocity;
+            this.moves = newMoves;
+
+            bullets = new List<Bullets>();
+            factory = new BulletFactory(gameContent);
+            
+        }
+
 
         public override void Initialize(float initSpeed, Vector2 initPosition)
         {
@@ -54,15 +69,23 @@ namespace ExampleGame.Enemies
             }
 
             // logic for enemy to move
-            Movement move = new MoveLeft();
-            Movement move2 = new MoveRight();
-            if ((int)movementTime % 4 == 0)
-            { //This^^ is kinda funky, could probably be improved
-                position = move.getNewPosition(position, velocity);
+            if (moves == null)
+            {
+                position += velocity;
+            }
+            else if(currentMove == null)
+            {
+                currentMove = moves.GetMovement();
+                movementStartTime = gameTime.TotalGameTime.TotalSeconds;
+            }else if(currentMove.seconds <= (gameTime.TotalGameTime.TotalSeconds - movementStartTime))
+            {
+                moves.popMovement();
+                currentMove = null;
             }
             else
             {
-                position = move2.getNewPosition(position, velocity);
+                
+                position = currentMove.getNewPosition(position, velocity);
             }
            
 
