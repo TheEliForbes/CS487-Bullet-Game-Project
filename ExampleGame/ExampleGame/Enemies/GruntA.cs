@@ -46,8 +46,7 @@ namespace ExampleGame.Enemies
             this.moves = newMoves;
 
             bullets = new List<Bullets>();
-            factory = new BulletFactory(gameContent);
-            
+            factory = new BulletFactory(gameContent);  
         }
 
 
@@ -84,7 +83,6 @@ namespace ExampleGame.Enemies
             }
             else
             {
-                
                 position = currentMove.getNewPosition(position, velocity);
             }
            

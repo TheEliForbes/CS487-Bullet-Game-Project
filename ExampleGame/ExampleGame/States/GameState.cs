@@ -42,6 +42,8 @@ namespace ExampleGame.States
             // This implementation will probably change when we read
             // in time values from the JSON script file
             SetMidBossTimer();
+
+            // ERASE LATER WHEN DOING WAVES
             for (int j = 0; j < 4; j++)
             {
                 EnemyMovements moves1 = new EnemyMovements();
