@@ -22,6 +22,7 @@ namespace ExampleGame.States
         GraphicsDeviceManager _graphics;
         ContentManager _content;
         int curLives = 3;
+        Texture2D lifeTexture;
 
         // hardcoded values for now, when we read in a JSON script
         // file later, we can set these numbers to match what the file says?
@@ -38,6 +39,7 @@ namespace ExampleGame.States
             player.Initialize(100f, new Vector2((graphicsDevice.PreferredBackBufferWidth / 2), (graphicsDevice.PreferredBackBufferHeight)-75));
             player.Load(content.Load<Texture2D>("player"));
             backgroundTexture = content.Load<Texture2D>("spaceBackground");
+            lifeTexture = _content.Load<Texture2D>("lives3");
 
             // This implementation will probably change when we read
             // in time values from the JSON script file
@@ -135,15 +137,12 @@ namespace ExampleGame.States
             player.removeBullets(); //remove players bullets
         }
 
-        public void displayLives()
-        {/*
-            if (curLives == 3)
-                ee;
-            else if (curLives == 2)
-                ee;
-            else if (curLives == 1)
-                ee;
-             */
+        public void updateLivesTexture()
+        {
+            if(player.getLives() == 2)
+                lifeTexture = _content.Load<Texture2D>("lives2");
+            else if(player.getLives() == 1)
+                lifeTexture = _content.Load<Texture2D>("lives1");
         }
 
         public void checkHit()
@@ -152,7 +151,7 @@ namespace ExampleGame.States
             {
                 curLives = player.getLives();
                 removeAllBullets();
-                displayLives();
+                updateLivesTexture();
             }
         }
 
@@ -179,6 +178,17 @@ namespace ExampleGame.States
                 backgroundTexture,
                 new Rectangle(0, 0, 800, 480),
                 Color.White);
+
+            spriteBatch.Draw(
+                lifeTexture,
+                new Vector2(lifeTexture.Width / 2, lifeTexture.Height / 2),
+                null,
+                Color.White,
+                0f,
+                new Vector2(lifeTexture.Width / 2, lifeTexture.Height / 2),
+                Vector2.One,
+                SpriteEffects.None,
+                0f);
 
             player.Draw(spriteBatch);
 

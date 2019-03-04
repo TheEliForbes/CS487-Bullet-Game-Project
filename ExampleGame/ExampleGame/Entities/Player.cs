@@ -24,7 +24,6 @@ namespace ExampleGame.PlayerFolder
         private bool wasHit = false;
         private Vector2 initPos;
         private bool invincible = false;
-        private Texture2D lifeTexture;
 
         //Key mapping
         Keys upKey = Keys.Up;
@@ -69,7 +68,6 @@ namespace ExampleGame.PlayerFolder
             position = initPosition;
             slowModeModifier = 4;
             lives = 3;
-            lifeTexture = Content.Load<Texture2D>("lives3");
         }
         public void Load(Texture2D initTexture)
         {
@@ -126,17 +124,6 @@ namespace ExampleGame.PlayerFolder
                 SpriteEffects.None,
                 0f);
 
-            spriteBatch.Draw(
-                lifeTexture,
-                new Vector2(lifeTexture.Width / 2, lifeTexture.Height / 2),
-                null,
-                Color.White,
-                0f,
-                new Vector2(lifeTexture.Width / 2, lifeTexture.Height / 2),
-                Vector2.One,
-                SpriteEffects.None,
-                0f);
-
             foreach (Bullets bullet in bullets)
                 bullet.Draw(spriteBatch);
         }
@@ -186,10 +173,6 @@ namespace ExampleGame.PlayerFolder
         private void loseLife()
         {
             lives -= 1;
-            if (lives == 2)
-                lifeTexture = Content.Load<Texture2D>("lives2");
-            else if (lives == 1)
-                lifeTexture = Content.Load<Texture2D>("lives1");
         }
 
         public int IsWinner()
