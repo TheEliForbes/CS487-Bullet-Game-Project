@@ -101,3 +101,4 @@ C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\Examp
 C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.csproj.CopyComplete
 C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.exe
 C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.pdb
+C:\Users\Jake\Documents\WSU\SPRING 2019\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\playerShield.xnb

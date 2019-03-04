@@ -82,7 +82,10 @@ namespace ExampleGame.PlayerFolder
                 speed = (speed == originalSpeed) ? speed / slowModeModifier : speed * slowModeModifier;
 
             if (kstate.IsKeyDown(godMode) && pastKey.IsKeyUp(godMode))
+            {
                 isGod = !isGod;
+                invincible = !invincible;
+            }
 
             // for testing the win states
             if (kstate.IsKeyDown(win) && pastKey.IsKeyUp(win))
@@ -93,9 +96,10 @@ namespace ExampleGame.PlayerFolder
             {
                 if (invincible == false)
                 {
-                    movePositionToCenter();
+                    movePositionToInitPos(); //move player to initPos
                     loseLife(); //lose a life update texture for lives
-                    startInvincibility();
+                    startInvincibility(); //5 seconds of invincibility
+                    
                 }
             }
 
@@ -163,6 +167,7 @@ namespace ExampleGame.PlayerFolder
 
         private void startInvincibility()
         {
+            texture = Content.Load<Texture2D>("playerShield");
             invincible = true;
             invincibilityTimer = new System.Timers.Timer(5000);
             invincibilityTimer.Elapsed += setInvincibilityFalse;
@@ -172,9 +177,10 @@ namespace ExampleGame.PlayerFolder
         private void setInvincibilityFalse(Object source, ElapsedEventArgs e)
         {
             invincible = false;
+            texture = Content.Load<Texture2D>("player");
         }
 
-        private void movePositionToCenter()
+        private void movePositionToInitPos()
         {
             position = initPos;
         }
