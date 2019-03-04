@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Timers;
 using System.Collections.Generic;
 
 namespace ExampleGame.PlayerFolder
@@ -21,9 +22,9 @@ namespace ExampleGame.PlayerFolder
         ContentManager Content;
         private int winner = 0;
         private int lives = 0;
-        private bool wasHit = false;
         private Vector2 initPos;
         private bool invincible = false;
+        private static Timer invincibilityTimer;
 
         //Key mapping
         Keys upKey = Keys.Up;
@@ -90,9 +91,12 @@ namespace ExampleGame.PlayerFolder
             //for testing lose life
             if (kstate.IsKeyDown(takeHit) && pastKey.IsKeyUp(takeHit))
             {
-                wasHit = true;
-                movePositionToCenter();
-                loseLife(); //lose a life update texture for lives
+                if (invincible == false)
+                {
+                    movePositionToCenter();
+                    loseLife(); //lose a life update texture for lives
+                    startInvincibility();
+                }
             }
 
             if (kstate.IsKeyDown(upKey))
@@ -157,6 +161,19 @@ namespace ExampleGame.PlayerFolder
             position.Y = MathHelper.Min(MathHelper.Max(texture.Height / 2, position.Y), graphics.PreferredBackBufferHeight - texture.Height / 2);
         }
 
+        private void startInvincibility()
+        {
+            invincible = true;
+            invincibilityTimer = new System.Timers.Timer(5000);
+            invincibilityTimer.Elapsed += setInvincibilityFalse;
+            invincibilityTimer.Enabled = true;
+            invincibilityTimer.AutoReset = false;
+        }
+        private void setInvincibilityFalse(Object source, ElapsedEventArgs e)
+        {
+            invincible = false;
+        }
+
         private void movePositionToCenter()
         {
             position = initPos;
@@ -164,10 +181,6 @@ namespace ExampleGame.PlayerFolder
         public void removeBullets()
         {
             bullets.Clear();
-        }
-        public bool getWasHit()
-        {
-            return wasHit;
         }
 
         private void loseLife()
