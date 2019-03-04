@@ -21,6 +21,7 @@ namespace ExampleGame.States
         Player player;
         GraphicsDeviceManager _graphics;
         ContentManager _content;
+        int curLives = 3;
 
         // hardcoded values for now, when we read in a JSON script
         // file later, we can set these numbers to match what the file says?
@@ -34,7 +35,7 @@ namespace ExampleGame.States
             _graphics = graphicsDevice;
             _content = content;
             player = new Player(content);
-            player.Initialize(100f, new Vector2(graphicsDevice.PreferredBackBufferWidth / 2, graphicsDevice.PreferredBackBufferHeight / 2));
+            player.Initialize(100f, new Vector2((graphicsDevice.PreferredBackBufferWidth / 2), (graphicsDevice.PreferredBackBufferHeight)-75));
             player.Load(content.Load<Texture2D>("player"));
             backgroundTexture = content.Load<Texture2D>("spaceBackground");
 
@@ -125,10 +126,39 @@ namespace ExampleGame.States
                 }
             }
         }
+        public void removeAllBullets()
+        {
+            foreach (Enemy enemy in _enemies)
+            {
+                enemy.removeBullets(); //remove enemy bullets
+            }
+            player.removeBullets(); //remove players bullets
+        }
+
+        public void displayLives()
+        {/*
+            if (curLives == 3)
+                ee;
+            else if (curLives == 2)
+                ee;
+            else if (curLives == 1)
+                ee;
+             */
+        }
+
+        public void checkHit()
+        {
+            if (curLives > player.getLives())
+            {
+                curLives = player.getLives();
+                removeAllBullets();
+                displayLives();
+            }
+        }
 
         public void IsPlayerDead()
         {
-            if (player.GetHealth() == 0)
+            if (player.getLives() == 0)
             {
                 _game.ChangeState(new LoseState(_game, _graphicsDevice, _content));
             }
@@ -173,6 +203,7 @@ namespace ExampleGame.States
             player.boundsCheck(_graphics);
             IsPlayerDead();
             DidPlayerWin();
+            checkHit();
         }
     }
 }

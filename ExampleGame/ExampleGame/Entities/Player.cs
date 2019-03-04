@@ -19,8 +19,12 @@ namespace ExampleGame.PlayerFolder
         private List<Bullets> bullets; //may depend on design
         private BulletFactory factory;
         ContentManager Content;
-        private int health = 10;
         private int winner = 0;
+        private int lives = 0;
+        private bool wasHit = false;
+        private Vector2 initPos;
+        private bool invincible = false;
+        private Texture2D lifeTexture;
 
         //Key mapping
         Keys upKey = Keys.Up;
@@ -33,6 +37,7 @@ namespace ExampleGame.PlayerFolder
 
         Keys win = Keys.W;
         Keys die = Keys.D;
+        Keys takeHit = Keys.H; //for life testing
         
         KeyboardState pastKey; //2nd most recent key command
 
@@ -59,9 +64,12 @@ namespace ExampleGame.PlayerFolder
         }
         public void Initialize(float initSpeed, Vector2 initPosition)
         {
+            initPos = initPosition;
             originalSpeed = speed = initSpeed;
             position = initPosition;
             slowModeModifier = 4;
+            lives = 3;
+            lifeTexture = Content.Load<Texture2D>("lives3");
         }
         public void Load(Texture2D initTexture)
         {
@@ -77,13 +85,17 @@ namespace ExampleGame.PlayerFolder
             if (kstate.IsKeyDown(godMode) && pastKey.IsKeyUp(godMode))
                 isGod = !isGod;
 
-            // for testing the game states
-            if (kstate.IsKeyDown(die) && pastKey.IsKeyUp(die))
-                health = 0; // die -> see lose screen
-
             // for testing the win states
             if (kstate.IsKeyDown(win) && pastKey.IsKeyUp(win))
                 winner = 1; // win -> see win screen
+
+            //for testing lose life
+            if (kstate.IsKeyDown(takeHit) && pastKey.IsKeyUp(takeHit))
+            {
+                wasHit = true;
+                movePositionToCenter();
+                loseLife(); //lose a life update texture for lives
+            }
 
             if (kstate.IsKeyDown(upKey))
                 position.Y -= speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -110,6 +122,17 @@ namespace ExampleGame.PlayerFolder
                 Color.White,
                 0f,
                 new Vector2(texture.Width / 2, texture.Height / 2),
+                Vector2.One,
+                SpriteEffects.None,
+                0f);
+
+            spriteBatch.Draw(
+                lifeTexture,
+                new Vector2(lifeTexture.Width / 2, lifeTexture.Height / 2),
+                null,
+                Color.White,
+                0f,
+                new Vector2(lifeTexture.Width / 2, lifeTexture.Height / 2),
                 Vector2.One,
                 SpriteEffects.None,
                 0f);
@@ -147,14 +170,36 @@ namespace ExampleGame.PlayerFolder
             position.Y = MathHelper.Min(MathHelper.Max(texture.Height / 2, position.Y), graphics.PreferredBackBufferHeight - texture.Height / 2);
         }
 
-        public int GetHealth()
+        private void movePositionToCenter()
         {
-            return health;
+            position = initPos;
+        }
+        public void removeBullets()
+        {
+            bullets.Clear();
+        }
+        public bool getWasHit()
+        {
+            return wasHit;
+        }
+
+        private void loseLife()
+        {
+            lives -= 1;
+            if (lives == 2)
+                lifeTexture = Content.Load<Texture2D>("lives2");
+            else if (lives == 1)
+                lifeTexture = Content.Load<Texture2D>("lives1");
         }
 
         public int IsWinner()
         {
             return winner;
+        }
+        
+        public int getLives()
+        {
+            return lives;
         }
     }
 }

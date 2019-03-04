@@ -29,6 +29,7 @@ namespace ExampleGame
         public abstract void Draw(SpriteBatch spriteBatch);
         public abstract void shoot();
         public abstract void bulletsUpdateAndCleanup(GameTime gameTime);
+        public abstract void removeBullets();
 
     }
 
@@ -106,6 +107,10 @@ namespace ExampleGame
                     i--;
                 }
             }
+        }
+        public override void removeBullets()
+        {
+            bullets.Clear();
         }
 
     }
@@ -190,6 +195,11 @@ namespace ExampleGame
                     i--;
                 }
             }
+        }
+
+        public override void removeBullets()
+        {
+            bullets.Clear();
         }
 
 
@@ -286,6 +296,10 @@ namespace ExampleGame
                 }
             }
         }
+        public override void removeBullets()
+        {
+            bullets.Clear();
+        }
 
     }
 
@@ -379,6 +393,10 @@ namespace ExampleGame
                     i--;
                 }
             }
+        }
+        public override void removeBullets()
+        {
+            bullets.Clear();
         }
 
     }
