@@ -12,7 +12,7 @@ namespace ExampleGame.waves
 {
     class WaveBuilder
     {
-        public EnemyWave BuildWave(int wavenum,ContentManager _content)
+        public EnemyWave BuildWave(int wavenum, ContentManager _content)
         {
             EnemyWave newWave = new EnemyWave(wavenum);
             if(wavenum == 1)
@@ -23,6 +23,14 @@ namespace ExampleGame.waves
             {
                 buildGruntAWave2(newWave, _content);
                 buildGruntBWave2(newWave, _content);
+            }
+            else if (wavenum == 3)
+            {
+                buildMidBossWave(newWave, _content);
+            }
+            else if (wavenum == 4)
+            {
+                buildFinalBossWave(newWave, _content);
             }
             return newWave;
         }
@@ -99,6 +107,12 @@ namespace ExampleGame.waves
         {
             Vector2 pos = new Vector2(300, 50);
             newWave.addEnemy(new MidBoss(pos, _content));
+        }
+
+        private void buildFinalBossWave(EnemyWave newWave, ContentManager _content)
+        {
+            Vector2 pos = new Vector2(300, 50);
+            newWave.addEnemy(new FinalBoss(pos, _content));
         }
     }
 }

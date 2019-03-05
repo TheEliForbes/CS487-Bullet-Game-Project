@@ -73,6 +73,7 @@
     <Compile Include="States\WinState.cs" />
     <Compile Include="waves\EnemyWave.cs" />
     <Compile Include="waves\WaveBuilder.cs" />
+    <Compile Include="waves\WaveController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
