@@ -94,5 +94,11 @@ namespace ExampleGame.waves
                 width += 100;
             }
         }
+
+        private void buildMidBossWave(EnemyWave newWave, ContentManager _content)
+        {
+            Vector2 pos = new Vector2(300, 50);
+            newWave.addEnemy(new MidBoss(pos, _content));
+        }
     }
 }
