@@ -44,7 +44,7 @@ namespace ExampleGame.States
             // in time values from the JSON script file
             SetMidBossTimer();
             WaveBuilder waveBldr = new WaveBuilder();
-            EnemyWave wave1 = waveBldr.BuildWave(1, _content);
+            EnemyWave wave1 = waveBldr.BuildWave(2, _content);
             _enemies = wave1.getAllEnemies();
         }
 

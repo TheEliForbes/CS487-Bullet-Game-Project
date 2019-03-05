@@ -87,10 +87,10 @@ namespace ExampleGame.Enemies
                 position = currentMove.getNewPosition(position, velocity);
             }
 
-            if (position.Y <= 0 || position.Y >= graphics.PreferredBackBufferHeight - texture.Height)
-            {
-                velocity.Y = -velocity.Y;
-            }
+            //if (position.Y <= 0 || position.Y >= graphics.PreferredBackBufferHeight - texture.Height)
+            //{
+            //    velocity.Y = -velocity.Y;
+            //}
             if (position.X < 0 - texture.Width)
             {
                 isVisible = false;

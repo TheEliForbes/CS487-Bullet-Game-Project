@@ -16,7 +16,7 @@ namespace ExampleGame.Movements
         public override Vector2 getNewPosition(Vector2 position, Vector2 velocity)
         {
             Vector2 ret = position;
-            ret.Y += velocity.Y;
+            ret.Y -= velocity.Y;
             ret.X = position.X;
 
             return ret;

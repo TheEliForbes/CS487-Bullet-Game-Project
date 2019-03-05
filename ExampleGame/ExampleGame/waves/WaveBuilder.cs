@@ -17,13 +17,17 @@ namespace ExampleGame.waves
             EnemyWave newWave = new EnemyWave(wavenum);
             if(wavenum == 1)
             {
-                buildGruntAWave(newWave, _content);
-                buildGruntBWave(newWave, _content);
+                buildGruntAWave1(newWave, _content);
+                buildGruntBWave1(newWave, _content);
+            } else if (wavenum == 2)
+            {
+                buildGruntAWave2(newWave, _content);
+                buildGruntBWave2(newWave, _content);
             }
             return newWave;
         }
 
-        private void buildGruntAWave(EnemyWave newWave,ContentManager _content)
+        private void buildGruntAWave1(EnemyWave newWave,ContentManager _content)
         {
             for (int j = 0; j < 4; j++)
             {
@@ -38,19 +42,56 @@ namespace ExampleGame.waves
                 newWave.addEnemy(new GruntA(pos, vel, _content, moves));
             }
         }
-        private void buildGruntBWave(EnemyWave newWave, ContentManager _content)
+        private void buildGruntBWave1(EnemyWave newWave, ContentManager _content)
+        {
+            int height = 50;
+            for (int j = 1; j < 5; j++)
+            {
+                EnemyMovements moves = new EnemyMovements();
+                for (int i = 0; i < 10; i++)
+                {
+                    moves.addMovement(new MoveRight(6.0));
+                    moves.addMovement(new MoveLeft(6.0));
+                    
+                }
+                Vector2 pos = new Vector2(800 - (j * 100), height );
+                Vector2 vel = new Vector2(1, 0);
+                newWave.addEnemy(new GruntB(pos, vel, _content, moves));
+                height += 100;
+            }
+        }
+
+        private void buildGruntAWave2(EnemyWave newWave, ContentManager _content)
         {
             for (int j = 0; j < 4; j++)
             {
                 EnemyMovements moves = new EnemyMovements();
                 for (int i = 0; i < 10; i++)
                 {
-                    moves.addMovement(new MoveLeft(6.0));
-                    moves.addMovement(new MoveRight(6.0));
+                    moves.addMovement(new MoveDown(3.0));
+                    moves.addMovement(new MoveUp(3.0));
                 }
-                Vector2 pos = new Vector2(j * 75, j * 75);
-                Vector2 vel = new Vector2(1, 0);
+                Vector2 pos = new Vector2(j * 100, 0);
+                Vector2 vel = new Vector2(0, 1);
+                newWave.addEnemy(new GruntA(pos, vel, _content, moves));
+            }
+        }
+        private void buildGruntBWave2(EnemyWave newWave, ContentManager _content)
+        {
+            int width = 350;
+            for (int j = 1; j < 5; j++)
+            {
+                EnemyMovements moves = new EnemyMovements();
+                for (int i = 0; i < 10; i++)
+                {
+                    moves.addMovement(new MoveUp(3.0));
+                    moves.addMovement(new MoveDown(3.0));
+
+                }
+                Vector2 pos = new Vector2(width, 300);
+                Vector2 vel = new Vector2(0, 1);
                 newWave.addEnemy(new GruntB(pos, vel, _content, moves));
+                width += 100;
             }
         }
     }
