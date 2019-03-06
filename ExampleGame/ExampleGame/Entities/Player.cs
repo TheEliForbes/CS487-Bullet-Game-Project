@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Timers;
 using System.Collections.Generic;
 
 namespace ExampleGame.PlayerFolder
@@ -19,8 +20,11 @@ namespace ExampleGame.PlayerFolder
         private List<Bullets> bullets; //may depend on design
         private BulletFactory factory;
         ContentManager Content;
-        private int health = 10;
         private int winner = 0;
+        private int lives = 0;
+        private Vector2 initPos;
+        private bool invincible = false;
+        private static Timer invincibilityTimer;
 
         //Key mapping
         Keys upKey = Keys.Up;
@@ -33,6 +37,7 @@ namespace ExampleGame.PlayerFolder
 
         Keys win = Keys.W;
         Keys die = Keys.D;
+        Keys takeHit = Keys.H; //for life testing
         
         KeyboardState pastKey; //2nd most recent key command
 
@@ -59,9 +64,11 @@ namespace ExampleGame.PlayerFolder
         }
         public void Initialize(float initSpeed, Vector2 initPosition)
         {
+            initPos = initPosition;
             originalSpeed = speed = initSpeed;
             position = initPosition;
             slowModeModifier = 4;
+            lives = 3;
         }
         public void Load(Texture2D initTexture)
         {
@@ -75,15 +82,26 @@ namespace ExampleGame.PlayerFolder
                 speed = (speed == originalSpeed) ? speed / slowModeModifier : speed * slowModeModifier;
 
             if (kstate.IsKeyDown(godMode) && pastKey.IsKeyUp(godMode))
+            {
                 isGod = !isGod;
-
-            // for testing the game states
-            if (kstate.IsKeyDown(die) && pastKey.IsKeyUp(die))
-                health = 0; // die -> see lose screen
+                invincible = !invincible;
+            }
 
             // for testing the win states
             if (kstate.IsKeyDown(win) && pastKey.IsKeyUp(win))
                 winner = 1; // win -> see win screen
+
+            //for testing lose life
+            if (kstate.IsKeyDown(takeHit) && pastKey.IsKeyUp(takeHit))
+            {
+                if (invincible == false)
+                {
+                    movePositionToInitPos(); //move player to initPos
+                    loseLife(); //lose a life update texture for lives
+                    startInvincibility(); //5 seconds of invincibility
+                    
+                }
+            }
 
             if (kstate.IsKeyDown(upKey))
                 position.Y -= speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -147,14 +165,43 @@ namespace ExampleGame.PlayerFolder
             position.Y = MathHelper.Min(MathHelper.Max(texture.Height / 2, position.Y), graphics.PreferredBackBufferHeight - texture.Height / 2);
         }
 
-        public int GetHealth()
+        private void startInvincibility()
         {
-            return health;
+            texture = Content.Load<Texture2D>("playerShield");
+            invincible = true;
+            invincibilityTimer = new System.Timers.Timer(5000);
+            invincibilityTimer.Elapsed += setInvincibilityFalse;
+            invincibilityTimer.Enabled = true;
+            invincibilityTimer.AutoReset = false;
+        }
+        private void setInvincibilityFalse(Object source, ElapsedEventArgs e)
+        {
+            invincible = false;
+            texture = Content.Load<Texture2D>("player");
+        }
+
+        private void movePositionToInitPos()
+        {
+            position = initPos;
+        }
+        public void removeBullets()
+        {
+            bullets.Clear();
+        }
+
+        private void loseLife()
+        {
+            lives -= 1;
         }
 
         public int IsWinner()
         {
             return winner;
+        }
+        
+        public int getLives()
+        {
+            return lives;
         }
     }
 }

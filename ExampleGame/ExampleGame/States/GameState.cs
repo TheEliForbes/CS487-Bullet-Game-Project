@@ -21,6 +21,8 @@ namespace ExampleGame.States
         Player player;
         GraphicsDeviceManager _graphics;
         ContentManager _content;
+        int curLives = 3;
+        Texture2D lifeTexture;
 
         // hardcoded values for now, when we read in a JSON script
         // file later, we can set these numbers to match what the file says?
@@ -34,9 +36,10 @@ namespace ExampleGame.States
             _graphics = graphicsDevice;
             _content = content;
             player = new Player(content);
-            player.Initialize(100f, new Vector2(graphicsDevice.PreferredBackBufferWidth / 2, graphicsDevice.PreferredBackBufferHeight / 2));
+            player.Initialize(100f, new Vector2((graphicsDevice.PreferredBackBufferWidth / 2), (graphicsDevice.PreferredBackBufferHeight)-75));
             player.Load(content.Load<Texture2D>("player"));
             backgroundTexture = content.Load<Texture2D>("spaceBackground");
+            lifeTexture = _content.Load<Texture2D>("lives3");
 
             // This implementation will probably change when we read
             // in time values from the JSON script file
@@ -125,10 +128,36 @@ namespace ExampleGame.States
                 }
             }
         }
+        public void removeAllBullets()
+        {
+            foreach (Enemy enemy in _enemies)
+            {
+                enemy.removeBullets(); //remove enemy bullets
+            }
+            player.removeBullets(); //remove players bullets
+        }
+
+        public void updateLivesTexture()
+        {
+            if(player.getLives() == 2)
+                lifeTexture = _content.Load<Texture2D>("lives2");
+            else if(player.getLives() == 1)
+                lifeTexture = _content.Load<Texture2D>("lives1");
+        }
+
+        public void checkHit()
+        {
+            if (curLives > player.getLives())
+            {
+                curLives = player.getLives();
+                removeAllBullets();
+                updateLivesTexture();
+            }
+        }
 
         public void IsPlayerDead()
         {
-            if (player.GetHealth() == 0)
+            if (player.getLives() == 0)
             {
                 _game.ChangeState(new LoseState(_game, _graphicsDevice, _content));
             }
@@ -149,6 +178,17 @@ namespace ExampleGame.States
                 backgroundTexture,
                 new Rectangle(0, 0, 800, 480),
                 Color.White);
+
+            spriteBatch.Draw(
+                lifeTexture,
+                new Vector2(lifeTexture.Width / 2, lifeTexture.Height / 2),
+                null,
+                Color.White,
+                0f,
+                new Vector2(lifeTexture.Width / 2, lifeTexture.Height / 2),
+                Vector2.One,
+                SpriteEffects.None,
+                0f);
 
             player.Draw(spriteBatch);
 
@@ -173,6 +213,7 @@ namespace ExampleGame.States
             player.boundsCheck(_graphics);
             IsPlayerDead();
             DidPlayerWin();
+            checkHit();
         }
     }
 }
