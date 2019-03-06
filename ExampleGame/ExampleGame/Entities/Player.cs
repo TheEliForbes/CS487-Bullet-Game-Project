@@ -17,13 +17,13 @@ namespace ExampleGame.PlayerFolder
         private float originalSpeed;
         private int slowModeModifier;
         private bool isGod;
-        private List<Bullets> bullets; //may depend on design
-        private BulletFactory factory;
+        public List<Bullets> bullets; //may depend on design
+        public BulletFactory factory;
         ContentManager Content;
         private int winner = 0;
         private int lives = 0;
         private Vector2 initPos;
-        private bool invincible = false;
+        public bool invincible = false;
         private static Timer invincibilityTimer;
 
         //Key mapping
@@ -165,7 +165,7 @@ namespace ExampleGame.PlayerFolder
             position.Y = MathHelper.Min(MathHelper.Max(texture.Height / 2, position.Y), graphics.PreferredBackBufferHeight - texture.Height / 2);
         }
 
-        private void startInvincibility()
+        public void startInvincibility()
         {
             texture = Content.Load<Texture2D>("playerShield");
             invincible = true;
@@ -180,7 +180,7 @@ namespace ExampleGame.PlayerFolder
             texture = Content.Load<Texture2D>("player");
         }
 
-        private void movePositionToInitPos()
+        public void movePositionToInitPos()
         {
             position = initPos;
         }
@@ -189,7 +189,7 @@ namespace ExampleGame.PlayerFolder
             bullets.Clear();
         }
 
-        private void loseLife()
+        public void loseLife()
         {
             lives -= 1;
         }

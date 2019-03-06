@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Timers;
 using ExampleGame.Enemies;
 using ExampleGame.PlayerFolder;
+using ExampleGame.Entities.BulletTypes;
 
 namespace ExampleGame.States
 {
@@ -207,6 +208,27 @@ namespace ExampleGame.States
             foreach(Enemy enemy in _enemies)
             {
                 enemy.Update(_graphics, gameTime);
+                for (int i = 0; i < enemy.bullets.Count; i++)
+                {
+                    if (enemy.bullets[i].position.X <= player.position.X + 3 && enemy.bullets[i].position.Y <= player.position.Y + 3
+                            && enemy.bullets[i].position.X >= player.position.X - 3 && enemy.bullets[i].position.Y >= player.position.Y - 3
+                            && player.invincible == false)
+                    {
+                        player.movePositionToInitPos(); //move player to initPos
+                        player.loseLife(); //lose a life update texture for lives
+                        player.startInvincibility(); //5 seconds of invincibility
+                        enemy.bullets[i].isVisible = false;
+                    }
+                }
+                for (int i = 0; i < player.bullets.Count; i++)
+                {
+                    if (player.bullets[i].position.X <= enemy.position.X + 10 && player.bullets[i].position.Y <= enemy.position.Y + 10
+                        && player.bullets[i].position.X >= enemy.position.X - 10 && player.bullets[i].position.Y >= enemy.position.Y - 10)
+                    {
+                        enemy.isVisible = false;
+                        player.bullets[i].isVisible = false;
+                    }
+                }
             }
             LoadEnemies();
             player.Update(gameTime);
