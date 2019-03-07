@@ -1,5 +1,6 @@
 ﻿using ExampleGame.Entities.BulletTypes;
 using ExampleGame.Factories;
+using ExampleGame.Movements;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,7 +13,8 @@ namespace ExampleGame.Enemies
     {
         private List<Bullets> bullets;
         private BulletFactory factory;
-
+        private Movement currentMove;
+        private Double movementStartTime; 
         private float speed;
         private float movementTime;
         private bool rightward;
@@ -25,8 +27,8 @@ namespace ExampleGame.Enemies
             texture = gameContent.Load<Texture2D>("invader1");
             position = newPosition;
 
-            randY = random.Next(-4, 4);
-            randX = random.Next(-4, 1);
+            randY = random.Next(0, 4);
+            randX = random.Next(0, 4);
 
             movementTime = 0f; //parameter?
             velocity = new Vector2(randX, randY);
@@ -34,6 +36,19 @@ namespace ExampleGame.Enemies
             bullets = new List<Bullets>();
             factory = new BulletFactory(gameContent);
         }
+        public GruntA(Vector2 newPosition, Vector2 newVelocity, ContentManager gameContent,EnemyMovements newMoves)
+        {
+            texture = gameContent.Load<Texture2D>("invader1");
+            position = newPosition;
+
+            movementTime = 0f;
+            this.velocity = newVelocity;
+            this.moves = newMoves;
+
+            bullets = new List<Bullets>();
+            factory = new BulletFactory(gameContent);  
+        }
+
 
         public override void Initialize(float initSpeed, Vector2 initPosition)
         {
@@ -53,12 +68,29 @@ namespace ExampleGame.Enemies
             }
 
             // logic for enemy to move
-            position += velocity;
-
-            if (position.Y <= 0 || position.Y >= graphics.PreferredBackBufferHeight - texture.Height)
+            if (moves == null)
             {
-                velocity.Y = -velocity.Y;
+                position += velocity;
             }
+            else if(currentMove == null)
+            {
+                currentMove = moves.GetMovement();
+                movementStartTime = gameTime.TotalGameTime.TotalSeconds;
+            }else if(currentMove.seconds <= (gameTime.TotalGameTime.TotalSeconds - movementStartTime))
+            {
+                moves.popMovement();
+                currentMove = null;
+            }
+            else
+            {
+                position = currentMove.getNewPosition(position, velocity);
+            }
+           
+
+            //if (position.Y <= 0 || position.Y >= graphics.PreferredBackBufferHeight - texture.Height)
+            //{
+            //    velocity.Y = -velocity.Y;
+            //}
             if (position.X < 0 - texture.Width)
             {
                 isVisible = false;

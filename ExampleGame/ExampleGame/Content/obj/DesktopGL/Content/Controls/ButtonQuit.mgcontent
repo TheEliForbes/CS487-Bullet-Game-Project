@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/ButtonQuit.png</SourceFile>
-  <SourceTime>2019-01-28T11:50:08.9967849-08:00</SourceTime>
-  <DestFile>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/bin/DesktopGL/Content/Controls/ButtonQuit.xnb</DestFile>
-  <DestTime>2019-02-23T12:45:47.7836512-08:00</DestTime>
+  <SourceFile>C:/Users/Ronald/Documents/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/ButtonQuit.png</SourceFile>
+  <SourceTime>2019-02-28T14:26:59.8170454-08:00</SourceTime>
+  <DestFile>C:/Users/Ronald/Documents/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/bin/DesktopGL/Content/Controls/ButtonQuit.xnb</DestFile>
+  <DestTime>2019-02-28T15:05:51.6460275-08:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T08:35:54-08:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

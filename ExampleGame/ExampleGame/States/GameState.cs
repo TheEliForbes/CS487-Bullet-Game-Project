@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework.Input;
 using System.Timers;
 using ExampleGame.Enemies;
 using ExampleGame.PlayerFolder;
+using ExampleGame.Movements;
+using ExampleGame.waves;
 
 namespace ExampleGame.States
 {
@@ -21,13 +23,12 @@ namespace ExampleGame.States
         Player player;
         GraphicsDeviceManager _graphics;
         ContentManager _content;
-
+        int waveNumber;
+        WaveBuilder waves;
         // hardcoded values for now, when we read in a JSON script
         // file later, we can set these numbers to match what the file says?
         int gruntACount = 3;
         int gruntBCount = 2;
-        //int midBossCount = 1;
-        //int finalBossCount = 1;
 
         public GameState(Game1 game, GraphicsDeviceManager graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
         {
@@ -40,7 +41,11 @@ namespace ExampleGame.States
 
             // This implementation will probably change when we read
             // in time values from the JSON script file
-            SetMidBossTimer();
+            SetWaveTimers();
+            waves = new WaveBuilder();
+            EnemyWave wave1 = waves.BuildWave(1, _content);
+            _enemies = wave1.getAllEnemies();
+            waveNumber = 1;
         }
 
         // Adds each enemy to the enemy list, implementing Factory Pattern
@@ -52,11 +57,11 @@ namespace ExampleGame.States
             _enemies.Add(enemy);
         }
 
-        private void SetMidBossTimer()
+        private void SetWaveTimers()
         {
             // Mid boss appearance timer
             GameTimer = new System.Timers.Timer(48000); 
-            GameTimer.Elapsed += loadMidBoss;
+            GameTimer.Elapsed += loadNextWave;
             GameTimer.Enabled = true;
             GameTimer.AutoReset = false;
 
@@ -68,24 +73,24 @@ namespace ExampleGame.States
 
             // Final boss appearance timer
             GameTimer = new System.Timers.Timer(90000);
-            GameTimer.Elapsed += loadFinalBoss;
+            GameTimer.Elapsed += loadNextWave;
             GameTimer.Enabled = true;
             GameTimer.AutoReset = false;
         }
 
-        private void loadMidBoss(Object source, ElapsedEventArgs e)
+        private void loadNextWave(Object source, ElapsedEventArgs e)
         {
-            AddEnemy(new ConcreteMidBossCreator());
-        }
-
-        private void loadFinalBoss(Object source, ElapsedEventArgs e)
-        {
-            AddEnemy(new ConcreteFinalBossCreator());
+            waveNumber++;
+            _enemies.Clear();
+            EnemyWave newWave = waves.BuildWave(waveNumber, _content);
+            _enemies = newWave.getAllEnemies();
         }
 
         public void LoadEnemies()
         {
             int randY = random.Next(100, 400); // height of viewport
+
+           
             
             // spawn number of gruntA
             for (int i = 0; i < gruntACount; i++, gruntACount--)
