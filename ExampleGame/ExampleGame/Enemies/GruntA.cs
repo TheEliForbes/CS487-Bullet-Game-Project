@@ -113,7 +113,7 @@ namespace ExampleGame.Enemies
             Vector2 gruntBulletPos = new Vector2(position.X +14, position.Y + 5);
             Bullets bullet = factory.bulletFactory("bullet", gruntBulletPos, new Vector2(0, 10), true, 1);
 
-            if (bullets.Count < 40)
+            if (bullets.Count < 70)
             {
                 bullets.Add(bullet);
             }
