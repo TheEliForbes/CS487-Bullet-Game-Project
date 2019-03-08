@@ -110,9 +110,10 @@ namespace ExampleGame.Enemies
 
         public override void shoot()
         {
-            Bullets bullet = factory.bulletFactory("bullet", position, new Vector2(0, 10), true, 1);
+            Vector2 gruntBulletPos = new Vector2(position.X +14, position.Y + 5);
+            Bullets bullet = factory.bulletFactory("bullet", gruntBulletPos, new Vector2(0, 10), true, 1);
 
-            if (bullets.Count < 20)
+            if (bullets.Count < 40)
             {
                 bullets.Add(bullet);
             }
