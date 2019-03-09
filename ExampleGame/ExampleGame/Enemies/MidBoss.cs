@@ -9,13 +9,6 @@ namespace ExampleGame.Enemies
 {
     class MidBoss : Enemy
     {
-        private List<Bullets> bullets;
-        private BulletFactory factory;
-
-        private float speed;
-        private float movementTime;
-        private bool rightward;
-
         public MidBoss(Vector2 newPosition, ContentManager gameContent)
         {
             texture = gameContent.Load<Texture2D>("midBoss");
