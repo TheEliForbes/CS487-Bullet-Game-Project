@@ -11,13 +11,8 @@ namespace ExampleGame.Enemies
 {
     class GruntA : Enemy
     {
-        private List<Bullets> bullets;
-        private BulletFactory factory;
         private Movement currentMove;
-        private Double movementStartTime; 
-        private float speed;
-        private float movementTime;
-        private bool rightward;
+        private Double movementStartTime;
 
         Random random = new Random();
         int randX, randY;

@@ -23,7 +23,6 @@ namespace ExampleGame.States
         Texture2D backgroundTexture;
         Player player;
         GraphicsDeviceManager _graphics;
-        ContentManager _content;
         int waveNumber;
         WaveBuilder waves;
         int curLives = 3;
