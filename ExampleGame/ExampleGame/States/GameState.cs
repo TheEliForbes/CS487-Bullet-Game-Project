@@ -221,9 +221,7 @@ namespace ExampleGame.States
                             && enemy.bullets[i].position.X >= player.position.X - 3 && enemy.bullets[i].position.Y >= player.position.Y - 3
                             && player.invincible == false)
                     {
-                        player.movePositionToInitPos(); //move player to initPos
-                        player.loseLife(); //lose a life update texture for lives
-                        player.startInvincibility(); //5 seconds of invincibility
+                        player.takeHit();
                         enemy.bullets[i].isVisible = false;
                     }
                 }

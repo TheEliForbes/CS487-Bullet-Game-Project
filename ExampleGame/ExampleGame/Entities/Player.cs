@@ -37,7 +37,7 @@ namespace ExampleGame.PlayerFolder
 
         Keys win = Keys.W;
         Keys die = Keys.D;
-        Keys takeHit = Keys.H; //for life testing
+        Keys hit = Keys.H; //for life testing
         
         KeyboardState pastKey; //2nd most recent key command
 
@@ -92,14 +92,11 @@ namespace ExampleGame.PlayerFolder
                 winner = 1; // win -> see win screen
 
             //for testing lose life
-            if (kstate.IsKeyDown(takeHit) && pastKey.IsKeyUp(takeHit))
+            if (kstate.IsKeyDown(hit) && pastKey.IsKeyUp(hit))
             {
                 if (invincible == false)
                 {
-                    movePositionToInitPos(); //move player to initPos
-                    loseLife(); //lose a life update texture for lives
-                    startInvincibility(); //5 seconds of invincibility
-                    
+                    takeHit(); //player is hit   
                 }
             }
 
@@ -165,7 +162,15 @@ namespace ExampleGame.PlayerFolder
             position.Y = MathHelper.Min(MathHelper.Max(texture.Height / 2, position.Y), graphics.PreferredBackBufferHeight - texture.Height / 2);
         }
 
-        public void startInvincibility()
+        //call when the player is hit by a bullet
+        public void takeHit()
+        {
+            movePositionToInitPos(); //move player to initPos
+            loseLife(); //lose a life update texture for lives
+            startInvincibility(); //5 seconds of invincibility
+        }
+
+        private void startInvincibility()
         {
             texture = Content.Load<Texture2D>("playerShield");
             invincible = true;
@@ -180,7 +185,7 @@ namespace ExampleGame.PlayerFolder
             texture = Content.Load<Texture2D>("player");
         }
 
-        public void movePositionToInitPos()
+        private void movePositionToInitPos()
         {
             position = initPos;
         }
@@ -189,7 +194,7 @@ namespace ExampleGame.PlayerFolder
             bullets.Clear();
         }
 
-        public void loseLife()
+        private void loseLife()
         {
             lives -= 1;
         }

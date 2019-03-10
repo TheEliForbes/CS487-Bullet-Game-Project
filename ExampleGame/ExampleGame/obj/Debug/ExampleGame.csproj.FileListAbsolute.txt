@@ -129,3 +129,7 @@ C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Mon
 C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.csprojResolveAssemblyReference.cache
 C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.exe
 C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.pdb
+C:\Users\JakeSSD\Documents\WSU\SPRING 2019\487\GAME\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives1.xnb
+C:\Users\JakeSSD\Documents\WSU\SPRING 2019\487\GAME\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives2.xnb
+C:\Users\JakeSSD\Documents\WSU\SPRING 2019\487\GAME\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives3.xnb
+C:\Users\JakeSSD\Documents\WSU\SPRING 2019\487\GAME\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\playerShield.xnb
