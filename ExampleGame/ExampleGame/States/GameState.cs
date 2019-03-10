@@ -63,21 +63,18 @@ namespace ExampleGame.States
 
         private void SetWaveTimers()
         {
-            // Mid boss appearance timer
-            GameTimer = new System.Timers.Timer(48000); 
-            GameTimer.Elapsed += loadNextWave;
-            GameTimer.Enabled = true;
-            GameTimer.AutoReset = false;
-
-            // Mid boss disappearance timer
-            GameTimer = new System.Timers.Timer(75000);
-            //GameTimer.Elapsed += clearBosses;
-            GameTimer.Enabled = true;
-            GameTimer.AutoReset = false;
-
-            // Final boss appearance timer
-            GameTimer = new System.Timers.Timer(90000);
-            GameTimer.Elapsed += loadNextWave;
+            int i = 1;
+            for(; i < 5; ++i)
+            {
+                GameTimer = new System.Timers.Timer(25000*i);
+                GameTimer.Elapsed += loadNextWave;
+                GameTimer.Enabled = true;
+                GameTimer.AutoReset = false;
+            }
+            
+            // Auto-win timer
+            GameTimer = new System.Timers.Timer(25000*i);
+            GameTimer.Elapsed += AutomaticWin;
             GameTimer.Enabled = true;
             GameTimer.AutoReset = false;
         }
@@ -88,6 +85,11 @@ namespace ExampleGame.States
             _enemies.Clear();
             EnemyWave newWave = waves.BuildWave(waveNumber, _content);
             _enemies = newWave.getAllEnemies();
+        }
+
+        private void AutomaticWin(Object source, ElapsedEventArgs e)
+        {
+            _game.ChangeState(new WinState(_game, _graphicsDevice, _content));
         }
 
         public void LoadEnemies()
