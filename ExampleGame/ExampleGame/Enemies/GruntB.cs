@@ -132,6 +132,10 @@ namespace ExampleGame.Enemies
                 }
             }
         }
+        public override void removeBullets()
+        {
+            bullets.Clear();
+        }
 
     }
 }

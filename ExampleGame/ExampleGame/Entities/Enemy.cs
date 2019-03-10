@@ -30,6 +30,7 @@ namespace ExampleGame
         public abstract void Draw(SpriteBatch spriteBatch);
         public abstract void shoot();
         public abstract void bulletsUpdateAndCleanup(GameTime gameTime);
+        public abstract void removeBullets();
 
     }
 }
