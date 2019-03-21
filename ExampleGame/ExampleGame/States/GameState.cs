@@ -11,6 +11,7 @@ using ExampleGame.PlayerFolder;
 using ExampleGame.Movements;
 using ExampleGame.waves;
 using ExampleGame.Entities.BulletTypes;
+using ExampleGame.Entities;
 
 namespace ExampleGame.States
 {
@@ -27,11 +28,7 @@ namespace ExampleGame.States
         WaveBuilder waves;
         int curLives = 3;
         Texture2D lifeTexture;
-
-        // hardcoded values for now, when we read in a JSON script
-        // file later, we can set these numbers to match what the file says?
-        int gruntACount = 3;
-        int gruntBCount = 2;
+        Reward reward;
 
         public GameState(Game1 game, GraphicsDeviceManager graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
         {
@@ -42,6 +39,9 @@ namespace ExampleGame.States
             player.Load(content.Load<Texture2D>("player"));
             backgroundTexture = content.Load<Texture2D>("spaceBackground");
             lifeTexture = _content.Load<Texture2D>("lives3");
+
+            reward = new Reward(content);
+            reward.Load(content.Load<Texture2D>("reward"));
 
             // This implementation will probably change when we read
             // in time values from the JSON script file
@@ -92,40 +92,8 @@ namespace ExampleGame.States
             _game.ChangeState(new WinState(_game, _graphicsDevice, _content));
         }
 
-        public void LoadEnemies()
+        public void CleanupEnemies()
         {
-            int randY = random.Next(100, 400); // height of viewport
-
-           
-            
-            // spawn number of gruntA
-            for (int i = 0; i < gruntACount; i++, gruntACount--)
-            {
-                AddEnemy(new ConcreteGruntACreator());
-            }
-
-            // spawn number of gruntB
-            for (int i = 0; i < gruntBCount; i++, gruntBCount--)
-            {
-                AddEnemy(new ConcreteGruntBCreator());
-            }
-            
-            // spawn number of midboss
-            /*
-            for (int i = 0; i < gruntACount; i++)
-            {
-                AddEnemy(new ConcreteMidBossCreator());
-            }
-            */
-
-            // spawn number of boss
-            /*
-            for (int i = 0; i < gruntACount; i++)
-            {
-                AddEnemy(new ConcreteFinalBossCreator());
-            }
-            */
-
             // clean up enemies when they go off the screen
             for (int i = 0; i < _enemies.Count; i++)
             {
@@ -136,6 +104,7 @@ namespace ExampleGame.States
                 }
             }
         }
+
         public void removeAllBullets()
         {
             foreach (Enemy enemy in _enemies)
@@ -200,6 +169,11 @@ namespace ExampleGame.States
 
             player.Draw(spriteBatch);
 
+            if (waveNumber == 1) // load reward on the 4th wave
+            {
+                reward.Draw(spriteBatch);
+            }
+
             foreach (Enemy enemy in _enemies.ToList())
             {
                 enemy.Draw(spriteBatch);
@@ -211,6 +185,32 @@ namespace ExampleGame.States
         public override void Update(GameTime gameTime)
         {
             var kstate = Keyboard.GetState();
+
+            if (waveNumber == 1) // when there is a reward
+            {
+                Console.WriteLine("positionx: " + reward.position.X);
+                Console.WriteLine("positiony: " + reward.position.Y);
+                Console.WriteLine("positionx player: " + player.position.X);
+                Console.WriteLine("positiony player: " + player.position.Y);
+                if (reward.position.X <= player.position.X + 3 && reward.position.Y <= player.position.Y + 3
+                            && reward.position.X >= player.position.X - 3 && reward.position.Y >= player.position.Y - 3)
+                {
+                    Console.WriteLine("HERE");
+                    player.AddLife(5); // update player life
+                    updateLivesTexture();
+                    // remove reward
+                }
+                
+                //Console.WriteLine("positionx: " + player.position.X);
+                //Console.WriteLine("positiony: " + player.position.Y);
+                /*
+                if (player.position.X >= 96 && player.position.Y >= 200)
+                {
+                    player.AddLife(5); // update player life
+                    updateLivesTexture();
+                }
+                */
+            }
         
             foreach(Enemy enemy in _enemies)
             {
@@ -235,7 +235,7 @@ namespace ExampleGame.States
                     }
                 }
             }
-            LoadEnemies();
+            CleanupEnemies();
             player.Update(gameTime);
             player.boundsCheck(_graphics);
             IsPlayerDead();

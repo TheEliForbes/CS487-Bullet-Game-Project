@@ -199,6 +199,11 @@ namespace ExampleGame.PlayerFolder
             lives -= 1;
         }
 
+        public void AddLife(int number)
+        {
+            lives += number;
+        }
+
         public int IsWinner()
         {
             return winner;

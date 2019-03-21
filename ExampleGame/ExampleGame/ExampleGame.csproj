@@ -56,6 +56,7 @@
     <Compile Include="Entities\BulletTypes\MidBossSpread.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Player.cs" />
+    <Compile Include="Entities\Reward.cs" />
     <Compile Include="Factories\BulletFactory.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Movements\EnemyMovements.cs" />
