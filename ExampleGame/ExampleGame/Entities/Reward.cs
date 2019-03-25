@@ -12,13 +12,13 @@ namespace ExampleGame.Entities
     class Reward : Entity
     {
         ContentManager Content;
-        //public bool isVisible = true;
 
         public Reward(ContentManager gameContent)
         {
             Content = gameContent;
             position.Y = 200;
             position.X = 100;
+            texture = gameContent.Load<Texture2D>("reward");
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -32,11 +32,6 @@ namespace ExampleGame.Entities
                 SpriteEffects.None,
                 0
             );
-        }
-
-        public void Load(Texture2D initTexture)
-        {
-            texture = initTexture;
         }
 
         public override void Update(GameTime gameTime)

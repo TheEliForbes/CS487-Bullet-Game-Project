@@ -18,7 +18,6 @@ namespace ExampleGame.States
     public class GameState : State
     {
         List<Enemy> _enemies = new List<Enemy>();
-
         Random random = new Random();
         private static Timer GameTimer;
         Texture2D backgroundTexture;
@@ -41,7 +40,7 @@ namespace ExampleGame.States
             lifeTexture = _content.Load<Texture2D>("lives3");
 
             reward = new Reward(content);
-            reward.Load(content.Load<Texture2D>("reward"));
+            //reward.Load(content.Load<Texture2D>("reward"));
 
             // This implementation will probably change when we read
             // in time values from the JSON script file
@@ -116,10 +115,25 @@ namespace ExampleGame.States
 
         public void updateLivesTexture()
         {
-            if(player.getLives() == 2)
-                lifeTexture = _content.Load<Texture2D>("lives2");
-            else if(player.getLives() == 1)
+            if(player.getLives() == 1)
                 lifeTexture = _content.Load<Texture2D>("lives1");
+            else if(player.getLives() == 2)
+                lifeTexture = _content.Load<Texture2D>("lives2");
+            else if (player.getLives() == 3)
+                lifeTexture = _content.Load<Texture2D>("lives3");
+            else if (player.getLives() == 4)
+                lifeTexture = _content.Load<Texture2D>("lives4");
+            else if (player.getLives() == 5)
+                lifeTexture = _content.Load<Texture2D>("lives5");
+            else if (player.getLives() == 6)
+                lifeTexture = _content.Load<Texture2D>("lives6");
+            else if (player.getLives() == 7)
+                lifeTexture = _content.Load<Texture2D>("lives7");
+            else if (player.getLives() == 8)
+                lifeTexture = _content.Load<Texture2D>("lives8");
+            else if (player.getLives() == 9)
+                lifeTexture = _content.Load<Texture2D>("lives9");
+
         }
 
         public void checkHit()
@@ -169,9 +183,12 @@ namespace ExampleGame.States
 
             player.Draw(spriteBatch);
 
-            if (waveNumber == 1) // load reward on the 4th wave
+            if (waveNumber == 4) // load reward on the 4th wave
             {
-                reward.Draw(spriteBatch);
+                if (reward != null)
+                {
+                    reward.Draw(spriteBatch);
+                }
             }
 
             foreach (Enemy enemy in _enemies.ToList())
@@ -186,30 +203,18 @@ namespace ExampleGame.States
         {
             var kstate = Keyboard.GetState();
 
-            if (waveNumber == 1) // when there is a reward
+            if (waveNumber == 4) // when there is a reward
             {
-                Console.WriteLine("positionx: " + reward.position.X);
-                Console.WriteLine("positiony: " + reward.position.Y);
-                Console.WriteLine("positionx player: " + player.position.X);
-                Console.WriteLine("positiony player: " + player.position.Y);
-                if (reward.position.X <= player.position.X + 3 && reward.position.Y <= player.position.Y + 3
-                            && reward.position.X >= player.position.X - 3 && reward.position.Y >= player.position.Y - 3)
+                if (reward != null)
                 {
-                    Console.WriteLine("HERE");
-                    player.AddLife(5); // update player life
-                    updateLivesTexture();
-                    // remove reward
+                    if (reward.position.X <= player.position.X + 5 && reward.position.Y <= player.position.Y + 5
+                                && reward.position.X >= player.position.X - 5 && reward.position.Y >= player.position.Y - 5)
+                    {
+                        player.AddLife(5); // update player life
+                        updateLivesTexture();
+                        reward = null; // remove reward
+                    }
                 }
-                
-                //Console.WriteLine("positionx: " + player.position.X);
-                //Console.WriteLine("positiony: " + player.position.Y);
-                /*
-                if (player.position.X >= 96 && player.position.Y >= 200)
-                {
-                    player.AddLife(5); // update player life
-                    updateLivesTexture();
-                }
-                */
             }
         
             foreach(Enemy enemy in _enemies)
