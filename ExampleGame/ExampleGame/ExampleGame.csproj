@@ -56,14 +56,17 @@
     <Compile Include="Entities\BulletTypes\MidBossSpread.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Player.cs" />
+    <Compile Include="Entities\Reward.cs" />
     <Compile Include="Factories\BulletFactory.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Movements\EnemyMovements.cs" />
     <Compile Include="Movements\MoveDown.cs" />
+    <Compile Include="Movements\MoveDownRight.cs" />
     <Compile Include="Movements\MoveLeft.cs" />
     <Compile Include="Movements\Movement.cs" />
     <Compile Include="Movements\MoveRight.cs" />
     <Compile Include="Movements\MoveUp.cs" />
+    <Compile Include="Movements\MoveUpLeft.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="States\GameState.cs" />

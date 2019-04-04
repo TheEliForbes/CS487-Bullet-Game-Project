@@ -4,22 +4,44 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/JakeSSD/Documents/WSU/SPRING 2019/487/GAME/487sp19_bulletgame/ExampleGame/ExampleGame/Content/ball.png</File>
-    <File>C:/Users/JakeSSD/Documents/WSU/SPRING 2019/487/GAME/487sp19_bulletgame/ExampleGame/ExampleGame/Content/bullet.png</File>
-    <File>C:/Users/JakeSSD/Documents/WSU/SPRING 2019/487/GAME/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/ButtonPlay.png</File>
-    <File>C:/Users/JakeSSD/Documents/WSU/SPRING 2019/487/GAME/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/ButtonQuit.png</File>
-    <File>C:/Users/JakeSSD/Documents/WSU/SPRING 2019/487/GAME/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/LostButton.png</File>
-    <File>C:/Users/JakeSSD/Documents/WSU/SPRING 2019/487/GAME/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/WinButton.png</File>
-    <File>C:/Users/JakeSSD/Documents/WSU/SPRING 2019/487/GAME/487sp19_bulletgame/ExampleGame/ExampleGame/Content/finalBoss.png</File>
-    <File>C:/Users/JakeSSD/Documents/WSU/SPRING 2019/487/GAME/487sp19_bulletgame/ExampleGame/ExampleGame/Content/invader1.png</File>
-    <File>C:/Users/JakeSSD/Documents/WSU/SPRING 2019/487/GAME/487sp19_bulletgame/ExampleGame/ExampleGame/Content/invader2.png</File>
-    <File>C:/Users/JakeSSD/Documents/WSU/SPRING 2019/487/GAME/487sp19_bulletgame/ExampleGame/ExampleGame/Content/invader3.png</File>
-    <File>C:/Users/JakeSSD/Documents/WSU/SPRING 2019/487/GAME/487sp19_bulletgame/ExampleGame/ExampleGame/Content/midBoss.png</File>
-    <File>C:/Users/JakeSSD/Documents/WSU/SPRING 2019/487/GAME/487sp19_bulletgame/ExampleGame/ExampleGame/Content/player.png</File>
-    <File>C:/Users/JakeSSD/Documents/WSU/SPRING 2019/487/GAME/487sp19_bulletgame/ExampleGame/ExampleGame/Content/spaceBackground.png</File>
-    <File>C:/Users/JakeSSD/Documents/WSU/SPRING 2019/487/GAME/487sp19_bulletgame/ExampleGame/ExampleGame/Content/square.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/ball.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/bullet.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/ButtonPlay.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/ButtonQuit.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/LostButton.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/WinButton.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/finalBoss.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/invader1.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/invader2.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/invader3.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/lives1.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/lives2.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/lives3.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/lives4.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/lives5.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/lives6.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/lives7.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/lives8.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/lives9.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/midBoss.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/player.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/playerShield.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/reward.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/spaceBackground.png</File>
+    <File>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/square.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
