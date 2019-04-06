@@ -83,7 +83,7 @@ namespace ExampleGame.States
             waveNumber++;
             //_enemies.Clear(); //Allow Overlapping Waves
             EnemyWave newWave = waves.BuildWave(waveNumber, _content);
-            _enemies = newWave.getAllEnemies();
+            _enemies.AddRange(newWave.getAllEnemies());
         }
 
         private void AutomaticWin(Object source, ElapsedEventArgs e)
