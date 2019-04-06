@@ -144,3 +144,10 @@ C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\bin\De
 C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives7.xnb
 C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives8.xnb
 C:\Users\Arika\Documents\repos\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives9.xnb
+C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives4.xnb
+C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives5.xnb
+C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives6.xnb
+C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives7.xnb
+C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives8.xnb
+C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives9.xnb
+C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\reward.xnb

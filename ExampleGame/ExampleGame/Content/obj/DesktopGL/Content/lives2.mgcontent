@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/lives2.png</SourceFile>
-  <SourceTime>2019-03-21T13:01:17.8711015-07:00</SourceTime>
-  <DestFile>C:/Users/Arika/Documents/repos/487sp19_bulletgame/ExampleGame/ExampleGame/Content/bin/DesktopGL/Content/lives2.xnb</DestFile>
-  <DestTime>2019-03-21T13:23:18.8845876-07:00</DestTime>
+  <SourceFile>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/lives2.png</SourceFile>
+  <SourceTime>2019-04-05T11:09:04.2890138-07:00</SourceTime>
+  <DestFile>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/bin/DesktopGL/Content/lives2.xnb</DestFile>
+  <DestTime>2019-04-06T14:21:49.05115-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T08:35:54-08:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

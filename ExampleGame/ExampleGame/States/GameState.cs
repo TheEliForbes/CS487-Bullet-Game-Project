@@ -81,7 +81,7 @@ namespace ExampleGame.States
         private void loadNextWave(Object source, ElapsedEventArgs e)
         {
             waveNumber++;
-            _enemies.Clear();
+            //_enemies.Clear(); //Allow Overlapping Waves
             EnemyWave newWave = waves.BuildWave(waveNumber, _content);
             _enemies = newWave.getAllEnemies();
         }

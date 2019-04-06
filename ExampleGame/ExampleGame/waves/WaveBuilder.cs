@@ -18,7 +18,7 @@ namespace ExampleGame.waves
             EnemyWave newWave = new EnemyWave(wavenum);
             if(wavenum == 1)
             {
-                buildGruntAWave1(newWave, _content);
+                buildGruntAWave3(newWave, _content);
                 buildGruntBWave1(newWave, _content);
             } else if (wavenum == 2)
             {
@@ -57,7 +57,7 @@ namespace ExampleGame.waves
                     moves.addMovement(new MoveRight(6.0));
                 }
                 Vector2 pos = new Vector2(j * 100, j * 100);
-                Vector2 vel = new Vector2(1, 0);
+                Vector2 vel = new Vector2(-1, 0);
                 newWave.addEnemy(_creator.CreateEnemy(pos, vel, _content, moves));
             }
         }
@@ -70,12 +70,12 @@ namespace ExampleGame.waves
                 EnemyMovements moves = new EnemyMovements();
                 for (int i = 0; i < 10; i++)
                 {
-                    moves.addMovement(new MoveRight(6.0));
                     moves.addMovement(new MoveLeft(6.0));
+                    moves.addMovement(new MoveRight(6.0));
                     
                 }
                 Vector2 pos = new Vector2(800 - (j * 100), height );
-                Vector2 vel = new Vector2(1, 0);
+                Vector2 vel = new Vector2(-1, 0);
                 newWave.addEnemy(_creator.CreateEnemy(pos, vel, _content, moves));
                 height += 100;
             }
@@ -93,7 +93,7 @@ namespace ExampleGame.waves
                     moves.addMovement(new MoveUp(3.0));
                 }
                 Vector2 pos = new Vector2(j * 100, 0);
-                Vector2 vel = new Vector2(0, 1);
+                Vector2 vel = new Vector2(-1, 1);
                 newWave.addEnemy(_creator.CreateEnemy(pos, vel, _content, moves));
             }
         }
@@ -109,7 +109,7 @@ namespace ExampleGame.waves
                     moves.addMovement(new MoveUpLeft(3.0));
                 }
                 Vector2 pos = new Vector2(j * 100, 0);
-                Vector2 vel = new Vector2(0, 1);
+                Vector2 vel = new Vector2(-1, 1);
                 newWave.addEnemy(_creator.CreateEnemy(pos, vel, _content, moves));
             }
         }
@@ -127,7 +127,7 @@ namespace ExampleGame.waves
 
                 }
                 Vector2 pos = new Vector2(width, 300);
-                Vector2 vel = new Vector2(0, 1);
+                Vector2 vel = new Vector2(-1, 1);
                 newWave.addEnemy(_creator.CreateEnemy(pos, vel, _content, moves));
                 width += 100;
             }
