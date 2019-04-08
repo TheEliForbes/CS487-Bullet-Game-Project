@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace ExampleGame
 {
     /// <summary>
-    /// This is the main type for your game.
+    /// This is the main type for the game.
     /// </summary>
     public class Game1 : Game
     {
@@ -82,9 +82,7 @@ namespace ExampleGame
             }
 
             _currentState.Update(gameTime);
-
-            _currentState.PostUpdate(gameTime);
-                        
+                                    
             base.Update(gameTime);
             
         }

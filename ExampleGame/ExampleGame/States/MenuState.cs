@@ -63,11 +63,6 @@ namespace ExampleGame.States
             spriteBatch.End();
         }
 
-        public override void PostUpdate(GameTime gameTime)
-        {
-            // remove sprites if they are unneeded
-        }
-
         public override void Update(GameTime gameTime)
         {
             foreach (var component in _components)

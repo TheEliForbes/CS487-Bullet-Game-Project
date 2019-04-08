@@ -1,26 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using ExampleGame.Entities;
 using ExampleGame.Entities.BulletTypes;
 using ExampleGame.Factories;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using System;
+using System.Timers;
+using System.Collections.Generic;
+using ExampleGame.Movements;
 
-namespace ExampleGame.Entities
+namespace ExampleGame.PlayerFolder
 {
     class Player : Entity
     {
-        private float speed;
-        private float originalSpeed;
-        private int slowModeModifier;
+        private double speed;
+        private double originalSpeed;
+        private double slowModeModifier;
         private bool isGod;
-        private List<Bullets> bullets; //may depend on design
-        private BulletFactory factory;
+        public List<Bullets> bullets; //may depend on design
+        public BulletFactory factory;
         ContentManager Content;
+        private int winner = 0;
+        private int lives = 0;
+        private Vector2 initPos;
+        public bool invincible = false;
+        private static Timer invincibilityTimer;
+        private Vector2 velocity = new Vector2(-1, 1);
 
         //Key mapping
         Keys upKey = Keys.Up;
@@ -30,6 +36,11 @@ namespace ExampleGame.Entities
         Keys shootKey = Keys.Space;
         Keys slowMode = Keys.S;
         Keys godMode = Keys.G;
+
+        Keys win = Keys.W;
+        Keys die = Keys.D;
+        Keys hit = Keys.H; //for life testing
+        
         KeyboardState pastKey; //2nd most recent key command
 
         public Player(ContentManager gameContent)
@@ -55,9 +66,11 @@ namespace ExampleGame.Entities
         }
         public void Initialize(float initSpeed, Vector2 initPosition)
         {
+            initPos = initPosition;
             originalSpeed = speed = initSpeed;
             position = initPosition;
-            slowModeModifier = 4;
+            slowModeModifier = 4.0;
+            lives = 3;
         }
         public void Load(Texture2D initTexture)
         {
@@ -66,20 +79,37 @@ namespace ExampleGame.Entities
         public override void Update(GameTime gameTime)
         {
             var kstate = Keyboard.GetState();
-            if (kstate.IsKeyDown(slowMode) && pastKey.IsKeyUp(slowMode))
+
+            if (kstate.IsKeyDown(slowMode))
                 speed = (speed == originalSpeed) ? speed / slowModeModifier : speed * slowModeModifier;
 
             if (kstate.IsKeyDown(godMode) && pastKey.IsKeyUp(godMode))
+            {
                 isGod = !isGod;
+                invincible = !invincible;
+            }
+
+            // for testing the win states
+            if (kstate.IsKeyDown(win) && pastKey.IsKeyUp(win))
+                winner = 1; // win -> see win screen
+
+            //for testing lose life
+            if (kstate.IsKeyDown(hit) && pastKey.IsKeyUp(hit))
+            {
+                if (invincible == false)
+                {
+                    takeHit(); //player is hit   
+                }
+            }
 
             if (kstate.IsKeyDown(upKey))
-                position.Y -= speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                position = new MoveUp(speed).getNewPosition(position,velocity);
             if (kstate.IsKeyDown(downKey))
-                position.Y += speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                position = new MoveDown(speed).getNewPosition(position, velocity);
             if (kstate.IsKeyDown(leftKey))
-                position.X -= speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                position = new MoveLeft(speed).getNewPosition(position, velocity);
             if (kstate.IsKeyDown(rightKey))
-                position.X += speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                position = new MoveRight(speed).getNewPosition(position, velocity);
             if (kstate.IsKeyDown(shootKey) && pastKey.IsKeyUp(shootKey))
             {
                 shoot();
@@ -116,7 +146,7 @@ namespace ExampleGame.Entities
             }
             else
             {
-                BulletSpread spread = (BulletSpread)factory.bulletFactory("spread", position, Vector2.Zero, true, 5);
+                BulletSpread spread = (BulletSpread)factory.bulletFactory("spread", position, Vector2.Zero, true, 5, -1);
                 foreach (Bullets bullet in spread.bullets)
                 {
                     if (bullets.Count < 80)
@@ -126,11 +156,64 @@ namespace ExampleGame.Entities
                 }
             }
         }
+
         public void boundsCheck(GraphicsDeviceManager graphics)
         {
             //----------------v This MathHelper.Min(...) blob is essentially collision detection?
             position.X = MathHelper.Min(MathHelper.Max(texture.Width / 2, position.X), graphics.PreferredBackBufferWidth - texture.Width / 2);
             position.Y = MathHelper.Min(MathHelper.Max(texture.Height / 2, position.Y), graphics.PreferredBackBufferHeight - texture.Height / 2);
+        }
+
+        //call when the player is hit by a bullet
+        public void takeHit()
+        {
+            movePositionToInitPos(); //move player to initPos
+            loseLife(); //lose a life update texture for lives
+            startInvincibility(); //5 seconds of invincibility
+        }
+
+        private void startInvincibility()
+        {
+            texture = Content.Load<Texture2D>("playerShield");
+            invincible = true;
+            invincibilityTimer = new System.Timers.Timer(5000);
+            invincibilityTimer.Elapsed += setInvincibilityFalse;
+            invincibilityTimer.Enabled = true;
+            invincibilityTimer.AutoReset = false;
+        }
+        private void setInvincibilityFalse(Object source, ElapsedEventArgs e)
+        {
+            invincible = false;
+            texture = Content.Load<Texture2D>("player");
+        }
+
+        private void movePositionToInitPos()
+        {
+            position = initPos;
+        }
+        public void removeBullets()
+        {
+            bullets.Clear();
+        }
+
+        private void loseLife()
+        {
+            lives -= 1;
+        }
+
+        public void AddLife(int number)
+        {
+            lives += number;
+        }
+
+        public int IsWinner()
+        {
+            return winner;
+        }
+        
+        public int getLives()
+        {
+            return lives;
         }
     }
 }

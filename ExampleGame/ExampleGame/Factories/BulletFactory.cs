@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using ExampleGame.Entities.BulletTypes;
+using ExampleGame.Movements;
 
 namespace ExampleGame.Factories
 {
@@ -22,11 +23,33 @@ namespace ExampleGame.Factories
         {
             switch (bulletType)
             {
-                case 1: return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility);
+                case 1: return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility, new MoveDown(7.0));
                 case 5: return new BulletSpread(position, Content, 1);
                 case 6: return new FinalBossBullets(position, Content, 1);
                 case 7: return new MidBossSpread(position, Content, 1);
-                default: return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility);
+                default: return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility, new MoveDown(7.0));
+            }
+        }
+        public Bullets bulletFactory(String bulletName, Vector2 position, Vector2 velocity, bool visibility, int bulletType, int direction)
+        {
+            switch (bulletType)
+            {
+                case 1: return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility, new MoveDown(7.0));
+                case 5: return new BulletSpread(position, Content, direction);
+                case 6: return new FinalBossBullets(position, Content, direction);
+                case 7: return new MidBossSpread(position, Content, direction);
+                default: return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility, new MoveDown(7.0));
+            }
+        }
+        public Bullets bulletFactory(String bulletName, Vector2 position, Vector2 velocity, bool visibility, int bulletType, Movement move)
+        {
+            switch (bulletType)
+            {
+                case 1: return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility, move);
+                case 5: return new BulletSpread(position, Content, 1);
+                case 6: return new FinalBossBullets(position, Content, 1);
+                case 7: return new MidBossSpread(position, Content, 1);
+                default: return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility, move);
             }
         }
     }
