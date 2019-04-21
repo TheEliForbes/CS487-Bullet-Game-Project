@@ -151,3 +151,10 @@ C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Con
 C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives8.xnb
 C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives9.xnb
 C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\reward.xnb
+C:\Users\JakeSSD\Documents\WSU\SPRING 2019\487\GAME\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives4.xnb
+C:\Users\JakeSSD\Documents\WSU\SPRING 2019\487\GAME\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives5.xnb
+C:\Users\JakeSSD\Documents\WSU\SPRING 2019\487\GAME\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives6.xnb
+C:\Users\JakeSSD\Documents\WSU\SPRING 2019\487\GAME\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives7.xnb
+C:\Users\JakeSSD\Documents\WSU\SPRING 2019\487\GAME\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives8.xnb
+C:\Users\JakeSSD\Documents\WSU\SPRING 2019\487\GAME\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives9.xnb
+C:\Users\JakeSSD\Documents\WSU\SPRING 2019\487\GAME\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\reward.xnb

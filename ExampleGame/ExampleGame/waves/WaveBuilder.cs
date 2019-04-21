@@ -39,8 +39,8 @@ namespace ExampleGame.waves
             else if (wavenum == 5)
             {
                 buildFinalBossWave(newWave, _content);
-                buildGruntAWave2(newWave, _content);
-                buildGruntBWave1(newWave, _content);
+                //buildGruntAWave2(newWave, _content);
+                //buildGruntBWave1(newWave, _content);
             }
             return newWave;
         }

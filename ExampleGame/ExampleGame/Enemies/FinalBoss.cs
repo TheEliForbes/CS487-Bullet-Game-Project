@@ -22,6 +22,7 @@ namespace ExampleGame.Enemies
 
             bullets = new List<Bullets>();
             factory = new BulletFactory(gameContent);
+            lives = 3;
         }
 
         public override void Initialize(float initSpeed, Vector2 initPosition)
@@ -36,10 +37,12 @@ namespace ExampleGame.Enemies
             rightward = (movementTime < 2f) ? true : false;
             position = (rightward == true) ? position + velocity : position - velocity;
             movementTime = (((int)movementTime) == 4) ? 0 : movementTime;
-            if ((int)movementTime % 4 == 0)
-            { //This^^ is kinda funky, could probably be improved
-                shoot();
+            if (lives == 3)
+            { 
+                shoot(); //shoot forever if 3 lives (random bullets)
             }
+            else if((int)movementTime % 4 == 0)
+                shoot();
 
             bulletsUpdateAndCleanup(gameTime);
 
@@ -56,15 +59,28 @@ namespace ExampleGame.Enemies
 
         public override void shoot()
         {
-            FinalBossBullets spread = (FinalBossBullets)factory.bulletFactory("finalBossBullets", position, Vector2.Zero, true, 6);
-            foreach (Bullets bullet in spread.bullets)
+            if(lives == 3)
             {
-                if (bullets.Count < 400)
+                FinalBossRandomBullets spread = (FinalBossRandomBullets)factory.bulletFactory("finalBossRandomBullets", position, Vector2.Zero, true, 8);
+                foreach (Bullets bullet in spread.bullets)
                 {
-                    bullets.Add(bullet);
+                    if (bullets.Count < 400)
+                    {
+                        bullets.Add(bullet);
+                    }
                 }
             }
-
+            else if (lives == 2)
+            {
+                FinalBossBullets spread = (FinalBossBullets)factory.bulletFactory("finalBossRandomBullets", position, Vector2.Zero, true,6);
+                foreach (Bullets bullet in spread.bullets)
+                {
+                    if (bullets.Count < 400)
+                    {
+                        bullets.Add(bullet);
+                    }
+                }
+            }
         }
 
         public override void bulletsUpdateAndCleanup(GameTime gameTime)

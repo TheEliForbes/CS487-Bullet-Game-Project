@@ -7,7 +7,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{13271469-E322-4A13-B54C-2BFBAC0917C6}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ExampleGame</RootNamespace>
     <AssemblyName>ExampleGame</AssemblyName>
@@ -41,6 +41,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Enemies\EnemyCreator.cs" />
     <Compile Include="Controls\Button.cs" />
@@ -48,6 +51,7 @@
     <Compile Include="Enemies\GruntA.cs" />
     <Compile Include="Enemies\GruntB.cs" />
     <Compile Include="Enemies\MidBoss.cs" />
+    <Compile Include="Entities\BulletTypes\FinalBossRandomBullets.cs" />
     <Compile Include="Entities\Component.cs" />
     <Compile Include="Entities\Enemy.cs" />
     <Compile Include="Entities\BulletTypes\Bullets.cs" />

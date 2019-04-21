@@ -27,6 +27,7 @@ namespace ExampleGame.Factories
                 case 5: return new BulletSpread(position, Content, 1);
                 case 6: return new FinalBossBullets(position, Content, 1);
                 case 7: return new MidBossSpread(position, Content, 1);
+                case 8: return new FinalBossRandomBullets(position, Content, 1);
                 default: return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility, new MoveDown(7.0));
             }
         }
@@ -38,6 +39,7 @@ namespace ExampleGame.Factories
                 case 5: return new BulletSpread(position, Content, direction);
                 case 6: return new FinalBossBullets(position, Content, direction);
                 case 7: return new MidBossSpread(position, Content, direction);
+                case 8: return new FinalBossRandomBullets(position, Content, 1);
                 default: return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility, new MoveDown(7.0));
             }
         }
@@ -49,6 +51,7 @@ namespace ExampleGame.Factories
                 case 5: return new BulletSpread(position, Content, 1);
                 case 6: return new FinalBossBullets(position, Content, 1);
                 case 7: return new MidBossSpread(position, Content, 1);
+                case 8: return new FinalBossRandomBullets(position, Content, 1);
                 default: return new Bullets(Content.Load<Texture2D>(bulletName), position, velocity, visibility, move);
             }
         }
