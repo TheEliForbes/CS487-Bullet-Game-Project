@@ -80,7 +80,6 @@ namespace ExampleGame.waves
                 height += 100;
             }
         }
-
         private void buildGruntAWave2(EnemyWave newWave, ContentManager _content)
         {
             _creator = new ConcreteGruntACreator();
@@ -132,19 +131,18 @@ namespace ExampleGame.waves
                 width += 100;
             }
         }
-
         private void buildMidBossWave(EnemyWave newWave, ContentManager _content)
         {
             _creator = new ConcreteMidBossCreator();
             Vector2 pos = new Vector2(300, 50);
             newWave.addEnemy(_creator.CreateEnemy(pos, Vector2.One, _content, new EnemyMovements()));
         }
-
         private void buildFinalBossWave(EnemyWave newWave, ContentManager _content)
         {
             _creator = new ConcreteFinalBossCreator();
             Vector2 pos = new Vector2(300, 50);
             newWave.addEnemy(_creator.CreateEnemy(pos, Vector2.One, _content, new EnemyMovements()));
         }
+        
     }
 }
