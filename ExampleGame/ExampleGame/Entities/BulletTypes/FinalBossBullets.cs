@@ -28,14 +28,20 @@ namespace ExampleGame.Entities.BulletTypes
             Content = gameContent;
             bullets = new List<Bullets>();
             factory = new BulletFactory(gameContent);
-            //bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(0, (10 * directionModifier)), true, 1, new MoveDown(7.0)));
-            //bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(-5, (10 * directionModifier)), true, 1, new MoveDownLeft(7.0)));
-            //bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(-10, (10 * directionModifier)), true, 1, new MoveDownLeft(7.0)));
-           //bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(-5, (10 * directionModifier)), true, 1, new MoveDownRight(7.0)));
-            //bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(-10, (10 * directionModifier)), true, 1, new MoveDownRight(7.0)));
+            BulletMovements down = new BulletMovements();
+            BulletMovements downLeft = new BulletMovements();
+            BulletMovements downRight = new BulletMovements();
+            down.addMovement(new MoveDown(7.0));
+            downLeft.addMovement(new MoveDownLeft(7.0));
+            downRight.addMovement(new MoveDownRight(7.0));
+            bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(0, (10 * directionModifier)), true, 1, down));
+            bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(-5, (10 * directionModifier)), true, 1, downLeft));
+            bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(-10, (10 * directionModifier)), true, 1, downLeft));
+            bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(-5, (10 * directionModifier)), true, 1, downRight));
+            bullets.Add(factory.bulletFactory("bullet", midShotPos, new Vector2(-10, (10 * directionModifier)), true, 1, downRight));
 
-           // bullets.Add(factory.bulletFactory("bullet", leftShotPot, new Vector2(-1, (10 * directionModifier)), true, 1, new MoveDown(7.0)));
-            //bullets.Add(factory.bulletFactory("bullet", rightShotPos, new Vector2(-1, (10 * directionModifier)), true, 1, new MoveDown(7.0)));
+            bullets.Add(factory.bulletFactory("bullet", leftShotPot, new Vector2(-1, (10 * directionModifier)), true, 1, down));
+            bullets.Add(factory.bulletFactory("bullet", rightShotPos, new Vector2(-1, (10 * directionModifier)), true, 1, down));
             
         }
     }

@@ -64,10 +64,7 @@ namespace ExampleGame.Enemies
                 FinalBossRandomBullets spread = (FinalBossRandomBullets)factory.bulletFactory("finalBossRandomBullets", position, Vector2.Zero, true, 8);
                 foreach (Bullets bullet in spread.bullets)
                 {
-                    if (bullets.Count < 400)
-                    {
-                        bullets.Add(bullet);
-                    }
+                    bullets.Add(bullet);
                 }
             }
             else if (lives == 2)
@@ -75,10 +72,7 @@ namespace ExampleGame.Enemies
                 FinalBossBullets spread = (FinalBossBullets)factory.bulletFactory("finalBossBullets", position, Vector2.Zero, true,6);
                 foreach (Bullets bullet in spread.bullets)
                 {
-                    if (bullets.Count < 400)
-                    {
-                        bullets.Add(bullet);
-                    }
+                    bullets.Add(bullet);
                 }
             }
             else if (lives == 1)
@@ -86,10 +80,7 @@ namespace ExampleGame.Enemies
                 FinalBossBullets spread = (FinalBossBullets)factory.bulletFactory("finalBossBullets", position, Vector2.Zero, true, 6);
                 foreach (Bullets bullet in spread.bullets)
                 {
-                    if (bullets.Count < 400)
-                    {
-                        bullets.Add(bullet);
-                    }
+                    bullets.Add(bullet);
                 }
             }
         }
