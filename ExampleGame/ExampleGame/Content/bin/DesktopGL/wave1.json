@@ -1,0 +1,136 @@
+﻿{
+  "enemies": [
+    {
+      "type": "GruntA",
+      "startPos": [ 0, 0 ],
+      "startVel": [ -1, 1 ],
+      "movements": [
+        {
+          "type": "moveRight",
+          "duration": 6.0
+        },
+        {
+          "type": "moveLeft",
+          "duration": 6.0
+        }
+      ],
+      "movementRepetitions": 10
+    },
+    {
+      "type": "GruntA",
+      "startPos": [ 100, 100 ],
+      "startVel": [ -1, 1 ],
+      "movements": [
+        {
+          "type": "moveRight",
+          "duration": 6.0
+        },
+        {
+          "type": "moveLeft",
+          "duration": 6.0
+        }
+      ],
+      "movementRepetitions": 10
+    },
+    {
+      "type": "GruntA",
+      "startPos": [ 200, 200 ],
+      "startVel": [ -1, 1 ],
+      "movements": [
+        {
+          "type": "moveRight",
+          "duration": 6.0
+        },
+        {
+          "type": "moveLeft",
+          "duration": 6.0
+        }
+      ],
+      "movementRepetitions": 10
+    },
+    {
+      "type": "GruntA",
+      "startPos": [ 300, 300 ],
+      "startVel": [ -1, 1 ],
+      "movements": [
+        {
+          "type": "moveRight",
+          "duration": 6.0
+        },
+        {
+          "type": "moveLeft",
+          "duration": 6.0
+        }
+      ],
+      "movementRepetitions": 10
+    },
+    {
+      "type": "GruntB",
+      "startPos": [ 800, 50 ],
+      "startVel": [ -1, 1 ],
+      "movements": [
+        {
+          "type": "moveLeft",
+          "duration": 6.0
+        },
+        {
+          "type": "moveRight",
+          "duration": 6.0
+        }
+
+      ],
+      "movementRepetitions": 10
+    },
+    {
+      "type": "GruntB",
+      "startPos": [ 700, 150 ],
+      "startVel": [ -1, 1 ],
+      "movements": [
+        {
+          "type": "moveLeft",
+          "duration": 6.0
+        },
+        {
+          "type": "moveRight",
+          "duration": 6.0
+        }
+
+      ],
+      "movementRepetitions": 10
+    },
+    {
+      "type": "GruntB",
+      "startPos": [ 600, 250 ],
+      "startVel": [ -1, 1 ],
+      "movements": [
+        {
+          "type": "moveLeft",
+          "duration": 6.0
+        },
+        {
+          "type": "moveRight",
+          "duration": 6.0
+        }
+
+      ],
+      "movementRepetitions": 10
+    },
+    {
+      "type": "GruntB",
+      "startPos": [ 500, 350 ],
+      "startVel": [ -1, 1 ],
+      "movements": [
+        {
+          "type": "moveLeft",
+          "duration": 6.0
+        },
+        {
+          "type": "moveRight",
+          "duration": 6.0
+        }
+
+      ],
+      "movementRepetitions": 10
+    }
+  ]
+}
