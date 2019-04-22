@@ -1,4 +1,5 @@
 ﻿using ExampleGame.Enemies;
+using ExampleGame.Factories;
 using ExampleGame.Movements;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -19,7 +20,7 @@ namespace ExampleGame.waves
             {
                 buildGruntAWave1(newWave, _content);
                 buildGruntBWave1(newWave, _content);
-                buildWaveFromFile(newWave, "wave1.json", _content);
+                //buildWaveFromFile(newWave, "wave1.json", _content);
             } else if (wavenum == 2)
             {
                 buildGruntAWave2(newWave, _content);
@@ -148,25 +149,38 @@ namespace ExampleGame.waves
         {
             waveObj JSON = new JavaScriptSerializer().Deserialize<waveObj>(File.ReadAllText(dirpath + filename));
             
-            for(int i = 0; i < JSON.enemies.Count; i++)
+            for(int enemyIdx = 0; enemyIdx < JSON.enemies.Count; enemyIdx++)
             {
-                EnemyMovements moves = new EnemyMovements();
-                if (JSON.enemies[i].type == "GruntA")
+                
+                if (JSON.enemies[enemyIdx].type == "GruntA")
                 {
                     _creator = new ConcreteGruntACreator();
                 }
-                else if(JSON.enemies[i].type == "GruntB")
+                else if(JSON.enemies[enemyIdx].type == "GruntB")
                 {
                     _creator = new ConcreteGruntBCreator();
                 }
-                else if (JSON.enemies[i].type == "MidBoss")
+                else if (JSON.enemies[enemyIdx].type == "MidBoss")
                 {
                     _creator = new ConcreteMidBossCreator();
                 }
-                else if (JSON.enemies[i].type == "FinalBoss")
+                else if (JSON.enemies[enemyIdx].type == "FinalBoss")
                 {
                     _creator = new ConcreteFinalBossCreator();
                 }
+                EnemyMovements moves = new EnemyMovements();
+                MovementFactory movementFactory = new MovementFactory();
+                for(int rep = 0; rep < JSON.enemies[enemyIdx].movementRepetitions; rep++)
+                {
+                    for(int moveIdx = 0; moveIdx < JSON.enemies[enemyIdx].movements.Count; moveIdx++)
+                    {
+                        moves.addMovement(movementFactory.makeMovement(JSON.enemies[enemyIdx].movements[moveIdx].type, JSON.enemies[enemyIdx].movements[moveIdx].duration));
+                    }
+                }
+
+                Vector2 pos = new Vector2(JSON.enemies[enemyIdx].startPos[0], JSON.enemies[enemyIdx].startPos[1]);
+                Vector2 vel = new Vector2(JSON.enemies[enemyIdx].startVel[0], JSON.enemies[enemyIdx].startVel[1]);
+                newWave.addEnemy(_creator.CreateEnemy(pos, vel, _content, moves));
 
             }
         }
