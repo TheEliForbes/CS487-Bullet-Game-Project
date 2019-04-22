@@ -22,7 +22,7 @@ namespace ExampleGame.Enemies
 
             bullets = new List<Bullets>();
             factory = new BulletFactory(gameContent);
-            lives = 3;
+            lives = 1;
         }
 
         public override void Initialize(float initSpeed, Vector2 initPosition)
@@ -41,7 +41,7 @@ namespace ExampleGame.Enemies
             { 
                 shoot(); //shoot forever if 3 lives (random bullets)
             }
-            else if((int)movementTime % 4 == 0)
+            else if(bullets.Count <= 0)
                 shoot();
 
             bulletsUpdateAndCleanup(gameTime);
@@ -77,7 +77,7 @@ namespace ExampleGame.Enemies
             }
             else if (lives == 1)
             {
-                FinalBossBullets spread = (FinalBossBullets)factory.bulletFactory("finalBossBullets", position, Vector2.Zero, true, 6);
+                FinalBossTopBottom spread = (FinalBossTopBottom)factory.bulletFactory("finalBossTopBottom", position, Vector2.Zero, true, 9);
                 foreach (Bullets bullet in spread.bullets)
                 {
                     bullets.Add(bullet);

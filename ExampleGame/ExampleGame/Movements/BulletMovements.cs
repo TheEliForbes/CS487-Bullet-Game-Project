@@ -33,6 +33,10 @@ namespace ExampleGame.Movements
                 return moves[0];
             return new MoveDown(5.0);
         }
+        public void clearMovements()
+        {
+            moves.RemoveRange(0,moves.Count);
+        }
         public bool isEmpty()
         {
             if(moves.Count > 0)

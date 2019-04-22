@@ -51,6 +51,8 @@
     <Compile Include="Enemies\GruntA.cs" />
     <Compile Include="Enemies\GruntB.cs" />
     <Compile Include="Enemies\MidBoss.cs" />
+    <Compile Include="Entities\BulletTypes\FinalBossSpiral.cs" />
+    <Compile Include="Entities\BulletTypes\FinalBossTopBottom.cs" />
     <Compile Include="Entities\BulletTypes\FinalBossRandomBullets.cs" />
     <Compile Include="Entities\Component.cs" />
     <Compile Include="Entities\Enemy.cs" />
