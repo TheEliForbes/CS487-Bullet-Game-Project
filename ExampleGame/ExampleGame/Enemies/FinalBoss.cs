@@ -72,7 +72,18 @@ namespace ExampleGame.Enemies
             }
             else if (lives == 2)
             {
-                FinalBossBullets spread = (FinalBossBullets)factory.bulletFactory("finalBossRandomBullets", position, Vector2.Zero, true,6);
+                FinalBossBullets spread = (FinalBossBullets)factory.bulletFactory("finalBossBullets", position, Vector2.Zero, true,6);
+                foreach (Bullets bullet in spread.bullets)
+                {
+                    if (bullets.Count < 400)
+                    {
+                        bullets.Add(bullet);
+                    }
+                }
+            }
+            else if (lives == 1)
+            {
+                FinalBossBullets spread = (FinalBossBullets)factory.bulletFactory("finalBossBullets", position, Vector2.Zero, true, 6);
                 foreach (Bullets bullet in spread.bullets)
                 {
                     if (bullets.Count < 400)

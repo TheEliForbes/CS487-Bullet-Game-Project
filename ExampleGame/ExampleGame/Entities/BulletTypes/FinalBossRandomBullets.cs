@@ -26,17 +26,19 @@ namespace ExampleGame.Entities.BulletTypes
             bullets = new List<Bullets>();
             factory = new BulletFactory(gameContent);
 
-            Vector2 pos = new Vector2(random.Next(0,1000), position.Y +random.Next(0,40));
-            int randDir = random.Next(0, 2);
+            Vector2 pos = new Vector2(random.Next(0,1000),random.Next(0,40));
+            int randDir = random.Next(0, 3);
+            BulletMovements moves = new BulletMovements();
+
             Movement mov = new MoveDownLeft(7.0);
                 if(randDir == 0)
-                    mov = new MoveDown(7.0);
+                    moves.addMovement(new MoveDown(7.0));
                 else if (randDir == 1)
-                    mov = new MoveDownLeft(7.0);
+                    moves.addMovement(new MoveDownLeft(7.0));
                 else if(randDir == 2)
-                    mov = new MoveDownRight(7.0);
+                    moves.addMovement(new MoveDownRight(7.0));
 
-            bullets.Add(factory.bulletFactory("bullet", pos, new Vector2(1, (2 * directionModifier)), true, 1, mov));
+            bullets.Add(factory.bulletFactory("bullet", pos, new Vector2(1, (2 * directionModifier)), true, 1, moves));
         }
     }
 }

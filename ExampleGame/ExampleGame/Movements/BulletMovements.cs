@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ExampleGame.Movements
 {
-    class EnemyMovements
+    class BulletMovements
     {
         private List<Movement> moves;
        
-        public EnemyMovements()
+        public BulletMovements()
         {
             moves = new List<Movement>();
         }

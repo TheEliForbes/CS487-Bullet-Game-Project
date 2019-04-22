@@ -63,6 +63,7 @@
     <Compile Include="Entities\Reward.cs" />
     <Compile Include="Factories\BulletFactory.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Movements\BulletMovements.cs" />
     <Compile Include="Movements\EnemyMovements.cs" />
     <Compile Include="Movements\MoveDown.cs" />
     <Compile Include="Movements\MoveDownLeft.cs" />

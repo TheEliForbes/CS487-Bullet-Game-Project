@@ -25,11 +25,11 @@ namespace ExampleGame.Entities.BulletTypes
             Content = gameContent;
             bullets = new List<Bullets>();
             factory = new BulletFactory(gameContent);
-            bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(0, (-10 * directionModifier)), true, 1, new MoveUp(7.0)));
-            bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(-5, (-10 * directionModifier)), true, 1, new MoveUpLeft(7.0)));
-            bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(-10, (-10 * directionModifier)), true, 1, new MoveUpLeft(7.0)));
-            bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(-5, (-10 * directionModifier)), true, 1, new MoveUpRight(7.0)));
-            bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(-10, (-10 * directionModifier)), true, 1, new MoveUpRight(7.0)));
+            //bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(0, (-10 * directionModifier)), true, 1, new MoveUp(7.0)));
+            //bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(-5, (-10 * directionModifier)), true, 1, new MoveUpLeft(7.0)));
+            //bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(-10, (-10 * directionModifier)), true, 1, new MoveUpLeft(7.0)));
+            //bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(-5, (-10 * directionModifier)), true, 1, new MoveUpRight(7.0)));
+            //bullets.Add(factory.bulletFactory("bullet", newPos, new Vector2(-10, (-10 * directionModifier)), true, 1, new MoveUpRight(7.0)));
         }
     }
 }
