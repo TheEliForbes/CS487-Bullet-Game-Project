@@ -151,3 +151,15 @@ C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Con
 C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives8.xnb
 C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives9.xnb
 C:\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\reward.xnb
+C:\Users\Ronald\Documents\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives1.xnb
+C:\Users\Ronald\Documents\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives2.xnb
+C:\Users\Ronald\Documents\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives3.xnb
+C:\Users\Ronald\Documents\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives4.xnb
+C:\Users\Ronald\Documents\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives5.xnb
+C:\Users\Ronald\Documents\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives6.xnb
+C:\Users\Ronald\Documents\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives7.xnb
+C:\Users\Ronald\Documents\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives8.xnb
+C:\Users\Ronald\Documents\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives9.xnb
+C:\Users\Ronald\Documents\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\playerShield.xnb
+C:\Users\Ronald\Documents\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\reward.xnb
+C:\Users\Ronald\Documents\487\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\wave1.json

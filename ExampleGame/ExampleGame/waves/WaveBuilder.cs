@@ -4,15 +4,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.IO;
+using System.Web.Script.Serialization;
 namespace ExampleGame.waves
 {
     class WaveBuilder
     {
         private EnemyCreator _creator;
+        private String dirpath = "../../../../content/";
         public EnemyWave BuildWave(int wavenum, ContentManager _content)
         {
             EnemyWave newWave = new EnemyWave(wavenum);
@@ -20,6 +19,7 @@ namespace ExampleGame.waves
             {
                 buildGruntAWave1(newWave, _content);
                 buildGruntBWave1(newWave, _content);
+                buildWaveFromFile(newWave, "wave1.json", _content);
             } else if (wavenum == 2)
             {
                 buildGruntAWave2(newWave, _content);
@@ -144,5 +144,48 @@ namespace ExampleGame.waves
             newWave.addEnemy(_creator.CreateEnemy(pos, Vector2.One, _content, new EnemyMovements()));
         }
         
+        private void buildWaveFromFile(EnemyWave newWave, String filename, ContentManager _content)
+        {
+            waveObj JSON = new JavaScriptSerializer().Deserialize<waveObj>(File.ReadAllText(dirpath + filename));
+            
+            for(int i = 0; i < JSON.enemies.Count; i++)
+            {
+                EnemyMovements moves = new EnemyMovements();
+                if (JSON.enemies[i].type == "GruntA")
+                {
+                    _creator = new ConcreteGruntACreator();
+                }
+                else if(JSON.enemies[i].type == "GruntB")
+                {
+                    _creator = new ConcreteGruntBCreator();
+                }
+                else if (JSON.enemies[i].type == "MidBoss")
+                {
+                    _creator = new ConcreteMidBossCreator();
+                }
+                else if (JSON.enemies[i].type == "FinalBoss")
+                {
+                    _creator = new ConcreteFinalBossCreator();
+                }
+
+            }
+        }
+    }
+    class waveObj
+    {
+        public List<enemyObj> enemies;
+    }
+    class enemyObj
+    {
+        public string type;
+        public List<int> startPos;
+        public List<int> startVel;
+        public List<moveObj> movements;
+        public int movementRepetitions;
+    }
+    class moveObj
+    {
+        public string type;
+        public double duration;
     }
 }

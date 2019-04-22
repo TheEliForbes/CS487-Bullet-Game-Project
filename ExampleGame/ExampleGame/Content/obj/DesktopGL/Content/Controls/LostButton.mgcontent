@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/LostButton.png</SourceFile>
-  <SourceTime>2019-04-05T11:09:04.0810053-07:00</SourceTime>
-  <DestFile>C:/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/bin/DesktopGL/Content/Controls/LostButton.xnb</DestFile>
-  <DestTime>2019-04-06T14:21:48.9031533-07:00</DestTime>
+  <SourceFile>C:/Users/Ronald/Documents/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/LostButton.png</SourceFile>
+  <SourceTime>2019-04-18T16:33:25.5662541-07:00</SourceTime>
+  <DestFile>C:/Users/Ronald/Documents/487/487sp19_bulletgame/ExampleGame/ExampleGame/Content/bin/DesktopGL/Content/Controls/LostButton.xnb</DestFile>
+  <DestTime>2019-04-21T16:15:50.6383644-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T08:35:54-08:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
