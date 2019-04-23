@@ -222,8 +222,8 @@ namespace ExampleGame.States
                 enemy.Update(_graphics, gameTime);
                 for (int i = 0; i < enemy.bullets.Count; i++)
                 {
-                    if (enemy.bullets[i].position.X <= player.position.X + 3 && enemy.bullets[i].position.Y <= player.position.Y + 3
-                            && enemy.bullets[i].position.X >= player.position.X - 3 && enemy.bullets[i].position.Y >= player.position.Y - 3
+                    if (enemy.bullets[i].position.X <= player.position.X + 14 && enemy.bullets[i].position.Y <= player.position.Y + 7
+                            && enemy.bullets[i].position.X >= player.position.X - 14 && enemy.bullets[i].position.Y >= player.position.Y - 7
                             && player.invincible == false)
                     {
                         player.takeHit();
@@ -232,8 +232,8 @@ namespace ExampleGame.States
                 }
                 for (int i = 0; i < player.bullets.Count; i++)
                 {
-                    if (player.bullets[i].position.X <= enemy.position.X + 10 && player.bullets[i].position.Y <= enemy.position.Y + 10
-                        && player.bullets[i].position.X >= enemy.position.X - 10 && player.bullets[i].position.Y >= enemy.position.Y - 10)
+                    if (player.bullets[i].position.X <= enemy.position.X + 16 && player.bullets[i].position.Y <= enemy.position.Y + 8
+                        && player.bullets[i].position.X >= enemy.position.X - 16 && player.bullets[i].position.Y >= enemy.position.Y - 8)
                     {
                         enemy.isVisible = false;
                         player.bullets[i].isVisible = false;
