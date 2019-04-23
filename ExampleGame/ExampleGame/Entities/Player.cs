@@ -146,7 +146,8 @@ namespace ExampleGame.PlayerFolder
             }
             else
             {
-                BulletSpread spread = (BulletSpread)factory.bulletFactory("spread", position, Vector2.Zero, true, 5, -1);
+                //BulletSpread spread = (BulletSpread)factory.bulletFactory("spread", position, Vector2.Zero, true, 5, -1);
+                BulletSpread spread = (BulletSpread)factory.bulletFactory("spread", position, Vector2.Zero, true, 5);
                 foreach (Bullets bullet in spread.bullets)
                 {
                     if (bullets.Count < 80)
