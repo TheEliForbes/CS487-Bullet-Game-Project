@@ -25,6 +25,8 @@ namespace ExampleGame
         public float movementTime;
         public bool rightward;
         public int lives;
+        public int width;
+        public int height;
 
         public abstract void Initialize(float initSpeed, Vector2 initPosition);
         public abstract void Update(GraphicsDeviceManager graphics, GameTime gameTime);

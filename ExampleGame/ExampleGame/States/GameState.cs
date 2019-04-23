@@ -235,9 +235,9 @@ namespace ExampleGame.States
                 for (int i = 0; i < player.bullets.Count; i++)
                 {
                     if (player.bullets[i].position.X + 4 >= enemy.position.X && 
-                        player.bullets[i].position.X <= enemy.position.X + 32 && 
+                        player.bullets[i].position.X <= enemy.position.X + enemy.width && 
                         player.bullets[i].position.Y + 18 >= enemy.position.Y && 
-                        player.bullets[i].position.Y <= enemy.position.Y + 16)
+                        player.bullets[i].position.Y <= enemy.position.Y + enemy.height)
                     {
                         enemy.lives -= 1;
                         player.bullets[i].isVisible = false;
