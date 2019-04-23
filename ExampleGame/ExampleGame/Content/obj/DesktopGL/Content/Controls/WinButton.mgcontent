@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/JakeSSD/Documents/WSU/SPRING 2019/487/GAME/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/WinButton.png</SourceFile>
-  <SourceTime>2019-04-23T11:17:10.3660449-07:00</SourceTime>
-  <DestFile>C:/Users/JakeSSD/Documents/WSU/SPRING 2019/487/GAME/487sp19_bulletgame/ExampleGame/ExampleGame/Content/bin/DesktopGL/Content/Controls/WinButton.xnb</DestFile>
-  <DestTime>2019-04-23T11:19:18.9837089-07:00</DestTime>
+  <SourceFile>C:/Users/Saif/487sp19_bulletgame/ExampleGame/ExampleGame/Content/Controls/WinButton.png</SourceFile>
+  <SourceTime>2019-03-06T08:13:40.3574815-08:00</SourceTime>
+  <DestFile>C:/Users/Saif/487sp19_bulletgame/ExampleGame/ExampleGame/Content/bin/DesktopGL/Content/Controls/WinButton.xnb</DestFile>
+  <DestTime>2019-04-23T11:40:44.8170494-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T08:35:54-08:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -226,7 +226,7 @@ namespace ExampleGame.States
                         enemy.bullets[i].position.X <= player.position.X + 28 && 
                         enemy.bullets[i].position.Y + 18 >= player.position.Y && 
                         enemy.bullets[i].position.Y <= player.position.Y + 14 && 
-                        player.invincible == false)
+                        player.invincible == false && player.isGod == false)
                     {
                         player.takeHit();
                         enemy.bullets[i].isVisible = false;
@@ -240,12 +240,11 @@ namespace ExampleGame.States
                         player.bullets[i].position.Y <= enemy.position.Y + 16)
                     {
                         enemy.lives -= 1;
+                        player.bullets[i].isVisible = false;
                         if (enemy.lives <= 0)
                         {
                             enemy.isVisible = false;
-                            player.bullets[i].isVisible = false;
                         }
-                        break;
                     }
                 }
             }

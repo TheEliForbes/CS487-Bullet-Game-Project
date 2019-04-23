@@ -40,3 +40,47 @@ C:\Users\JakeSSD\Documents\WSU\SPRING 2019\487\GAME\487sp19_bulletgame\ExampleGa
 C:\Users\JakeSSD\Documents\WSU\SPRING 2019\487\GAME\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.exe
 C:\Users\JakeSSD\Documents\WSU\SPRING 2019\487\GAME\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.pdb
 C:\Users\JakeSSD\Documents\WSU\SPRING 2019\487\GAME\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.csprojResolveAssemblyReference.cache
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\x86\SDL2.dll
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\x64\SDL2.dll
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\x86\soft_oal.dll
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\x64\soft_oal.dll
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\x86\libSDL2-2.0.so.0
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\x64\libSDL2-2.0.so.0
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\x86\libopenal.so.1
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\x64\libopenal.so.1
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\libSDL2-2.0.0.dylib
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\libopenal.1.dylib
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll.config
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\Controls\ButtonPlay.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\Controls\ButtonQuit.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\Controls\LostButton.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\Controls\WinButton.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\ball.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\bullet.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\finalBoss.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\invader1.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\invader2.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\invader3.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives1.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives2.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives3.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives4.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives5.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives6.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives7.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives8.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\lives9.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\midBoss.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\player.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\playerShield.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\reward.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\spaceBackground.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\Content\square.xnb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\ExampleGame.exe
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\ExampleGame.pdb
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.csprojAssemblyReference.cache
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.csproj.CoreCompileInputs.cache
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.csproj.CopyComplete
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.exe
+C:\Users\Saif\487sp19_bulletgame\ExampleGame\ExampleGame\obj\Debug\ExampleGame.pdb

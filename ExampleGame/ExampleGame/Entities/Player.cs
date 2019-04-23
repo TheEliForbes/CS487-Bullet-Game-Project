@@ -17,7 +17,7 @@ namespace ExampleGame.PlayerFolder
         private double speed;
         private double originalSpeed;
         private double slowModeModifier;
-        private bool isGod;
+        public bool isGod;
         public List<Bullets> bullets; //may depend on design
         public BulletFactory factory;
         ContentManager Content;
@@ -86,7 +86,6 @@ namespace ExampleGame.PlayerFolder
             if (kstate.IsKeyDown(godMode) && pastKey.IsKeyUp(godMode))
             {
                 isGod = !isGod;
-                invincible = !invincible;
             }
 
             // for testing the win states
