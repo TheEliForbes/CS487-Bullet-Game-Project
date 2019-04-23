@@ -46,7 +46,7 @@ namespace ExampleGame.States
             // in time values from the JSON script file
             SetWaveTimers();
             waves = new WaveBuilder();
-            EnemyWave wave1 = waves.BuildWave(5, _content);
+            EnemyWave wave1 = waves.BuildWave(1, _content);
             _enemies = wave1.getAllEnemies();
             waveNumber = 1;
         }
@@ -232,7 +232,7 @@ namespace ExampleGame.States
                 }
                 for (int i = 0; i < player.bullets.Count; i++)
                 {
-                    Console.WriteLine(enemy.lives);
+                    //Console.WriteLine(enemy.lives);
                     if (player.bullets[i].position.X <= enemy.position.X + 10 && player.bullets[i].position.Y <= enemy.position.Y + 10
                         && player.bullets[i].position.X >= enemy.position.X - 10 && player.bullets[i].position.Y >= enemy.position.Y - 10)
                     {
