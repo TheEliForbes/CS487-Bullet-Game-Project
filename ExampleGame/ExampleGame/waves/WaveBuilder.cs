@@ -25,6 +25,7 @@ namespace ExampleGame.waves
             {
                 buildGruntAWave2(newWave, _content);
                 buildGruntBWave2(newWave, _content);
+                //buildWaveFromFile(newWave, "wave2.json", _content);
             }
             else if (wavenum == 3)
             {

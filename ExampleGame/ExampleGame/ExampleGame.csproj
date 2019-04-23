@@ -139,6 +139,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="app.manifest" />
+    <None Include="Content\wave2.json" />
+    <None Include="Content\wave5.json" />
+    <None Include="Content\wave4.json" />
+    <None Include="Content\wave3.json" />
     <None Include="Content\wave1.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

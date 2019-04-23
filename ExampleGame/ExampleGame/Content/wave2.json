@@ -1,0 +1,136 @@
+﻿{
+  "enemies": [
+    {
+      "type": "GruntA",
+      "startPos": [ 0, 0 ],
+      "startVel": [ -1, 1 ],
+      "movements": [
+        {
+          "type": "MoveDown",
+          "duration": 3.0
+        },
+        {
+          "type": "MoveUp",
+          "duration": 3.0
+        }
+      ],
+      "movementRepetitions": 10
+    },
+    {
+      "type": "GruntA",
+      "startPos": [ 100, 0 ],
+      "startVel": [ -1, 1 ],
+      "movements": [
+        {
+          "type": "MoveDown",
+          "duration": 3.0
+        },
+        {
+          "type": "MoveUp",
+          "duration": 3.0
+        }
+      ],
+      "movementRepetitions": 10
+    },
+    {
+      "type": "GruntA",
+      "startPos": [ 200, 0 ],
+      "startVel": [ -1, 1 ],
+      "movements": [
+        {
+          "type": "MoveDown",
+          "duration": 3.0
+        },
+        {
+          "type": "MoveUp",
+          "duration": 3.0
+        }
+      ],
+      "movementRepetitions": 10
+    },
+    {
+      "type": "GruntA",
+      "startPos": [ 300, 0 ],
+      "startVel": [ -1, 1 ],
+      "movements": [
+        {
+          "type": "MoveDown",
+          "duration": 3.0
+        },
+        {
+          "type": "MoveUp",
+          "duration": 3.0
+        }
+      ],
+      "movementRepetitions": 10
+    },
+    {
+      "type": "GruntB",
+      "startPos": [ 350, 300 ],
+      "startVel": [ -1, 1 ],
+      "movements": [
+        {
+          "type": "MoveUp",
+          "duration": 3.0
+        },
+        {
+          "type": "MoveDown",
+          "duration": 3.0
+        }
+
+      ],
+      "movementRepetitions": 10
+    },
+    {
+      "type": "GruntB",
+      "startPos": [ 450, 300 ],
+      "startVel": [ -1, 1 ],
+      "movements": [
+        {
+          "type": "MoveUp",
+          "duration": 3.0
+        },
+        {
+          "type": "MoveDown",
+          "duration": 3.0
+        }
+
+      ],
+      "movementRepetitions": 10
+    },
+    {
+      "type": "GruntB",
+      "startPos": [ 550, 300 ],
+      "startVel": [ -1, 1 ],
+      "movements": [
+        {
+          "type": "MoveUp",
+          "duration": 3.0
+        },
+        {
+          "type": "MoveDown",
+          "duration": 3.0
+        }
+
+      ],
+      "movementRepetitions": 10
+    },
+    {
+      "type": "GruntB",
+      "startPos": [ 650, 300 ],
+      "startVel": [ -1, 1 ],
+      "movements": [
+        {
+          "type": "MoveUp",
+          "duration": 3.0
+        },
+        {
+          "type": "MoveDown",
+          "duration": 3.0
+        }
+
+      ],
+      "movementRepetitions": 10
+    }
+  ]
+}
