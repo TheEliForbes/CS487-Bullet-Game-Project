@@ -14,9 +14,6 @@ namespace ExampleGame.Enemies
             texture = gameContent.Load<Texture2D>("finalBoss");
             position = newPosition;
 
-            // = random.Next(-4, 4);
-            //randX = random.Next(-4, 1);
-
             movementTime = 0f; //parameter?
             velocity = new Vector2(1, 0);
 
