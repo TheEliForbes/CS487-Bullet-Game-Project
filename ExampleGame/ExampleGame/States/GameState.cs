@@ -46,7 +46,7 @@ namespace ExampleGame.States
             // in time values from the JSON script file
             SetWaveTimers();
             waves = new WaveBuilder();
-            EnemyWave wave1 = waves.BuildWave(5, _content);
+            EnemyWave wave1 = waves.BuildWave(1, _content);
             _enemies = wave1.getAllEnemies();
             waveNumber = 1;
         }
