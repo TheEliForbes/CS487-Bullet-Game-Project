@@ -32,6 +32,7 @@ namespace ExampleGame.waves
                 buildMidBossWave(newWave, _content);
                 buildGruntAWave1(newWave, _content);
                 buildGruntBWave1(newWave, _content);
+                //buildWaveFromFile(newWave, "wave3.json", _content);
             }
             else if (wavenum == 4)
             {
