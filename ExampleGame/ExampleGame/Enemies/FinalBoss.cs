@@ -14,14 +14,12 @@ namespace ExampleGame.Enemies
             texture = gameContent.Load<Texture2D>("finalBoss");
             position = newPosition;
 
-            // = random.Next(-4, 4);
-            //randX = random.Next(-4, 1);
-
             movementTime = 0f; //parameter?
             velocity = new Vector2(1, 0);
 
             bullets = new List<Bullets>();
             factory = new BulletFactory(gameContent);
+            lives = 3;
         }
 
         public override void Initialize(float initSpeed, Vector2 initPosition)
@@ -32,12 +30,23 @@ namespace ExampleGame.Enemies
 
         public override void Update(GraphicsDeviceManager graphics, GameTime gameTime)
         {
+            if (lives > 1)
+            {
+                rightward = (movementTime < 2f) ? true : false;
+                position = (rightward == true) ? position + velocity : position - velocity;
+            }
             movementTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            rightward = (movementTime < 2f) ? true : false;
-            position = (rightward == true) ? position + velocity : position - velocity;
             movementTime = (((int)movementTime) == 4) ? 0 : movementTime;
-            if ((int)movementTime % 4 == 0)
-            { //This^^ is kinda funky, could probably be improved
+            if (lives == 3)
+            {
+                shoot(); //shoot forever if 3 lives (random bullets)
+            }
+            else if (bullets.Count <= 0 && lives == 2)
+            {
+                shoot();
+            }
+            else if((int)movementTime % 4 == 0 && lives == 1)
+            {
                 shoot();
             }
 
@@ -56,15 +65,30 @@ namespace ExampleGame.Enemies
 
         public override void shoot()
         {
-            FinalBossBullets spread = (FinalBossBullets)factory.bulletFactory("finalBossBullets", position, Vector2.Zero, true, 6);
-            foreach (Bullets bullet in spread.bullets)
+            if(lives == 3)
             {
-                if (bullets.Count < 400)
+                FinalBossRandomBullets spread = (FinalBossRandomBullets)factory.bulletFactory("finalBossRandomBullets", position, Vector2.Zero, true, 8);
+                foreach (Bullets bullet in spread.bullets)
                 {
                     bullets.Add(bullet);
                 }
             }
-
+            else if (lives == 2)
+            {
+                FinalBossTopBottom spread = (FinalBossTopBottom)factory.bulletFactory("finalBossTopBottom", position, Vector2.Zero, true, 9);
+                foreach (Bullets bullet in spread.bullets)
+                {
+                    bullets.Add(bullet);
+                }
+            }
+            else if (lives == 1)
+            {
+                FinalBossSpiral spread = (FinalBossSpiral)factory.bulletFactory("finalBossSpiral", position, Vector2.Zero, true, 10);
+                foreach (Bullets bullet in spread.bullets)
+                {
+                    bullets.Add(bullet);
+                }
+            }
         }
 
         public override void bulletsUpdateAndCleanup(GameTime gameTime)

@@ -46,7 +46,7 @@ namespace ExampleGame.States
             // in time values from the JSON script file
             SetWaveTimers();
             waves = new WaveBuilder();
-            EnemyWave wave1 = waves.BuildWave(1, _content);
+            EnemyWave wave1 = waves.BuildWave(5, _content);
             _enemies = wave1.getAllEnemies();
             waveNumber = 1;
         }
@@ -239,8 +239,13 @@ namespace ExampleGame.States
                         player.bullets[i].position.Y + 18 >= enemy.position.Y && 
                         player.bullets[i].position.Y <= enemy.position.Y + 16)
                     {
-                        enemy.isVisible = false;
-                        player.bullets[i].isVisible = false;
+                        enemy.lives -= 1;
+                        if (enemy.lives <= 0)
+                        {
+                            enemy.isVisible = false;
+                            player.bullets[i].isVisible = false;
+                        }
+                        break;
                     }
                 }
             }

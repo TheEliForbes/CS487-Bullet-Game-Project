@@ -41,6 +41,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Enemies\EnemyCreator.cs" />
     <Compile Include="Controls\Button.cs" />
@@ -48,6 +51,9 @@
     <Compile Include="Enemies\GruntA.cs" />
     <Compile Include="Enemies\GruntB.cs" />
     <Compile Include="Enemies\MidBoss.cs" />
+    <Compile Include="Entities\BulletTypes\FinalBossSpiral.cs" />
+    <Compile Include="Entities\BulletTypes\FinalBossTopBottom.cs" />
+    <Compile Include="Entities\BulletTypes\FinalBossRandomBullets.cs" />
     <Compile Include="Entities\Component.cs" />
     <Compile Include="Entities\Enemy.cs" />
     <Compile Include="Entities\BulletTypes\Bullets.cs" />
@@ -60,6 +66,7 @@
     <Compile Include="Factories\BulletFactory.cs" />
     <Compile Include="Factories\MovementFactory.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Movements\BulletMovements.cs" />
     <Compile Include="Movements\EnemyMovements.cs" />
     <Compile Include="Movements\MoveDown.cs" />
     <Compile Include="Movements\MoveDownLeft.cs" />

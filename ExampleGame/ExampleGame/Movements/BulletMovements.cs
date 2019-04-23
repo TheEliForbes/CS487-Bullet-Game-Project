@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ExampleGame.Movements
 {
-    class EnemyMovements
+    class BulletMovements
     {
         private List<Movement> moves;
        
-        public EnemyMovements()
+        public BulletMovements()
         {
             moves = new List<Movement>();
         }
@@ -32,6 +32,10 @@ namespace ExampleGame.Movements
             if(moves.Count > 0)
                 return moves[0];
             return new MoveDown(5.0);
+        }
+        public void clearMovements()
+        {
+            moves.RemoveRange(0,moves.Count);
         }
         public bool isEmpty()
         {
