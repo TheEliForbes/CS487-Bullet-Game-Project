@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace ExampleGame.Movements
 {
-    class MoveUpLeft : Movement
+    class MoveDownLeft : Movement
     {
-        public MoveUpLeft(double newSeconds) : base(newSeconds)
+        public MoveDownLeft(double newSeconds) : base(newSeconds)
         {
         }
 
         //velocity: (-1,1)
         public override Vector2 getNewPosition(Vector2 position, Vector2 velocity)
         {
-            Movement up = new MoveUp(seconds);
+            Movement down = new MoveDown(seconds);
             Movement left = new MoveLeft(seconds);
-            Vector2 temp = left.getNewPosition(position, velocity);
-            return up.getNewPosition(temp, velocity);
+            Vector2 temp = down.getNewPosition(position, velocity);
+            return left.getNewPosition(temp, velocity);
         }
     }
 }

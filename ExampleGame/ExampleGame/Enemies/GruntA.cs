@@ -30,6 +30,9 @@ namespace ExampleGame.Enemies
 
             bullets = new List<Bullets>();
             factory = new BulletFactory(gameContent);
+            lives = 1;
+            width = 32;
+            height = 16;
         }
         public GruntA(Vector2 newPosition, Vector2 newVelocity, ContentManager gameContent,EnemyMovements newMoves)
         {
@@ -41,7 +44,10 @@ namespace ExampleGame.Enemies
             this.moves = newMoves;
 
             bullets = new List<Bullets>();
-            factory = new BulletFactory(gameContent);  
+            factory = new BulletFactory(gameContent);
+            lives = 1;
+            width = 32;
+            height = 16;
         }
 
 

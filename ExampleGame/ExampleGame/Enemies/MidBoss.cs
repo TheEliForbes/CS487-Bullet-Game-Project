@@ -22,6 +22,9 @@ namespace ExampleGame.Enemies
 
             bullets = new List<Bullets>();
             factory = new BulletFactory(gameContent);
+            lives = 2;
+            width = 96;
+            height = 30;
         }
 
         public override void Initialize(float initSpeed, Vector2 initPosition)

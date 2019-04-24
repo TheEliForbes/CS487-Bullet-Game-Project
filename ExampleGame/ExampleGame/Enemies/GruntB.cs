@@ -30,7 +30,10 @@ namespace ExampleGame.Enemies
 
             bullets = new List<Bullets>();
             factory = new BulletFactory(gameContent);
-        }
+            lives = 1;
+            width = 32;
+            height = 16;
+    }
 
         public GruntB(Vector2 newPosition, Vector2 newVelocity, ContentManager gameContent, EnemyMovements newMoves)
         {
@@ -43,6 +46,9 @@ namespace ExampleGame.Enemies
 
             bullets = new List<Bullets>();
             factory = new BulletFactory(gameContent);
+            lives = 1;
+            width = 32;
+            height = 16;
         }
 
         public override void Initialize(float initSpeed, Vector2 initPosition)

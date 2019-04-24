@@ -13,19 +13,13 @@ namespace ExampleGame.Movements
         {
         }
 
+        //velocity: (-1,1)
         public override Vector2 getNewPosition(Vector2 position, Vector2 velocity)
         {
-            Vector2 ret = position;
-            ret.Y += velocity.Y;
-            ret.X += velocity.Y;
-
-            return ret;
-
-            //TODO - Fix this, it only moves it down
-            //Movement down = new MoveDown(seconds);
-            //Movement right = new MoveRight(seconds);
-            //Vector2 temp = right.getNewPosition(position, velocity);
-            //return down.getNewPosition(temp, velocity);
+            Movement down = new MoveDown(seconds);
+            Movement right = new MoveRight(seconds);
+            Vector2 temp = right.getNewPosition(position, velocity);
+            return down.getNewPosition(temp, velocity);
         }
     }
 }

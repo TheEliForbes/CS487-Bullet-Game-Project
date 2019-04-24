@@ -8,15 +8,16 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Timers;
 using System.Collections.Generic;
+using ExampleGame.Movements;
 
 namespace ExampleGame.PlayerFolder
 {
     class Player : Entity
     {
-        private float speed;
-        private float originalSpeed;
-        private int slowModeModifier;
-        private bool isGod;
+        private double speed;
+        private double originalSpeed;
+        private double slowModeModifier;
+        public bool isGod;
         public List<Bullets> bullets; //may depend on design
         public BulletFactory factory;
         ContentManager Content;
@@ -25,6 +26,7 @@ namespace ExampleGame.PlayerFolder
         private Vector2 initPos;
         public bool invincible = false;
         private static Timer invincibilityTimer;
+        private Vector2 velocity = new Vector2(-1, 1);
 
         //Key mapping
         Keys upKey = Keys.Up;
@@ -67,7 +69,7 @@ namespace ExampleGame.PlayerFolder
             initPos = initPosition;
             originalSpeed = speed = initSpeed;
             position = initPosition;
-            slowModeModifier = 4;
+            slowModeModifier = 4.0;
             lives = 3;
         }
         public void Load(Texture2D initTexture)
@@ -84,7 +86,6 @@ namespace ExampleGame.PlayerFolder
             if (kstate.IsKeyDown(godMode) && pastKey.IsKeyUp(godMode))
             {
                 isGod = !isGod;
-                invincible = !invincible;
             }
 
             // for testing the win states
@@ -101,13 +102,13 @@ namespace ExampleGame.PlayerFolder
             }
 
             if (kstate.IsKeyDown(upKey))
-                position.Y -= speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                position = new MoveUp(speed).getNewPosition(position,velocity);
             if (kstate.IsKeyDown(downKey))
-                position.Y += speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                position = new MoveDown(speed).getNewPosition(position, velocity);
             if (kstate.IsKeyDown(leftKey))
-                position.X -= speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                position = new MoveLeft(speed).getNewPosition(position, velocity);
             if (kstate.IsKeyDown(rightKey))
-                position.X += speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                position = new MoveRight(speed).getNewPosition(position, velocity);
             if (kstate.IsKeyDown(shootKey) && pastKey.IsKeyUp(shootKey))
             {
                 shoot();
@@ -144,6 +145,7 @@ namespace ExampleGame.PlayerFolder
             }
             else
             {
+                //BulletSpread spread = (BulletSpread)factory.bulletFactory("spread", position, Vector2.Zero, true, 5, -1);
                 BulletSpread spread = (BulletSpread)factory.bulletFactory("spread", position, Vector2.Zero, true, 5);
                 foreach (Bullets bullet in spread.bullets)
                 {

@@ -81,9 +81,9 @@ namespace ExampleGame.States
         private void loadNextWave(Object source, ElapsedEventArgs e)
         {
             waveNumber++;
-            _enemies.Clear();
+            //_enemies.Clear(); //Allow Overlapping Waves
             EnemyWave newWave = waves.BuildWave(waveNumber, _content);
-            _enemies = newWave.getAllEnemies();
+            _enemies.AddRange(newWave.getAllEnemies());
         }
 
         private void AutomaticWin(Object source, ElapsedEventArgs e)
@@ -222,9 +222,11 @@ namespace ExampleGame.States
                 enemy.Update(_graphics, gameTime);
                 for (int i = 0; i < enemy.bullets.Count; i++)
                 {
-                    if (enemy.bullets[i].position.X <= player.position.X + 3 && enemy.bullets[i].position.Y <= player.position.Y + 3
-                            && enemy.bullets[i].position.X >= player.position.X - 3 && enemy.bullets[i].position.Y >= player.position.Y - 3
-                            && player.invincible == false)
+                    if (enemy.bullets[i].position.X + 4 >= player.position.X && 
+                        enemy.bullets[i].position.X <= player.position.X + 28 && 
+                        enemy.bullets[i].position.Y + 18 >= player.position.Y && 
+                        enemy.bullets[i].position.Y <= player.position.Y + 14 && 
+                        player.invincible == false && player.isGod == false)
                     {
                         player.takeHit();
                         enemy.bullets[i].isVisible = false;
@@ -232,11 +234,17 @@ namespace ExampleGame.States
                 }
                 for (int i = 0; i < player.bullets.Count; i++)
                 {
-                    if (player.bullets[i].position.X <= enemy.position.X + 10 && player.bullets[i].position.Y <= enemy.position.Y + 10
-                        && player.bullets[i].position.X >= enemy.position.X - 10 && player.bullets[i].position.Y >= enemy.position.Y - 10)
+                    if (player.bullets[i].position.X + 4 >= enemy.position.X && 
+                        player.bullets[i].position.X <= enemy.position.X + enemy.width && 
+                        player.bullets[i].position.Y + 18 >= enemy.position.Y && 
+                        player.bullets[i].position.Y <= enemy.position.Y + enemy.height)
                     {
-                        enemy.isVisible = false;
+                        enemy.lives -= 1;
                         player.bullets[i].isVisible = false;
+                        if (enemy.lives <= 0)
+                        {
+                            enemy.isVisible = false;
+                        }
                     }
                 }
             }

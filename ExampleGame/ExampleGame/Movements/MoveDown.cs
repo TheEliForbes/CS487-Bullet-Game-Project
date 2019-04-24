@@ -17,8 +17,7 @@ namespace ExampleGame.Movements
         {
             Vector2 ret = position;
             ret.Y += velocity.Y;
-            ret.X = position.X;
-
+            
             return ret;
         }
     }
