@@ -10,9 +10,18 @@
           "duration": 6.0
         },
         {
+          "type": "moveDown",
+          "duration": 6.0
+        },
+        {
           "type": "moveLeft",
           "duration": 6.0
+        },
+        {
+          "type": "moveUp",
+          "duration": 6.0
         }
+
       ],
       "movementRepetitions": 10
     },

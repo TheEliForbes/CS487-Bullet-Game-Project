@@ -18,21 +18,14 @@ namespace ExampleGame.waves
             EnemyWave newWave = new EnemyWave(wavenum);
             if(wavenum == 1)
             {
-                buildGruntAWave1(newWave, _content);
-                buildGruntBWave1(newWave, _content);
-                //buildWaveFromFile(newWave, "wave1.json", _content);
+                buildWaveFromFile(newWave, "wave5.json", _content);
             } else if (wavenum == 2)
             {
-                buildGruntAWave2(newWave, _content);
-                buildGruntBWave2(newWave, _content);
-                //buildWaveFromFile(newWave, "wave2.json", _content);
+                buildWaveFromFile(newWave, "wave2.json", _content);
             }
             else if (wavenum == 3)
             {
-                buildMidBossWave(newWave, _content);
-                buildGruntAWave1(newWave, _content);
-                buildGruntBWave1(newWave, _content);
-                //buildWaveFromFile(newWave, "wave3.json", _content);
+                buildWaveFromFile(newWave, "wave3.json", _content);
             }
             else if (wavenum == 4)
             {
