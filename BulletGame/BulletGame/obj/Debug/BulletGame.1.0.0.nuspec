@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>BulletGame</id>
+    <version>1.0.0</version>
+    <authors>BulletGame</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="MonoGame.Content.Builder.Task" version="3.8.0.1641" exclude="Build,Analyzers" />
+        <dependency id="MonoGame.Framework.DesktopGL" version="3.8.0.1641" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="12.0.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <contentFiles>
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/ball.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/bullet.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/Controls/ButtonPlay.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/Controls/ButtonQuit.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/Controls/LostButton.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/Controls/WinButton.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/finalBoss.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/invader1.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/invader2.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/invader3.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/lives1.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/lives2.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/lives3.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/lives4.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/lives5.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/lives6.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/lives7.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/lives8.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/lives9.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/midBoss.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/player.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/playerShield.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/reward.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/spaceBackground.xnb" buildAction="Content" />
+      <files include="any/netcoreapp3.1/Content/bin/DesktopGL/Content/square.xnb" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\bin\Debug\netcoreapp3.1\BulletGame.runtimeconfig.json" target="lib\netcoreapp3.1\BulletGame.runtimeconfig.json" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\bin\Debug\netcoreapp3.1\BulletGame.dll" target="lib\netcoreapp3.1\BulletGame.dll" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\ball.xnb" target="content\Content\bin\DesktopGL\Content\ball.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\ball.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\ball.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\bullet.xnb" target="content\Content\bin\DesktopGL\Content\bullet.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\bullet.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\bullet.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\Controls\ButtonPlay.xnb" target="content\Content\bin\DesktopGL\Content\Controls\ButtonPlay.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\Controls\ButtonPlay.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\Controls\ButtonPlay.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\Controls\ButtonQuit.xnb" target="content\Content\bin\DesktopGL\Content\Controls\ButtonQuit.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\Controls\ButtonQuit.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\Controls\ButtonQuit.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\Controls\LostButton.xnb" target="content\Content\bin\DesktopGL\Content\Controls\LostButton.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\Controls\LostButton.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\Controls\LostButton.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\Controls\WinButton.xnb" target="content\Content\bin\DesktopGL\Content\Controls\WinButton.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\Controls\WinButton.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\Controls\WinButton.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\finalBoss.xnb" target="content\Content\bin\DesktopGL\Content\finalBoss.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\finalBoss.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\finalBoss.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\invader1.xnb" target="content\Content\bin\DesktopGL\Content\invader1.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\invader1.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\invader1.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\invader2.xnb" target="content\Content\bin\DesktopGL\Content\invader2.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\invader2.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\invader2.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\invader3.xnb" target="content\Content\bin\DesktopGL\Content\invader3.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\invader3.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\invader3.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives1.xnb" target="content\Content\bin\DesktopGL\Content\lives1.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives1.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\lives1.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives2.xnb" target="content\Content\bin\DesktopGL\Content\lives2.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives2.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\lives2.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives3.xnb" target="content\Content\bin\DesktopGL\Content\lives3.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives3.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\lives3.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives4.xnb" target="content\Content\bin\DesktopGL\Content\lives4.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives4.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\lives4.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives5.xnb" target="content\Content\bin\DesktopGL\Content\lives5.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives5.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\lives5.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives6.xnb" target="content\Content\bin\DesktopGL\Content\lives6.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives6.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\lives6.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives7.xnb" target="content\Content\bin\DesktopGL\Content\lives7.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives7.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\lives7.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives8.xnb" target="content\Content\bin\DesktopGL\Content\lives8.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives8.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\lives8.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives9.xnb" target="content\Content\bin\DesktopGL\Content\lives9.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\lives9.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\lives9.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\midBoss.xnb" target="content\Content\bin\DesktopGL\Content\midBoss.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\midBoss.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\midBoss.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\player.xnb" target="content\Content\bin\DesktopGL\Content\player.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\player.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\player.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\playerShield.xnb" target="content\Content\bin\DesktopGL\Content\playerShield.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\playerShield.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\playerShield.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\reward.xnb" target="content\Content\bin\DesktopGL\Content\reward.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\reward.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\reward.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\spaceBackground.xnb" target="content\Content\bin\DesktopGL\Content\spaceBackground.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\spaceBackground.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\spaceBackground.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\square.xnb" target="content\Content\bin\DesktopGL\Content\square.xnb" />
+    <file src="C:\Users\elifo\Desktop\MyStuff\School Projects\BulletGame\BulletGame\BulletGame\Content\bin\DesktopGL\Content\square.xnb" target="contentFiles\any\netcoreapp3.1\Content\bin\DesktopGL\Content\square.xnb" />
+  </files>
+</package>
