@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "ugcMgPEv2JTJObuAgUiqhhXs/68IievBIauBiv2T6CwwfsHXTp4brrGYepQc70IuWTFxS57R/lCY/fiOA1MwcA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\elifo\\Desktop\\MyStuff\\School Projects\\487sp19_bulletgame\\BulletGame\\BulletGame.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\elifo\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
+    "C:\\Users\\elifo\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512",
+    "C:\\Users\\elifo\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
