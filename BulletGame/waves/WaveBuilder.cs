@@ -16,6 +16,7 @@ namespace ExampleGame.waves
         public EnemyWave BuildWave(int wavenum, ContentManager _content)
         {
             EnemyWave newWave = new EnemyWave(wavenum);
+            //Use only file waves
             if(wavenum == 1)
             {
                 //buildGruntAWave1(newWave, _content);
